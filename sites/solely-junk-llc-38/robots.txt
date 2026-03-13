@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://solely-junk-llc-38.netlify.app/sitemap.xml
