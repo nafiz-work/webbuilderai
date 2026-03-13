@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://er-junk-removal-llc-27.netlify.app/sitemap.xml
