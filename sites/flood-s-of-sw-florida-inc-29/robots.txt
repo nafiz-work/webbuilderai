@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://flood-s-of-sw-florida-inc-29.netlify.app/sitemap.xml
