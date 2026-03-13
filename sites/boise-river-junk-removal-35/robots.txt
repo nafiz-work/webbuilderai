@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://boise-river-junk-removal-35.netlify.app/sitemap.xml
