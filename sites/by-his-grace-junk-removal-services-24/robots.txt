@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://by-his-grace-junk-removal-services-24.netlify.app/sitemap.xml
