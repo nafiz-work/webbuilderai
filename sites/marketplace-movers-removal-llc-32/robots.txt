@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://marketplace-movers-removal-llc-32.netlify.app/sitemap.xml
