@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://junk-king-houston-north-21.netlify.app/sitemap.xml
