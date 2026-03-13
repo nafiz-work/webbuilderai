@@ -11,8 +11,8 @@
 <meta name="author" content="The Junk Guy">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://239-haulers-33.netlify.app/">
-<link rel="icon" id="dynamic-favicon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23333'/><text x='16' y='22' font-size='18' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial'>J</text></svg>">
-<link rel="apple-touch-icon" id="dynamic-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='30' fill='%23333'/><text x='90' y='120' font-size='100' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial'>J</text></svg>">
+<link rel="icon" type="image/webp" href="images/junk_removal_logo.webp">
+<link rel="apple-touch-icon" href="images/junk_removal_logo.webp">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -312,8 +312,6 @@
     --primary: #C9A800;
     --primary-dark: #A68B00;
     --accent: #FFD600;
-    --btn-text: #111827;
-    --accent-hover: #E6C200;
     --dark: #0a0a0a;
     --gray: #6b7280;
     --light: #f7f7f2;
@@ -332,11 +330,8 @@
     display: flex; justify-content: space-between; align-items: center;
     padding: .8rem 5%;
   }
-  .nav-logo { display:flex; align-items:center; gap: .7rem; }
+  .nav-logo { display:flex; align-items:center; }
   .nav-logo img { height: 56px; width: auto; max-width: 240px; }
-  .logo-icon-circle { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--light); }
-  .logo-icon-circle img { width: 100%; height: 100%; object-fit: cover; }
-  .logo-business-name { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.5px; line-height: 1.2; }
   .nav-links { display:flex; align-items:center; gap:.2rem; list-style:none; }
   .nav-links > li { position:relative; }
   .nav-links > li > a { color: var(--dark); text-decoration:none; font-size:.9rem; font-weight:600; padding:.5rem .9rem; border-radius:8px; transition:.2s; display:flex; align-items:center; gap:.3rem; }
@@ -354,11 +349,12 @@
   .nav-dropdown .dd-text span:first-child { font-weight:600; font-size:.88rem; }
   .nav-dropdown .dd-text span:last-child { font-size:.75rem; color:var(--gray); font-weight:400; }
   .nav-right { display:flex; align-items:center; gap:1rem; }
-  .nav-phone { background: var(--accent); color: var(--btn-text); padding: .7rem 1.6rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: .9rem; transition: .2s; white-space:nowrap; display:inline-flex; align-items:center; gap:.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.15); border: 2px solid var(--primary); }
-  .nav-phone:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 18px rgba(255,214,0,0.5); }
+  .nav-phone { background: var(--accent); color: var(--dark); padding: .7rem 1.6rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: .9rem; transition: .2s; white-space:nowrap; display:inline-flex; align-items:center; gap:.5rem; box-shadow: 0 2px 12px rgba(255,214,0,0.35); }
+  .nav-phone:hover { background: #E6C200; transform: translateY(-1px); box-shadow: 0 4px 18px rgba(255,214,0,0.5); }
   .nav-phone svg { width:16px; height:16px; flex-shrink:0; }
   .nav-phone-num { font-size:.8rem; opacity:.9; border-left:1px solid rgba(255,255,255,0.3); padding-left:.5rem; font-weight:600; }
-  @media(max-width:900px) { .nav-phone-num { display:none; } }
+  @media(max-width:900px) { .nav-phone-num { display:none; } .nav-phone-label { display:none; } .nav-phone::after { content:'Call'; } }
+  @media(max-width:480px) { .nav-phone { padding:.5rem .9rem; font-size:.75rem; gap:.35rem; } .nav-phone svg { width:14px; height:14px; } .nav-phone-label { display:none; } .nav-phone::after { content:'Call'; } }
   /* Hamburger */
   .nav-hamburger { display:none; background:none; border:none; cursor:pointer; padding:.5rem; }
   .nav-hamburger span { display:block; width:24px; height:2.5px; background:var(--dark); margin:5px 0; border-radius:2px; transition:.3s; }
@@ -367,7 +363,6 @@
   .nav-hamburger.active span:nth-child(3) { transform:rotate(-45deg) translate(5px, -5px); }
   /* Mobile nav */
   @media(max-width:900px) {
-    .nav-phone { border: 2px solid var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
     .nav-links { position:fixed; top:0; right:-100%; width:300px; height:100vh; background:white; flex-direction:column; align-items:stretch; padding:5rem 1.5rem 2rem; gap:0; box-shadow:-10px 0 40px rgba(0,0,0,0.1); transition:.35s ease; overflow-y:auto; }
     .nav-links.open { right:0; }
     .nav-links > li > a { padding:.9rem .5rem; font-size:1rem; border-bottom:1px solid #f1f5f9; border-radius:0; }
@@ -393,16 +388,16 @@
   }
   .hero-content { position:relative; max-width: 650px; }
   .hero-badge {
-    display: inline-block; background: var(--accent); color: var(--btn-text);
-    border: 1px solid var(--primary); padding: .4rem 1rem;
+    display: inline-block; background: rgba(255,214,0,0.15); color: var(--accent);
+    border: 1px solid rgba(255,214,0,0.3); padding: .4rem 1rem;
     border-radius: 50px; font-size: .85rem; font-weight: 600; margin-bottom: 1.5rem;
   }
   .hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 900; color: white; line-height: 1.1; margin-bottom: 1.2rem; }
   .hero h1 span { color: var(--accent); }
   .hero p { font-size: 1.15rem; color: #94a3b8; margin-bottom: 2rem; line-height: 1.7; }
   .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary { background: var(--accent); color: var(--btn-text); padding: .9rem 2rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: .2s; display:inline-flex; align-items:center; gap:.5rem; }
-  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,214,0,0.45); }
+  .btn-primary { background: var(--accent); color: var(--dark); padding: .9rem 2rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: .2s; display:inline-flex; align-items:center; gap:.5rem; }
+  .btn-primary:hover { background: #E6C200; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,214,0,0.45); }
   .btn-secondary { background: transparent; color: white; padding: .9rem 2rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1rem; border: 2px solid rgba(255,255,255,0.3); transition: .2s; }
   .btn-secondary:hover { border-color: white; background: rgba(255,255,255,0.1); }
   .hero-stats { display:flex; gap:2.5rem; margin-top: 3rem; }
@@ -467,8 +462,8 @@
   .commercial-body ul { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:.5rem .8rem; margin-bottom:2rem; }
   .commercial-body ul li { color:#cbd5e1; font-size:.88rem; font-weight:500; display:flex; align-items:center; gap:.5rem; }
   .commercial-body ul li::before { content:'✓'; color:var(--accent); font-weight:800; font-size:.85rem; }
-  .commercial-btn { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:var(--btn-text); padding:.85rem 2rem; border-radius:50px; font-weight:700; font-size:.95rem; text-decoration:none; transition:.2s; width:fit-content; }
-  .commercial-btn:hover { background:var(--accent-hover); transform:translateY(-2px); box-shadow:0 8px 25px rgba(255,214,0,0.45); }
+  .commercial-btn { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:var(--dark); padding:.85rem 2rem; border-radius:50px; font-weight:700; font-size:.95rem; text-decoration:none; transition:.2s; width:fit-content; }
+  .commercial-btn:hover { background:#E6C200; transform:translateY(-2px); box-shadow:0 8px 25px rgba(255,214,0,0.45); }
   @media(max-width:768px) { .commercial-wrap { grid-template-columns:1fr; } .commercial-img { min-height:240px; } .commercial-body { padding:2.5rem 2rem; } .commercial-body ul { grid-template-columns:1fr; } }
 
   /* WHAT WE TAKE */
@@ -496,7 +491,7 @@
   .howitworks { background: white; }
   .steps-grid { display: flex; align-items: flex-start; justify-content: center; gap: 0; max-width: 1000px; margin: 0 auto; }
   .step-card { flex: 1; text-align: center; padding: 0 1.5rem; position: relative; }
-  .step-number { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: var(--btn-text); font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; }
+  .step-number { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: var(--dark); font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; }
   .step-icon { width: 56px; height: 56px; margin: 0 auto 1rem; display: block; }
   .step-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; }
   .step-card p { color: var(--gray); font-size: .9rem; line-height: 1.7; max-width: 260px; margin: 0 auto; }
@@ -509,7 +504,7 @@
   .price-card { border-radius: var(--radius); padding: 2.5rem; border: 2px solid #e2e8f0; transition: .3s; position: relative; }
   .price-card.featured { border-color: var(--accent); background: var(--dark); color: white; }
   .price-card.featured .price-desc, .price-card.featured .price-includes li { color: #94a3b8; }
-  .featured-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background: var(--accent); color: var(--btn-text); padding: .3rem 1.2rem; border-radius: 50px; font-size: .8rem; font-weight: 700; }
+  .featured-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background: var(--accent); color: var(--dark); padding: .3rem 1.2rem; border-radius: 50px; font-size: .8rem; font-weight: 700; }
   .price-tier { font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--primary); margin-bottom: .5rem; }
   .price-card.featured .price-tier { color: var(--accent); }
   .price-amount { font-size: 2.5rem; font-weight: 900; margin-bottom: .3rem; }
@@ -519,7 +514,7 @@
   .price-includes li::before { content:'✓'; color: var(--primary); font-weight:800; }
   .price-card.featured .price-includes li::before { color: var(--accent); }
   .price-cta { display:block; text-align:center; margin-top:2rem; padding:.8rem; border-radius:50px; font-weight:700; text-decoration:none; transition:.2s; background: var(--primary); color:white; }
-  .price-card.featured .price-cta { background: var(--accent); color: var(--btn-text); }
+  .price-card.featured .price-cta { background: var(--accent); color: var(--dark); }
   .price-cta:hover { opacity:.9; transform:translateY(-1px); }
 
   /* WHY US */
@@ -533,8 +528,8 @@
   @media(max-width:480px) { .whyus-grid { grid-template-columns: 1fr; } }
 
   /* GALLERY */
-  .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .6rem; }
-  .gallery-item { border-radius: 8px; overflow:hidden; aspect-ratio:1; background:#e2e8f0; position:relative; cursor:pointer; }
+  .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
+  .gallery-item { flex: 0 1 calc((100% - 2.4rem) / 5); min-width: 150px; border-radius: 8px; overflow:hidden; aspect-ratio:1; background:#e2e8f0; position:relative; cursor:pointer; }
   .gallery-item img { width:100%; height:100%; object-fit:cover; transition:.4s; }
   .gallery-item:hover img { transform:scale(1.08); filter: brightness(1.05); }
   .gallery-item::after { content:''; position:absolute; inset:0; background: linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 50%); opacity:0; transition:.3s; }
@@ -543,7 +538,7 @@
   .gallery-grid.collapsed .gallery-item:nth-child(n+6) { display:none; }
   .gallery-load-more { display:block; margin:1.5rem auto 0; padding:.7rem 2rem; background:var(--primary); color:white; border:none; border-radius:50px; font-size:.95rem; font-weight:600; cursor:pointer; transition:.2s; }
   .gallery-load-more:hover { opacity:.9; transform:translateY(-1px); }
-  @media(max-width:768px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } .gallery-grid.collapsed .gallery-item:nth-child(n+3) { display:none; } }
+  @media(max-width:768px) { .gallery-item { flex: 0 1 calc((100% - .6rem) / 2); min-width: 0; } .gallery-grid.collapsed .gallery-item:nth-child(n+3) { display:none; } }
   .lightbox { position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.9); display:none; align-items:center; justify-content:center; cursor:pointer; }
   .lightbox.active { display:flex; }
   .lightbox img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:8px; }
@@ -566,8 +561,7 @@
   .reviews-track { display:flex; gap:1.5rem; transition:.4s ease; }
   .review-card { background:var(--light); border-radius:var(--radius); padding:2rem; flex-shrink:0; border:none; }
   .review-top { display:flex; align-items:center; gap:.8rem; margin-bottom:1rem; }
-  .reviewer-avatar { width:44px; height:44px; border-radius:50%; background:var(--dark); color:var(--accent); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.95rem; flex-shrink:0; overflow:hidden; }
-  .reviewer-avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+  .reviewer-avatar { width:44px; height:44px; border-radius:50%; background:var(--dark); color:var(--accent); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.95rem; flex-shrink:0; }
   .review-meta { display:flex; flex-direction:column; }
   .reviewer-name { font-weight:700; font-size:.95rem; }
   .review-stars-row { display:flex; align-items:center; gap:.5rem; }
@@ -581,7 +575,7 @@
   @media(max-width:768px) { .reviews-slider { padding: 0 2.5rem; } }
 
   /* FAQ */
-  .faq-list { max-width: 750px; display:flex; flex-direction:column; gap:1rem; }
+  .faq-list { max-width: 750px; margin: 0 auto; display:flex; flex-direction:column; gap:1rem; }
   .faq-item { border: 1px solid #e2e8f0; border-radius: var(--radius); overflow:hidden; }
   .faq-q { width:100%; text-align:left; padding:1.3rem 1.5rem; background:white; border:none; cursor:pointer; font-size:1rem; font-weight:600; color:var(--dark); display:flex; justify-content:space-between; align-items:center; transition:.2s; }
   .faq-q:hover { background: var(--light); }
@@ -625,8 +619,8 @@
   .form-group input, .form-group textarea, .form-group select { padding:.75rem 1rem; border:1.5px solid #e2e8f0; border-radius:8px; font-size:.95rem; font-family:inherit; transition:.2s; background:white; }
   .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline:none; border-color:var(--primary); }
   .form-group textarea { resize:vertical; min-height:100px; }
-  .form-submit { width:100%; padding:1rem; background:var(--accent); color:var(--btn-text); border:none; border-radius:50px; font-size:1rem; font-weight:700; cursor:pointer; transition:.2s; }
-  .form-submit:hover { background:var(--accent-hover); transform:translateY(-1px); }
+  .form-submit { width:100%; padding:1rem; background:var(--accent); color:var(--dark); border:none; border-radius:50px; font-size:1rem; font-weight:700; cursor:pointer; transition:.2s; }
+  .form-submit:hover { background:#E6C200; transform:translateY(-1px); }
 
   /* QUOTE SECTION (dark bg) */
   #contact { background: var(--dark); }
@@ -660,11 +654,7 @@
   /* FOOTER */
   footer { background: var(--dark); color: #94a3b8; padding: 3.5rem 5% 0; }
   .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-  .footer-logo { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem; }
-  .footer-logo img { height: 48px; width: auto; display: block; }
-  .footer-logo .logo-icon-circle { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); }
-  .footer-logo .logo-icon-circle img { width: 100%; height: 100%; object-fit: cover; }
-  .footer-logo .logo-business-name { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.5px; color: white; }
+  .footer-logo img { height: 48px; width: auto; display: block; margin-bottom: 1rem; }
   .footer-tagline { font-size: .9rem; line-height: 1.7; max-width: 240px; }
   .footer-social { display: flex; gap: .7rem; margin-top: 1.5rem; }
   .social-btn { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: .2s; border: 1px solid rgba(255,255,255,0.12); }
@@ -711,7 +701,6 @@ const data = {
   "primaryColor": "#9fff00",
   "accentColor": "#f61515",
   "logoSrc": "images/logo.png",
-  "isGeneratedLogo": true,
   "stats": [
     {
       "num": "5★",
@@ -929,9 +918,7 @@ const data = {
   "mapEmbedUrl": "https://maps.google.com/maps?q=26.332811,-81.923676&t=&z=13&ie=UTF8&iwloc=&output=embed",
   "social": {
     "google": "https://www.google.com/maps/place/239+HAULERS/@26.158927,-82.679359,9z/data=!4m10!1m2!2m1!1sjunk+removal+near+me!3m6!1s0xa0381cce84a66ef:0x8f6f1739a749920c!8m2!3d26.332811!4d-81.9236772!15sChRqdW5rIHJlbW92YWwgbmVhciBtZSIDkAEBWhYiFGp1bmsgcmVtb3ZhbCBuZWFyIG1lkgEXZHVtcHN0ZXJfcmVudGFsX3NlcnZpY2WaASRDaGREU1VoTk1HOW5TMFZKUTBGblRVTm5kRnA2ZVMxblJSQULgAQD6AQQIexBM!16s%2Fg%2F11ww4_4hn3?entry=ttu&g_ep=EgoyMDI2MDMxMC4wIKXMDSoASAFQAw%3D%3D"
-  },
-  "buttonTextColor": "#ffffff",
-  "accentHover": "#D80000"
+  }
 };
 </script>
 
@@ -959,7 +946,7 @@ const data = {
   <div class="nav-right">
     <a class="nav-phone" id="nav-phone" href="#contact">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      Free Quote
+      <span class="nav-phone-label">Free Quote</span>
       <span class="nav-phone-num" id="nav-phone-num"></span>
     </a>
     <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()">
@@ -1209,11 +1196,11 @@ const data = {
 </section>
 
 <!-- FAQ -->
-<section id="faq">
+<section id="faq" style="text-align:center;">
   <div class="section-header">
     <div class="section-label">FAQ</div>
     <h2 class="section-title">Frequently Asked Questions</h2>
-    <p class="section-sub">Everything you need to know before booking.</p>
+    <p class="section-sub" style="margin-left:auto; margin-right:auto;">Everything you need to know before booking.</p>
   </div>
   <div class="faq-list" id="faq-list"></div>
 </section>
@@ -1292,7 +1279,7 @@ const data = {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         <a id="footer-phone" href="#">—</a>
       </div>
-      <div class="footer-contact-item" id="footer-email-row">
+      <div class="footer-contact-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         <a id="footer-email" href="#">—</a>
       </div>
@@ -1319,37 +1306,9 @@ const data = {
 // Apply colors
 document.documentElement.style.setProperty('--primary', data.primaryColor);
 document.documentElement.style.setProperty('--accent', data.accentColor);
-document.documentElement.style.setProperty('--btn-text', data.buttonTextColor);
-document.documentElement.style.setProperty('--accent-hover', data.accentHover);
 
 // Nav
-if (data.logoSrc && data.isGeneratedLogo) {
-  var navBg = [255, 255, 255];
-  var pHex = (data.primaryColor || '#1B5E20').replace('#','');
-  if (pHex.length === 3) pHex = pHex[0]+pHex[0]+pHex[1]+pHex[1]+pHex[2]+pHex[2];
-  var pNum = parseInt(pHex, 16);
-  var nameColor = '#111827';
-  if (!isNaN(pNum)) {
-    var toL = function(c){ var s=c/255; return s<=0.03928?s/12.92:Math.pow((s+0.055)/1.055,2.4); };
-    var pLum = 0.2126*toL((pNum>>16)&0xff)+0.7152*toL((pNum>>8)&0xff)+0.0722*toL(pNum&0xff);
-    var bgLum = 0.2126*toL(navBg[0])+0.7152*toL(navBg[1])+0.0722*toL(navBg[2]);
-    var cRatio = (Math.max(pLum,bgLum)+0.05)/(Math.min(pLum,bgLum)+0.05);
-    nameColor = cRatio >= 3 ? data.primaryColor : '#111827';
-  }
-  document.getElementById('nav-logo').innerHTML = `<div class="logo-icon-circle"><img src="${data.logoSrc}" alt="${data.business}"></div><span class="logo-business-name" style="color:${nameColor}">${data.business}</span>`;
-  var fav = document.getElementById('dynamic-favicon');
-  if (fav) { fav.setAttribute('href', data.logoSrc); fav.setAttribute('type', 'image/png'); }
-  var touch = document.getElementById('dynamic-touch-icon');
-  if (touch) touch.setAttribute('href', data.logoSrc);
-} else if (data.logoSrc) {
-  document.getElementById('nav-logo').innerHTML = `<img src="${data.logoSrc}" alt="${data.business}">`;
-  var fav = document.getElementById('dynamic-favicon');
-  if (fav) { fav.setAttribute('href', data.logoSrc); fav.setAttribute('type', 'image/png'); }
-  var touch = document.getElementById('dynamic-touch-icon');
-  if (touch) touch.setAttribute('href', data.logoSrc);
-} else {
-  document.getElementById('nav-logo').innerHTML = `<span style="font-weight:800;font-size:1.25rem;color:var(--primary);letter-spacing:-0.5px;">${data.business}</span>`;
-}
+document.getElementById('nav-logo').innerHTML = `<img src="${data.logoSrc || 'images/junk_removal_logo.webp'}" alt="${data.business}">`;
 document.getElementById('nav-phone').href = '#contact';
 document.getElementById('nav-phone-num').textContent = data.phone;
 
@@ -1532,22 +1491,18 @@ document.getElementById('reviews-title').textContent = `What people say about ${
 document.getElementById('reviews-stars').textContent = '★★★★★';
 document.getElementById('reviews-avg').textContent = data.reviewsAvg + ' AVG';
 document.getElementById('reviews-count').textContent = `(${data.reviewsCount} Reviews)`;
-document.getElementById('reviews-track').innerHTML = data.reviews.map(r => {
-  const stars = '★'.repeat(Math.max(1, Math.min(5, r.rating || 5))) + '☆'.repeat(5 - Math.max(1, Math.min(5, r.rating || 5)));
-  const avatarContent = r.profilePhoto
-    ? `<img src="${r.profilePhoto}" alt="${r.name}" loading="lazy" referrerpolicy="no-referrer">`
-    : r.initials;
-  return `<div class="review-card">
+document.getElementById('reviews-track').innerHTML = data.reviews.map(r =>
+  `<div class="review-card">
     <div class="review-top">
-      <div class="reviewer-avatar">${avatarContent}</div>
+      <div class="reviewer-avatar">${r.initials}</div>
       <div class="review-meta">
         <div class="reviewer-name">${r.name}</div>
-        <div class="review-stars-row"><span class="stars">${stars}</span><span class="review-date">(${r.date})</span></div>
+        <div class="review-stars-row"><span class="stars">★★★★★</span><span class="review-date">(${r.date})</span></div>
       </div>
     </div>
     <p class="review-text">"${r.text}"</p>
-  </div>`;
-}).join('');
+  </div>`
+).join('');
 
 // Reviews slider - size cards dynamically
 function sizeReviewCards() {
@@ -1596,12 +1551,12 @@ const contactIcons = {
   address: `<svg viewBox="0 0 48 48" fill="none"><path d="M24 4C16.3 4 10 10.3 10 18c0 10.5 14 26 14 26s14-15.5 14-26c0-7.7-6.3-14-14-14z" stroke="#0f172a" stroke-width="2.5" fill="none"/><circle cx="24" cy="18" r="5" stroke="#0f172a" stroke-width="2.5" fill="none"/><circle cx="36" cy="8" r="7" fill="#fef9c3" stroke="#C9A800" stroke-width="1.5"/><path d="M33.5 8l2 2 3.5-4" stroke="#C9A800" stroke-width="1.5" fill="none"/></svg>`,
   hours:   `<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#0f172a" stroke-width="2.5" fill="none"/><path d="M24 14v10l6 4" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/><circle cx="36" cy="12" r="7" fill="#fef9c3" stroke="#C9A800" stroke-width="1.5"/><path d="M33.5 12l2 2 3-3" stroke="#C9A800" stroke-width="1.5" fill="none"/></svg>`,
 };
-document.getElementById('contact-info').innerHTML = [
-  `<div class="contact-item"><div class="contact-icon">${contactIcons.phone}</div><div><h4>Phone</h4><p>${data.phone}</p></div></div>`,
-  data.email ? `<div class="contact-item"><div class="contact-icon">${contactIcons.email}</div><div><h4>Email</h4><p>${data.email}</p></div></div>` : '',
-  `<div class="contact-item"><div class="contact-icon">${contactIcons.address}</div><div><h4>Service Area</h4><p>${data.address}</p></div></div>`,
-  `<div class="contact-item"><div class="contact-icon">${contactIcons.hours}</div><div><h4>Hours of Operation</h4><p>${data.hours}</p></div></div>`,
-].join('\n');
+document.getElementById('contact-info').innerHTML = `
+  <div class="contact-item"><div class="contact-icon">${contactIcons.phone}</div><div><h4>Phone</h4><p>${data.phone}</p></div></div>
+  <div class="contact-item"><div class="contact-icon">${contactIcons.email}</div><div><h4>Email</h4><p>${data.email}</p></div></div>
+  <div class="contact-item"><div class="contact-icon">${contactIcons.address}</div><div><h4>Service Area</h4><p>${data.address}</p></div></div>
+  <div class="contact-item"><div class="contact-icon">${contactIcons.hours}</div><div><h4>Hours of Operation</h4><p>${data.hours}</p></div></div>
+`;
 
 // Map
 document.getElementById('map-embed').src = data.mapEmbedUrl;
@@ -1614,30 +1569,16 @@ const socialIcons = {
   google: `<svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>`,
   linkedin: `<svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`,
 };
-if (data.social && Object.keys(data.social).length > 0) {
-  document.getElementById('footer-social').innerHTML = Object.entries(data.social).map(([k,v]) =>
-    `<a class="social-btn" href="${v}" target="_blank" title="${k}">${socialIcons[k]||''}</a>`
-  ).join('');
-} else {
-  document.getElementById('footer-social').style.display = 'none';
-}
+document.getElementById('footer-social').innerHTML = Object.entries(data.social).map(([k,v]) =>
+  `<a class="social-btn" href="${v}" target="_blank" title="${k}">${socialIcons[k]||''}</a>`
+).join('');
 
 // Footer
-if (data.logoSrc && data.isGeneratedLogo) {
-  document.getElementById('footer-logo').innerHTML = `<div class="logo-icon-circle"><img src="${data.logoSrc}" alt="${data.business}"></div><span class="logo-business-name">${data.business}</span>`;
-} else if (data.logoSrc) {
-  document.getElementById('footer-logo').innerHTML = `<img src="${data.logoSrc}" alt="${data.business}">`;
-} else {
-  document.getElementById('footer-logo').innerHTML = `<span style="font-weight:800;font-size:1.25rem;color:var(--primary);letter-spacing:-0.5px;">${data.business}</span>`;
-}
+document.getElementById('footer-logo').innerHTML = `<img src="${data.logoSrc || 'images/junk_removal_logo.webp'}" alt="${data.business}">`;
 document.getElementById('footer-phone').textContent = data.phone;
 document.getElementById('footer-phone').href = 'tel:' + data.phone;
-if (data.email) {
-  document.getElementById('footer-email').textContent = data.email;
-  document.getElementById('footer-email').href = 'mailto:' + data.email;
-} else {
-  document.getElementById('footer-email-row').style.display = 'none';
-}
+document.getElementById('footer-email').textContent = data.email;
+document.getElementById('footer-email').href = 'mailto:' + data.email;
 document.getElementById('footer-address').textContent = data.address;
 document.getElementById('footer-hours').textContent = data.hours;
 document.getElementById('footer-copy').textContent = `© ${new Date().getFullYear()} ${data.business}. All rights reserved.`;
