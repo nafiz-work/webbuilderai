@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://s-m-junk-removal-23.netlify.app/sitemap.xml
