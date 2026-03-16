@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://junkco.netlify.app/sitemap.xml
