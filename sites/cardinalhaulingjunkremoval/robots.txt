@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cardinalhaulingjunkremoval.netlify.app/sitemap.xml
