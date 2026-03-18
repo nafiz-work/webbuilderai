@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://resetadvantagehauling.netlify.app/sitemap.xml
