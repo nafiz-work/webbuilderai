@@ -910,7 +910,7 @@ const data = {
   ],
   "mapEmbedUrl": "https://maps.google.com/maps?q=34.095947,-118.2791&t=&z=13&ie=UTF8&iwloc=&output=embed",
   "social": {
-    "google": "https://www.google.com/maps/place/?q=place_id:ChIJYezSH4XHwoARCHJctjgMWbI"
+    "google": "https://www.google.com/maps/place/Junkhauls/@34.095949,-118.279101,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2c7851fd2ec61:0xb2590c38b65c7208!8m2!3d34.095949!4d-118.279101!16s%2Fg%2F11jtx4p5pw?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
   }
 };
 </script>
@@ -1831,7 +1831,7 @@ const data = {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
     var groups = form.querySelectorAll('.form-group');
-    var payload = { businessId: 51 };
+    var payload = { businessId: 8 };
     var firstName = '';
     var lastName = '';
     groups.forEach(function(group) {
@@ -1848,7 +1848,7 @@ const data = {
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9.kirk.replit.dev/api/leads', {
+    fetch('https://websitegen26.replit.app/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -1864,7 +1864,7 @@ const data = {
   });
 })();</script>
 <script>var vooltIsClaimed = false;</script>
-<script>var claimPortalUrl = "https://client.voolt.me/dashboard?sid=87247018-0ea7-4c28-a572-6b4ec0e4c1a9";</script>
+<script>var claimPortalUrl = "https://client.voolt.me/dashboard?sid=717fd227-1ff2-4899-bc84-42a38489c85a";</script>
 <script>(function () {
   if (new URLSearchParams(window.location.search).get('vp') === '1') return;
   if (document.getElementById('voolt-claim-widget')) return;
