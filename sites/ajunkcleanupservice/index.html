@@ -907,7 +907,7 @@ const data = {
   "mapEmbedUrl": "https://maps.google.com/maps?q=37.6134,-122.40277&t=&z=13&ie=UTF8&iwloc=&output=embed",
   "social": {
     "facebook": "https://www.facebook.com/Ajunkcleanupservice/",
-    "google": "https://www.google.com/maps/place/?q=place_id:ChIJ-QQ7Rv93j4ARLJzUDt_h0HI"
+    "google": "https://www.google.com/maps/place/A%2B+Junk+Cleanup+Service/@37.6134011,-122.4027689,16z/data=!3m1!4b1!4m6!3m5!1s0x808f77ff463b04f9:0x72d0e1df0ed49c2c!8m2!3d37.6134011!4d-122.4027689!16s%2Fg%2F11j1mn8072?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
   }
 };
 </script>
@@ -1828,7 +1828,7 @@ const data = {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
     var groups = form.querySelectorAll('.form-group');
-    var payload = { businessId: 49 };
+    var payload = { businessId: 10 };
     var firstName = '';
     var lastName = '';
     groups.forEach(function(group) {
@@ -1845,7 +1845,7 @@ const data = {
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9.kirk.replit.dev/api/leads', {
+    fetch('https://websitegen26.replit.app/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -1861,7 +1861,7 @@ const data = {
   });
 })();</script>
 <script>var vooltIsClaimed = false;</script>
-<script>var claimPortalUrl = "https://client.voolt.me/dashboard?sid=7f5d9ec4-cc89-40a2-9f4d-fca7cd6d5519";</script>
+<script>var claimPortalUrl = "https://client.voolt.me/dashboard?sid=17792851-a6ae-4dde-a20d-48000613a5d0";</script>
 <script>(function () {
   if (new URLSearchParams(window.location.search).get('vp') === '1') return;
   if (document.getElementById('voolt-claim-widget')) return;
