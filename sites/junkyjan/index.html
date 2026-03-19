@@ -6,7 +6,7 @@
 <title id="page-title">The Junk Guy | #1 Junk Removal in Sarnia, ON | Same-Day Service</title>
 
 <!-- Primary SEO Meta Tags -->
-<meta name="description" content="Junky Jan provides professional junk removal services in Hollywood. Fast, reliable, and affordable. Call (786) 899-1423 today for a free estimate!">
+<meta name="description" content="Junky Jan provides professional junk removal services in Hollywood, Pembroke Park, Dania Beach. Fast, reliable, and affordable. Call (786) 899-1423 today for a free estimate!">
 <meta name="keywords" content="junk removal Sarnia, junk hauling Sarnia ON, furniture removal Sarnia, house cleanout Sarnia, construction debris removal, commercial junk removal Sarnia, same day junk pickup, cheap junk removal Sarnia, appliance removal Sarnia, yard waste removal Sarnia, estate cleanout Sarnia, The Junk Guy">
 <meta name="author" content="The Junk Guy">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -18,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://junkyjan.netlify.app/">
 <meta property="og:title" content="Junky Jan - Professional Junk Removal">
-<meta property="og:description" content="Junky Jan provides professional junk removal services in Hollywood. Fast, reliable, and affordable. Call (786) 899-1423 today for a free estimate!">
+<meta property="og:description" content="Junky Jan provides professional junk removal services in Hollywood, Pembroke Park, Dania Beach. Fast, reliable, and affordable. Call (786) 899-1423 today for a free estimate!">
 <meta property="og:image" content="https://junkyjan.netlify.app/images/hero-bg.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -129,7 +129,18 @@
         }
     ],
     "areaServed": [
-        "Hollywood"
+        "Hollywood",
+        "Pembroke Park",
+        "Dania Beach",
+        "Hallandale Beach",
+        "West Park",
+        "Hollywood Seminole Reservation",
+        "Aventura",
+        "Miramar",
+        "Davie",
+        "Sunny Isles Beach",
+        "North Miami Beach",
+        "Fort Lauderdale"
     ],
     "serviceType": [
         "Junk Removal",
@@ -711,13 +722,13 @@
 const data = {
   "business": "Junky Jan",
   "tagline": "Hollywood's Most Trusted Junk Removal",
-  "subheadline": "Fast, reliable junk hauling services throughout Hollywood and surrounding areas in South Florida. Same-day service available for your residential and commercial needs.",
+  "subheadline": "Fast, friendly junk hauling throughout Hollywood and surrounding areas. Same-day service available for all your removal needs.",
   "phone": "(786) 899-1423",
   "email": null,
   "address": "2611 Grant St, Hollywood, FL 33020, USA",
   "hours": "Friday – Wednesday: Open 24 hours",
   "primaryColor": "#208020",
-  "accentColor": "#2060c0",
+  "accentColor": "#2060e0",
   "logoSrc": "images/logo.png",
   "isGeneratedLogo": true,
   "logoNameColor": "#208020",
@@ -1845,7 +1856,7 @@ const data = {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
     var groups = form.querySelectorAll('.form-group');
-    var payload = { businessId: 52 };
+    var payload = { businessId: 15 };
     var firstName = '';
     var lastName = '';
     groups.forEach(function(group) {
@@ -1862,7 +1873,7 @@ const data = {
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9.kirk.replit.dev/api/leads', {
+    fetch('https://websitegen26.replit.app/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -1878,7 +1889,7 @@ const data = {
   });
 })();</script>
 <script>var vooltIsClaimed = false;</script>
-<script>var claimPortalUrl = "https://client.voolt.me/dashboard?sid=f7b90163-dd99-41c3-9740-4eeb4e998153";</script>
+<script>var claimPortalUrl = "https://client.voolt.me/dashboard?sid=28085c62-c970-4191-a0a7-df0295104d7c";</script>
 <script>(function () {
   if (new URLSearchParams(window.location.search).get('vp') === '1') return;
   if (document.getElementById('voolt-claim-widget')) return;
