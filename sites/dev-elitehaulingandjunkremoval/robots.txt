@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dev-elitehaulingandjunkremoval.netlify.app/sitemap.xml
