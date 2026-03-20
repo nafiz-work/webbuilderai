@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  ga4Id: "G-5JM0E6YMY5",
+  clarityId: "vyr6ftfkxy",
+  clarityEnabled: true
+});
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer',"GTM-NX6CMV8P");</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="page-title">The Junk Guy | #1 Junk Removal in Sarnia, ON | Same-Day Service</title>
@@ -1980,11 +1993,12 @@ document.title = `${data.business} | Junk Removal`;
   // ── Services ──
   var servicesGrid = $('services-grid');
   if (servicesGrid && data.services) {
-    servicesGrid.innerHTML = data.services.map(function (s) {
+    var serviceCardHTML = data.services.map(function (s) {
       return '<div class="service-card">' +
         (s.img ? '<img class="service-img" src="' + s.img + '" alt="' + s.title + '">' : '<div class="service-img-placeholder">Image Coming Soon</div>') +
         '<div class="service-body"><h3>' + s.title + '</h3><p>' + s.desc + '</p></div></div>';
     }).join('');
+    servicesGrid.innerHTML = serviceCardHTML + serviceCardHTML + serviceCardHTML;
   }
 
   // ── What We Take ──
@@ -2019,7 +2033,12 @@ document.title = `${data.business} | Junk Removal`;
     renderTakeItems('Most Popular');
   }
 
-  // ── Services slider ──
+  // ── Services slider (infinite loop via clones) ──
+  // The track contains: [clone set] [real set] [clone set]
+  // We start at the offset of the first real card and snap back silently when
+  // we land in a clone region so the loop appears seamless.
+  var serviceCount = data.services ? data.services.length : 0;
+
   function sizeServiceCards() {
     var slider = document.querySelector('.services-slider');
     var cards = document.querySelectorAll('.service-card');
@@ -2029,26 +2048,76 @@ document.title = `${data.business} | Junk Removal`;
     var w = (slider.offsetWidth - gap * (visible - 1)) / visible;
     cards.forEach(function (c) { c.style.width = w + 'px'; });
   }
-  requestAnimationFrame(sizeServiceCards);
 
-  var servicePos = 0;
-  window.slideServices = function (dir) {
+  function getServiceCardWidth() {
+    var track = $('services-grid');
+    if (!track) return 0;
+    var card = track.querySelector('.service-card');
+    if (!card) return 0;
+    return card.offsetWidth + 24;
+  }
+
+  // serviceIndex tracks position within the real set (0-based)
+  var serviceIndex = 0;
+
+  function applyServicePosition(animate) {
     var track = $('services-grid');
     if (!track) return;
-    var card = track.querySelector('.service-card');
-    if (!card) return;
-    var cardWidth = card.offsetWidth + 24;
-    var visible = window.innerWidth <= 768 ? 1 : 3;
-    var maxPos = -(data.services.length - visible) * cardWidth;
-    servicePos = Math.min(0, Math.max(maxPos, servicePos - dir * cardWidth));
-    track.style.transform = 'translateX(' + servicePos + 'px)';
+    var cardWidth = getServiceCardWidth();
+    if (!cardWidth) return;
+    // Offset into the middle (real) set
+    var realOffset = serviceCount * cardWidth;
+    var pos = -(realOffset + serviceIndex * cardWidth);
+    if (!animate) {
+      track.style.transition = 'none';
+    }
+    track.style.transform = 'translateX(' + pos + 'px)';
+    if (!animate) {
+      // Force reflow so the instant snap takes effect before re-enabling transition
+      track.offsetHeight; // eslint-disable-line no-unused-expressions
+      track.style.transition = '';
+    }
+  }
+
+  function initServiceSlider() {
+    if (!serviceCount) return;
+    applyServicePosition(false);
+  }
+
+  requestAnimationFrame(function () {
+    sizeServiceCards();
+    initServiceSlider();
+  });
+
+  var serviceSliding = false;
+
+  window.slideServices = function (dir) {
+    if (!serviceCount || serviceSliding) return;
+    var track = $('services-grid');
+    if (!track) return;
+    serviceSliding = true;
+    serviceIndex += dir;
+    applyServicePosition(true);
+
+    function onTransitionEnd(e) {
+      if (e.target !== track || e.propertyName !== 'transform') return;
+      track.removeEventListener('transitionend', onTransitionEnd);
+      serviceSliding = false;
+      if (serviceIndex >= serviceCount) {
+        serviceIndex = serviceIndex - serviceCount;
+        applyServicePosition(false);
+      } else if (serviceIndex < 0) {
+        serviceIndex = serviceIndex + serviceCount;
+        applyServicePosition(false);
+      }
+    }
+    track.addEventListener('transitionend', onTransitionEnd);
   };
 
   window.addEventListener('resize', function () {
-    servicePos = 0;
-    var sg = $('services-grid');
-    if (sg) sg.style.transform = '';
+    serviceIndex = 0;
     sizeServiceCards();
+    applyServicePosition(false);
   });
 
   // ── Pricing ──
@@ -2345,7 +2414,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-hbbx9ik2.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
