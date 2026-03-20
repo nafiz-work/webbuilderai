@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://burtonshauling.netlify.app/sitemap.xml
