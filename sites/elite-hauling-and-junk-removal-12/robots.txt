@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elite-hauling-and-junk-removal-12.netlify.app/sitemap.xml
