@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://unknown-business-10.netlify.app/sitemap.xml
