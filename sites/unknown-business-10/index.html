@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  ga4Id: "G-5JM0E6YMY5",
+  clarityId: "vyr6ftfkxy",
+  clarityEnabled: true
+});
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer',"GTM-NX6CMV8P");</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="page-title">The Junk Guy | #1 Junk Removal in Sarnia, ON | Same-Day Service</title>
@@ -1302,7 +1315,6 @@ const data = {
       '.commercial-btn { color: ' + btnOnAccent + ' !important; }',
       '.commercial-btn:hover { color: ' + btnOnAccent + ' !important; }',
       '.form-submit { color: ' + btnOnAccent + ' !important; }',
-      '.price-card.featured .price-cta { color: ' + btnOnAccent + ' !important; }',
       '.gallery-load-more { color: ' + btnOnPrimary + ' !important; }',
       '.wetake-tab.active { color: ' + btnOnPrimary + ' !important; }',
     ].join(' ');
@@ -1396,11 +1408,12 @@ const data = {
   // ── Services ──
   var servicesGrid = $('services-grid');
   if (servicesGrid && data.services) {
-    servicesGrid.innerHTML = data.services.map(function (s) {
+    var serviceCardHTML = data.services.map(function (s) {
       return '<div class="service-card">' +
         (s.img ? '<img class="service-img" src="' + s.img + '" alt="' + s.title + '">' : '<div class="service-img-placeholder">Image Coming Soon</div>') +
         '<div class="service-body"><h3>' + s.title + '</h3><p>' + s.desc + '</p></div></div>';
     }).join('');
+    servicesGrid.innerHTML = serviceCardHTML + serviceCardHTML + serviceCardHTML;
   }
 
   // ── What We Take ──
@@ -1435,7 +1448,12 @@ const data = {
     renderTakeItems('Most Popular');
   }
 
-  // ── Services slider ──
+  // ── Services slider (infinite loop via clones) ──
+  // The track contains: [clone set] [real set] [clone set]
+  // We start at the offset of the first real card and snap back silently when
+  // we land in a clone region so the loop appears seamless.
+  var serviceCount = data.services ? data.services.length : 0;
+
   function sizeServiceCards() {
     var slider = document.querySelector('.services-slider');
     var cards = document.querySelectorAll('.service-card');
@@ -1445,26 +1463,76 @@ const data = {
     var w = (slider.offsetWidth - gap * (visible - 1)) / visible;
     cards.forEach(function (c) { c.style.width = w + 'px'; });
   }
-  requestAnimationFrame(sizeServiceCards);
 
-  var servicePos = 0;
-  window.slideServices = function (dir) {
+  function getServiceCardWidth() {
+    var track = $('services-grid');
+    if (!track) return 0;
+    var card = track.querySelector('.service-card');
+    if (!card) return 0;
+    return card.offsetWidth + 24;
+  }
+
+  // serviceIndex tracks position within the real set (0-based)
+  var serviceIndex = 0;
+
+  function applyServicePosition(animate) {
     var track = $('services-grid');
     if (!track) return;
-    var card = track.querySelector('.service-card');
-    if (!card) return;
-    var cardWidth = card.offsetWidth + 24;
-    var visible = window.innerWidth <= 768 ? 1 : 3;
-    var maxPos = -(data.services.length - visible) * cardWidth;
-    servicePos = Math.min(0, Math.max(maxPos, servicePos - dir * cardWidth));
-    track.style.transform = 'translateX(' + servicePos + 'px)';
+    var cardWidth = getServiceCardWidth();
+    if (!cardWidth) return;
+    // Offset into the middle (real) set
+    var realOffset = serviceCount * cardWidth;
+    var pos = -(realOffset + serviceIndex * cardWidth);
+    if (!animate) {
+      track.style.transition = 'none';
+    }
+    track.style.transform = 'translateX(' + pos + 'px)';
+    if (!animate) {
+      // Force reflow so the instant snap takes effect before re-enabling transition
+      track.offsetHeight; // eslint-disable-line no-unused-expressions
+      track.style.transition = '';
+    }
+  }
+
+  function initServiceSlider() {
+    if (!serviceCount) return;
+    applyServicePosition(false);
+  }
+
+  requestAnimationFrame(function () {
+    sizeServiceCards();
+    initServiceSlider();
+  });
+
+  var serviceSliding = false;
+
+  window.slideServices = function (dir) {
+    if (!serviceCount || serviceSliding) return;
+    var track = $('services-grid');
+    if (!track) return;
+    serviceSliding = true;
+    serviceIndex += dir;
+    applyServicePosition(true);
+
+    function onTransitionEnd(e) {
+      if (e.target !== track || e.propertyName !== 'transform') return;
+      track.removeEventListener('transitionend', onTransitionEnd);
+      serviceSliding = false;
+      if (serviceIndex >= serviceCount) {
+        serviceIndex = serviceIndex - serviceCount;
+        applyServicePosition(false);
+      } else if (serviceIndex < 0) {
+        serviceIndex = serviceIndex + serviceCount;
+        applyServicePosition(false);
+      }
+    }
+    track.addEventListener('transitionend', onTransitionEnd);
   };
 
   window.addEventListener('resize', function () {
-    servicePos = 0;
-    var sg = $('services-grid');
-    if (sg) sg.style.transform = '';
+    serviceIndex = 0;
     sizeServiceCards();
+    applyServicePosition(false);
   });
 
   // ── Pricing ──
@@ -1809,18 +1877,16 @@ const data = {
   }
 
   function desktopInner() {
-    return '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">' +
+    return '<div style="display:flex;align-items:center;margin-bottom:6px;">' +
         '<strong style="color:#fff;font-size:15px;line-height:1.3;">Claim Your Website<br>for only $19/mo</strong>' +
-        '<button id="voolt-claim-close" style="background:none;border:none;color:#94a3b8;font-size:20px;cursor:pointer;padding:0 0 0 8px;line-height:1;flex-shrink:0;" aria-label="Close">&times;</button>' +
       '</div>' +
       '<a id="voolt-claim-btn" href="' + portalUrl + '" target="_blank" rel="noopener" style="display:block;text-align:center;background:' + btnBg + ';color:' + btnText + ';font-weight:700;font-size:14px;padding:10px 0;border-radius:8px;text-decoration:none;margin:10px 0 8px;">Claim Now</a>' +
       '<div style="text-align:center;color:#64748b;font-size:11px;">Powered by Voolt AI</div>';
   }
 
   function mobileInner() {
-    return '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-        '<strong style="color:#fff;font-size:16px;line-height:1.3;">Claim Your Website for only $19/mo</strong>' +
-        '<button id="voolt-claim-close" style="background:rgba(255,255,255,.08);border:none;color:#cbd5e1;font-size:22px;cursor:pointer;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:12px;line-height:1;" aria-label="Close">&times;</button>' +
+    return '<div style="display:flex;align-items:center;margin-bottom:12px;">' +
+        '<strong style="color:#fff;font-size:16px;line-height:1.3;width:100%;">Claim Your Website for only $19/mo</strong>' +
       '</div>' +
       '<a id="voolt-claim-btn" href="' + portalUrl + '" target="_blank" rel="noopener" style="display:block;text-align:center;background:' + btnBg + ';color:' + btnText + ';font-weight:700;font-size:16px;padding:14px 0;border-radius:10px;text-decoration:none;margin-bottom:10px;">Claim Now</a>' +
       '<div style="text-align:center;color:#64748b;font-size:11px;">Powered by Voolt AI</div>';
@@ -1833,16 +1899,6 @@ const data = {
     var mobile = isMobile();
     panel.style.cssText = mobile ? mobileStyle() : desktopStyle();
     panel.innerHTML = mobile ? mobileInner() : desktopInner();
-    bindClose();
-  }
-
-  function bindClose() {
-    var closeBtn = document.getElementById('voolt-claim-close');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function () {
-        panel.style.display = 'none';
-      });
-    }
   }
 
   renderWidget();
@@ -1850,7 +1906,6 @@ const data = {
 
   var resizeTimer;
   window.addEventListener('resize', function () {
-    if (panel.style.display === 'none') return;
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(renderWidget, 100);
   });
