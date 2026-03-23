@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pxnjunkremoval.netlify.app/sitemap.xml
