@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://begonejunkremovalandtrashhauling.netlify.app/sitemap.xml
