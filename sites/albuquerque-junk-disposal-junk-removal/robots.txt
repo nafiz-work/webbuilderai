@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://albuquerque-junk-disposal-junk-removal.netlify.app/sitemap.xml
