@@ -32,9 +32,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="https://marcoshaulingjunkremoval.netlify.app/">
 <meta property="og:title" content="Marcos Hauling &amp; Junk Removal - Professional Junk Removal">
 <meta property="og:description" content="Marcos Hauling &amp; Junk Removal provides professional junk removal services in Los Angeles. Fast, reliable, and affordable. Call (323) 770-3557 today for a free estimate!">
-<meta property="og:image" content="https://marcoshaulingjunkremoval.netlify.app/images/hero-bg.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="https://marcoshaulingjunkremoval.netlify.app/images/og-image.jpg">
 <meta property="og:locale" content="en_CA">
 <meta property="og:site_name" content="The Junk Guy">
 
@@ -42,7 +40,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Junk Guy | #1 Junk Removal in Sarnia, ON">
 <meta name="twitter:description" content="Fast, affordable junk removal in Sarnia. Same-day service from $79. House cleanouts, furniture removal & more. Call 519-328-9507.">
-<meta name="twitter:image" content="https://marcoshaulingjunkremoval.netlify.app/images/hero-bg.jpg">
+<meta name="twitter:image" content="https://marcoshaulingjunkremoval.netlify.app/images/og-image.jpg">
 
 <!-- Geo / Local SEO -->
 <meta name="geo.region" content="CA-ON">
@@ -83,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 "ratingValue": "5",
                 "bestRating": "5"
             },
-            "reviewBody": "I honestly don't even know where to begin. Marcos and his team of guys helped us so immensely with our recent move out of our 2 bedroom apartment. I found him through a recommendation on Nextdoor, and I am so glad I did. A friend of ours was supposed to take furniture after our moving company came, but ended up flaking last minute, leaving us needing to find a company ASAP on a very tight budget we didn't anticipate. I contacted other junk hauling companies that gave me higher estimates, or wishy washy pricing that could easily have gone over an original estimate. When I called Marcos, he was able to come the same day and check out our apartment. He gave us a quote that was more than fair, and even offered to split the job into two days - one before the movers came, and one after. Let me tell you, that was the best idea I wish I would have thought of earlier. We ended up having so much junk and so much more stuff than we ever imagined needing to be tossed. Think borderline hoarder issue. They handled it with ease. Marcos and his team were punctual, friendly, professional, and very quick to finish the job both days. They went above and beyond to help us clear out our apartment and storage! Marcos is one of the kindest, hardworking, and honest people I have ever had the pleasure of working with. I would easily recommend him and his team to anyone. If you are on the fence or shopping around for people in the business, look no further. Thank you so much for everything you have done for us."
+            "reviewBody": "I honestly don't even know where to begin. Marcos and his team of guys helped us so immensely with our recent move out of our 2 bedroom apartment. I found him through a recommendation on Nextdoor, and I am so glad I did."
         },
         {
             "@type": "Review",
@@ -725,7 +723,8 @@ const data = {
   "primaryColor": "#ff6040",
   "accentColor": "#ffe0c0",
   "logoSrc": "images/logo.png",
-  "isGeneratedLogo": true,
+  "isGeneratedLogo": false,
+  "logoShowName": false,
   "logoNameColor": "#111827",
   "stats": [
     {
@@ -844,7 +843,7 @@ const data = {
   "reviewsCount": "31",
   "reviews": [
     {
-      "text": "I honestly don&#39;t even know where to begin. Marcos and his team of guys helped us so immensely with our recent move out of our 2 bedroom apartment. I found him through a recommendation on Nextdoor, and I am so glad I did. A friend of ours was supposed to take furniture after our moving company came, but ended up flaking last minute, leaving us needing to find a company ASAP on a very tight budget we didn&#39;t anticipate. I contacted other junk hauling companies that gave me higher estimates, or wishy washy pricing that could easily have gone over an original estimate. When I called Marcos, he was able to come the same day and check out our apartment. He gave us a quote that was more than fair, and even offered to split the job into two days - one before the movers came, and one after. Let me tell you, that was the best idea I wish I would have thought of earlier. We ended up having so much junk and so much more stuff than we ever imagined needing to be tossed. Think borderline hoarder issue. They handled it with ease. Marcos and his team were punctual, friendly, professional, and very quick to finish the job both days. They went above and beyond to help us clear out our apartment and storage! Marcos is one of the kindest, hardworking, and honest people I have ever had the pleasure of working with. I would easily recommend him and his team to anyone. If you are on the fence or shopping around for people in the business, look no further. Thank you so much for everything you have done for us.",
+      "text": "I honestly don&#39;t even know where to begin. Marcos and his team of guys helped us so immensely with our recent move out of our 2 bedroom apartment. I found him through a recommendation on Nextdoor, and I am so glad I did.",
       "name": "Jax",
       "date": "5 months ago",
       "initials": "J",
@@ -1688,8 +1687,10 @@ document.title = `${data.business} | Junk Removal`;
   if (navLogo) {
     if (data.isGeneratedLogo && data.logoSrc) {
       navLogo.innerHTML = '<div class="logo-icon-circle"><img src="' + data.logoSrc + '" alt="' + data.business + '"></div><span class="logo-name" style="color:' + (data.logoNameColor || '#0f172a') + '">' + data.business + '</span>';
+    } else if (data.logoSrc && data.logoShowName) {
+      navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:48px;object-fit:contain;"><span style="font-weight:700;color:' + (data.logoNameColor || '#000000') + ';font-family:inherit;margin-left:8px;">' + data.business + '</span>';
     } else if (data.logoSrc) {
-      navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '">';
+      navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:48px;object-fit:contain;">';
     } else {
       navLogo.innerHTML = '<span class="logo-name" style="color:' + (data.logoNameColor || '#0f172a') + '">' + data.business + '</span>';
     }
@@ -2014,7 +2015,7 @@ document.title = `${data.business} | Junk Removal`;
             '<div class="review-stars-row"><span class="stars">' + stars + '</span><span class="review-date">(' + r.date + ')</span></div>' +
           '</div>' +
         '</div>' +
-        '<p class="review-text">"' + r.text + '"</p>' +
+        '<p class="review-text">"' + (r.text.length > 350 ? r.text.slice(0, 350) + '...' : r.text) + '"</p>' +
       '</div>';
     }).join('');
   }
@@ -2129,8 +2130,10 @@ document.title = `${data.business} | Junk Removal`;
   if (footerLogo) {
     if (data.isGeneratedLogo && data.logoSrc) {
       footerLogo.innerHTML = '<div class="logo-icon-circle"><img src="' + data.logoSrc + '" alt="' + data.business + '"></div><span class="logo-name">' + data.business + '</span>';
+    } else if (data.logoSrc && data.logoShowName) {
+      footerLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:40px;object-fit:contain;"><span style="font-weight:700;color:' + (data.logoNameColor || '#000000') + ';font-family:inherit;margin-left:8px;">' + data.business + '</span>';
     } else if (data.logoSrc) {
-      footerLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '">';
+      footerLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:40px;object-fit:contain;">';
     } else {
       footerLogo.innerHTML = '<span class="logo-name">' + data.business + '</span>';
     }
