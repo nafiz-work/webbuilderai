@@ -6,7 +6,7 @@ window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
   ga4Id: "G-5JM0E6YMY5",
   clarityId: "vyr6ftfkxy",
-  clarityEnabled: true
+  clarityEnabled: false
 });
 </script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -1741,8 +1741,10 @@ document.title = `${data.business} | Junk Removal`;
   if (navLogo) {
     if (data.isGeneratedLogo && data.logoSrc) {
       navLogo.innerHTML = '<div class="logo-icon-circle"><img src="' + data.logoSrc + '" alt="' + data.business + '"></div><span class="logo-name" style="color:' + (data.logoNameColor || '#0f172a') + '">' + data.business + '</span>';
+    } else if (data.logoSrc && data.logoShowName) {
+      navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:48px;object-fit:contain;"><span style="font-weight:700;color:' + (data.logoNameColor || '#000000') + ';font-family:inherit;margin-left:8px;">' + data.business + '</span>';
     } else if (data.logoSrc) {
-      navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '">';
+      navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:48px;object-fit:contain;">';
     } else {
       navLogo.innerHTML = '<span class="logo-name" style="color:' + (data.logoNameColor || '#0f172a') + '">' + data.business + '</span>';
     }
@@ -2182,8 +2184,10 @@ document.title = `${data.business} | Junk Removal`;
   if (footerLogo) {
     if (data.isGeneratedLogo && data.logoSrc) {
       footerLogo.innerHTML = '<div class="logo-icon-circle"><img src="' + data.logoSrc + '" alt="' + data.business + '"></div><span class="logo-name">' + data.business + '</span>';
+    } else if (data.logoSrc && data.logoShowName) {
+      footerLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:40px;object-fit:contain;"><span style="font-weight:700;color:' + (data.logoNameColor || '#000000') + ';font-family:inherit;margin-left:8px;">' + data.business + '</span>';
     } else if (data.logoSrc) {
-      footerLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '">';
+      footerLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:40px;object-fit:contain;">';
     } else {
       footerLogo.innerHTML = '<span class="logo-name">' + data.business + '</span>';
     }
