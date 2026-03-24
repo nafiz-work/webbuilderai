@@ -732,6 +732,7 @@ const data = {
   "accentColor": "#32cd30",
   "logoSrc": "images/logo.png",
   "isGeneratedLogo": true,
+  "logoShowName": false,
   "logoNameColor": "#111827",
   "stats": [
     {
@@ -2069,7 +2070,7 @@ document.title = `${data.business} | Junk Removal`;
             '<div class="review-stars-row"><span class="stars">' + stars + '</span><span class="review-date">(' + r.date + ')</span></div>' +
           '</div>' +
         '</div>' +
-        '<p class="review-text">"' + r.text + '"</p>' +
+        '<p class="review-text">"' + (r.text.length > 350 ? r.text.slice(0, 350) + '...' : r.text) + '"</p>' +
       '</div>';
     }).join('');
   }
