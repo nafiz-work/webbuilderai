@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://we-haul-you-45.netlify.app/sitemap.xml
