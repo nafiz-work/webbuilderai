@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://the-junk-removal-s-h-hauling.netlify.app/sitemap.xml
