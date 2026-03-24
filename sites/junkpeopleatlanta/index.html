@@ -32,9 +32,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="https://junkpeopleatlanta.netlify.app/">
 <meta property="og:title" content="Junk People Atlanta - Professional Junk Removal">
 <meta property="og:description" content="Junk People Atlanta provides professional junk removal services in Atlanta. Fast, reliable, and affordable. Call (404) 825-7087 today for a free estimate!">
-<meta property="og:image" content="https://junkpeopleatlanta.netlify.app/images/hero-bg.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="https://junkpeopleatlanta.netlify.app/images/og-image.jpg">
 <meta property="og:locale" content="en_CA">
 <meta property="og:site_name" content="The Junk Guy">
 
@@ -42,7 +40,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Junk Guy | #1 Junk Removal in Sarnia, ON">
 <meta name="twitter:description" content="Fast, affordable junk removal in Sarnia. Same-day service from $79. House cleanouts, furniture removal & more. Call 519-328-9507.">
-<meta name="twitter:image" content="https://junkpeopleatlanta.netlify.app/images/hero-bg.jpg">
+<meta name="twitter:image" content="https://junkpeopleatlanta.netlify.app/images/og-image.jpg">
 
 <!-- Geo / Local SEO -->
 <meta name="geo.region" content="CA-ON">
@@ -725,7 +723,8 @@ const data = {
   "primaryColor": "#000000",
   "accentColor": "#ffa000",
   "logoSrc": "images/logo.png",
-  "isGeneratedLogo": true,
+  "isGeneratedLogo": false,
+  "logoShowName": false,
   "logoNameColor": "#000000",
   "stats": [
     {
@@ -939,18 +938,7 @@ const data = {
     }
   ],
   "serviceAreas": [
-    "Atlanta",
-    "Cumberland",
-    "Vinings",
-    "Smyrna",
-    "Sandy Springs",
-    "Fair Oaks",
-    "Marietta",
-    "Brookhaven",
-    "Dunwoody",
-    "Mableton",
-    "Chamblee",
-    "North Druid Hills"
+    "Atlanta"
   ],
   "mapEmbedUrl": "https://maps.google.com/maps?q=33.897594,-84.45697&t=&z=13&ie=UTF8&iwloc=&output=embed",
   "social": {
@@ -1727,8 +1715,10 @@ document.title = `${data.business} | Junk Removal`;
   if (navLogo) {
     if (data.isGeneratedLogo && data.logoSrc) {
       navLogo.innerHTML = '<div class="logo-icon-circle"><img src="' + data.logoSrc + '" alt="' + data.business + '"></div><span class="logo-name" style="color:' + (data.logoNameColor || '#0f172a') + '">' + data.business + '</span>';
+    } else if (data.logoSrc && data.logoShowName) {
+      navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:48px;object-fit:contain;"><span style="font-weight:700;color:' + (data.logoNameColor || '#000000') + ';font-family:inherit;margin-left:8px;">' + data.business + '</span>';
     } else if (data.logoSrc) {
-      navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '">';
+      navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:48px;object-fit:contain;">';
     } else {
       navLogo.innerHTML = '<span class="logo-name" style="color:' + (data.logoNameColor || '#0f172a') + '">' + data.business + '</span>';
     }
@@ -2053,7 +2043,7 @@ document.title = `${data.business} | Junk Removal`;
             '<div class="review-stars-row"><span class="stars">' + stars + '</span><span class="review-date">(' + r.date + ')</span></div>' +
           '</div>' +
         '</div>' +
-        '<p class="review-text">"' + r.text + '"</p>' +
+        '<p class="review-text">"' + (r.text.length > 350 ? r.text.slice(0, 350) + '...' : r.text) + '"</p>' +
       '</div>';
     }).join('');
   }
@@ -2168,8 +2158,10 @@ document.title = `${data.business} | Junk Removal`;
   if (footerLogo) {
     if (data.isGeneratedLogo && data.logoSrc) {
       footerLogo.innerHTML = '<div class="logo-icon-circle"><img src="' + data.logoSrc + '" alt="' + data.business + '"></div><span class="logo-name">' + data.business + '</span>';
+    } else if (data.logoSrc && data.logoShowName) {
+      footerLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:40px;object-fit:contain;"><span style="font-weight:700;color:' + (data.logoNameColor || '#000000') + ';font-family:inherit;margin-left:8px;">' + data.business + '</span>';
     } else if (data.logoSrc) {
-      footerLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '">';
+      footerLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:40px;object-fit:contain;">';
     } else {
       footerLogo.innerHTML = '<span class="logo-name">' + data.business + '</span>';
     }
