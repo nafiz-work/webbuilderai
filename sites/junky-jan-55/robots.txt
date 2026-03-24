@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://junky-jan-55.netlify.app/sitemap.xml
