@@ -2746,10 +2746,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   function hookPhoneLinks() {
-    interceptPhoneLink(document.getElementById('nav-phone'));
-    interceptPhoneLink(document.getElementById('hero-phone'));
-    interceptPhoneLink(document.getElementById('footer-phone'));
-    interceptPhoneLink(document.getElementById('contact-phone'));
+    document.querySelectorAll('a[href^="tel:"]').forEach(interceptPhoneLink);
   }
 
   if (document.readyState === 'loading') {
