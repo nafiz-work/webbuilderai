@@ -2303,7 +2303,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   if (data.isHandyman && data.reviews) {
     var revGrid = $('reviews-grid');
     if (revGrid && data.reviews.length < 3) {
-      revGrid.style.justifyItems = 'center';
+      revGrid.style.justifyContent = 'center';
       revGrid.style.gridTemplateColumns = data.reviews.length === 1
         ? 'minmax(220px, 440px)'
         : 'repeat(2, minmax(200px, 420px))';
