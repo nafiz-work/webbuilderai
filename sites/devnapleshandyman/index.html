@@ -1495,15 +1495,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "Naples",
     "Estero",
     "Fort Myers",
-    "Bonita Springs",
-    "East Naples",
-    "Lely",
-    "Pelican Bay",
-    "Naples Manor",
-    "Lely Resort",
-    "Verona Walk",
-    "Winding Cypress",
-    "Marco Shores–Hammock Bay"
+    "Bonita Springs"
   ],
   "mapEmbedUrl": "https://maps.google.com/maps?q=26.154007,-81.78815&t=&z=13&ie=UTF8&iwloc=&output=embed",
   "social": {
@@ -1900,15 +1892,65 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   // ── Mobile nav ──
-  window.toggleMobileNav = function () {
+  function closeMobileNav() {
     var links = $('nav-links');
     var burger = $('nav-hamburger');
     var overlay = $('nav-overlay');
-    if (links) links.classList.toggle('open');
-    if (burger) burger.classList.toggle('active');
-    if (overlay) overlay.classList.toggle('active');
-    document.body.style.overflow = (links && links.classList.contains('open')) ? 'hidden' : '';
+    if (!links) return;
+    // Close class-based open state
+    links.classList.remove('open');
+    // Close inline-style open state (handyman template uses style.display)
+    if (links.style.display === 'flex') links.style.display = 'none';
+    if (burger) burger.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function isMobileNavOpen() {
+    var links = $('nav-links');
+    if (!links) return false;
+    return links.classList.contains('open') || links.style.display === 'flex';
+  }
+
+  window.toggleMobileNav = function () {
+    if (isMobileNavOpen()) {
+      closeMobileNav();
+    } else {
+      var links = $('nav-links');
+      var burger = $('nav-hamburger');
+      var overlay = $('nav-overlay');
+      if (links) links.classList.add('open');
+      if (burger) burger.classList.add('active');
+      if (overlay) overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
   };
+
+  // If the template has its own toggleNav (e.g. handyman), wrap it so the
+  // class-based helpers stay in sync and click-away still works.
+  if (typeof window.toggleNav === 'function') {
+    var _origToggleNav = window.toggleNav;
+    window.toggleNav = function () {
+      _origToggleNav.call(this);
+      // Sync class-based state after the template function runs
+      var links = $('nav-links');
+      var burger = $('nav-hamburger');
+      if (links) {
+        var nowOpen = links.style.display === 'flex';
+        if (nowOpen) { links.classList.add('open'); if (burger) burger.classList.add('active'); }
+        else { links.classList.remove('open'); if (burger) burger.classList.remove('active'); }
+        document.body.style.overflow = nowOpen ? 'hidden' : '';
+      }
+    };
+  }
+
+  // Click-away: close mobile nav when tapping outside the nav
+  document.addEventListener('click', function (e) {
+    if (!isMobileNavOpen()) return;
+    var nav = document.querySelector('nav');
+    if (nav && nav.contains(e.target)) return;
+    closeMobileNav();
+  }, true);
 
   document.querySelectorAll('.nav-links > li > a').forEach(function (a) {
     a.addEventListener('click', function (e) {
@@ -1916,12 +1958,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         e.preventDefault();
         this.parentElement.classList.toggle('mob-open');
       } else if (window.innerWidth <= 900) {
-        toggleMobileNav();
+        closeMobileNav();
       }
     });
   });
   document.querySelectorAll('.nav-dropdown a').forEach(function (a) {
-    a.addEventListener('click', function () { if (window.innerWidth <= 900) toggleMobileNav(); });
+    a.addEventListener('click', function () { if (window.innerWidth <= 900) closeMobileNav(); });
   });
 
   var navSections = document.querySelectorAll('section[id], .howitworks[id]');
@@ -1984,11 +2026,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             var isExpanded = btn.classList.contains('expanded');
             var cards = document.querySelectorAll('.service-card');
             if (isExpanded) {
-              cards.forEach(function (c, ci) { if (ci >= 3) c.style.display = 'none'; });
+              cards.forEach(function (c, ci) { if (ci >= 3) { c.classList.add('svc-hidden'); c.style.display = ''; } });
               btn.classList.remove('expanded');
               btn.innerHTML = chevronIcon + ' Show all ' + svcCount + ' services';
             } else {
-              cards.forEach(function (c) { c.style.display = ''; });
+              cards.forEach(function (c) { c.classList.remove('svc-hidden'); c.style.display = ''; });
               btn.classList.add('expanded');
               btn.innerHTML = chevronIcon + ' Show fewer services';
             }
@@ -2624,7 +2666,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   function hookContactForm() {
     if (hooked) return;
-    var form = document.querySelector('#contact .contact-form');
+    var form = document.querySelector('#contact .contact-form') ||
+               document.querySelector('.quote-form-solo form');
     if (!form) return;
     var btn = form.querySelector('.form-submit');
     if (!btn) return;
