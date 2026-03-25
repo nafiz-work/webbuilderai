@@ -1749,7 +1749,7 @@ document.title = `${data.business} | Junk Removal`;
 
   // ── Colours ──
   document.documentElement.style.setProperty('--primary', data.primaryColor);
-  document.documentElement.style.setProperty('--accent', data.accentColor);
+  if (data.accentColor) document.documentElement.style.setProperty('--accent', data.accentColor);
 
   (function () {
     var raw = (data.accentColor || '#FFD600').replace('#', '');
@@ -1787,6 +1787,7 @@ document.title = `${data.business} | Junk Removal`;
       '.commercial-btn { color: ' + btnOnAccent + ' !important; }',
       '.commercial-btn:hover { color: ' + btnOnAccent + ' !important; }',
       '.form-submit { color: ' + btnOnAccent + ' !important; }',
+      '.form-submit:hover { color: ' + btnOnAccent + ' !important; }',
       '.gallery-load-more { color: #fff !important; }',
       '.wetake-tab.active { color: #fff !important; }',
     ].join(' ');
