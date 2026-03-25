@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://am-complete-home-maintenance.netlify.app/sitemap.xml
