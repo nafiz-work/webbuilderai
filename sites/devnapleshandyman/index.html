@@ -2303,10 +2303,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   if (data.isHandyman && data.reviews) {
     var revGrid = $('reviews-grid');
     if (revGrid && data.reviews.length < 3) {
-      revGrid.style.justifyContent = 'center';
-      revGrid.style.gridTemplateColumns = data.reviews.length === 1
-        ? 'minmax(220px, 440px)'
-        : 'repeat(2, minmax(200px, 420px))';
+      var cols = data.reviews.length === 1 ? 1 : 2;
+      revGrid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+      revGrid.style.maxWidth = data.reviews.length === 1 ? '440px' : '760px';
+      revGrid.style.marginLeft = 'auto';
+      revGrid.style.marginRight = 'auto';
     }
   }
 
