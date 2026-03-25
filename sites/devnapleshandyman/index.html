@@ -1892,9 +1892,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   // ── Mobile nav ──
+  // Helpers that work whether the template uses id= or class= on nav elements
+  function getNavLinks() { return $('nav-links') || document.querySelector('.nav-links'); }
+  function getNavBurger() { return $('nav-hamburger') || document.querySelector('.nav-hamburger, .hamburger, .menu-toggle'); }
+
   function closeMobileNav() {
-    var links = $('nav-links');
-    var burger = $('nav-hamburger');
+    var links = getNavLinks();
+    var burger = getNavBurger();
     var overlay = $('nav-overlay');
     if (!links) return;
     // Close class-based open state
@@ -1907,7 +1911,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   function isMobileNavOpen() {
-    var links = $('nav-links');
+    var links = getNavLinks();
     if (!links) return false;
     return links.classList.contains('open') || links.style.display === 'flex';
   }
@@ -1916,8 +1920,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     if (isMobileNavOpen()) {
       closeMobileNav();
     } else {
-      var links = $('nav-links');
-      var burger = $('nav-hamburger');
+      var links = getNavLinks();
+      var burger = getNavBurger();
       var overlay = $('nav-overlay');
       if (links) links.classList.add('open');
       if (burger) burger.classList.add('active');
@@ -1933,8 +1937,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     window.toggleNav = function () {
       _origToggleNav.call(this);
       // Sync class-based state after the template function runs
-      var links = $('nav-links');
-      var burger = $('nav-hamburger');
+      var links = getNavLinks();
+      var burger = getNavBurger();
       if (links) {
         var nowOpen = links.style.display === 'flex';
         if (nowOpen) { links.classList.add('open'); if (burger) burger.classList.add('active'); }
@@ -2167,7 +2171,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   window.addEventListener('resize', function () {
     serviceIndex = 0;
     sizeServiceCards();
-    applyServicePosition(false);
+    if (!data.isHandyman) applyServicePosition(false);
   });
 
   // ── Pricing ──
