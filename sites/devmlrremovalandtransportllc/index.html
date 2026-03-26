@@ -2156,10 +2156,9 @@ document.title = `${data.business} | Junk Removal`;
         ? '<div class="' + galleryItemClass + '" onclick="openLightbox(' + i + ')" style="cursor:pointer;"><img src="' + g.src + '" alt="' + g.alt + '" style="width:100%;height:100%;object-fit:cover;display:block;"></div>'
         : '<div class="' + galleryItemClass + '"><div class="gallery-placeholder">' + g.alt + '</div></div>';
     }).join('');
-    // Center on desktop when fewer than 3 images
     var validGalleryCount = data.gallery.filter(function (g) { return g.src; }).length;
+    galleryGrid.style.justifyContent = 'center';
     if (validGalleryCount < 3) {
-      galleryGrid.style.justifyContent = 'center';
       galleryGrid.style.gridTemplateColumns = validGalleryCount === 1 ? 'minmax(200px, 420px)' : 'repeat(2, minmax(180px, 360px))';
     }
   }
