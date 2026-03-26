@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://devrojasjunkremovalservices.netlify.app/sitemap.xml
