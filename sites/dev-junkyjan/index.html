@@ -1863,7 +1863,7 @@ document.title = `${data.business} | Junk Removal`;
 
   // ── Colours ──
   document.documentElement.style.setProperty('--primary', data.primaryColor);
-  if (data.accentColor) document.documentElement.style.setProperty('--accent', data.accentColor);
+  document.documentElement.style.setProperty('--accent', data.accentColor);
 
   (function () {
     var raw = (data.accentColor || '#FFD600').replace('#', '');
@@ -1901,7 +1901,7 @@ document.title = `${data.business} | Junk Removal`;
       '.commercial-btn { color: ' + btnOnAccent + ' !important; }',
       '.commercial-btn:hover { color: ' + btnOnAccent + ' !important; }',
       '.form-submit { color: ' + btnOnAccent + ' !important; }',
-      '.form-submit:hover { color: ' + btnOnAccent + ' !important; }',
+      '.form-submit:hover { color: #ffffff !important; }',
       '.gallery-load-more { color: #fff !important; }',
       '.wetake-tab.active { color: #fff !important; }',
     ].join(' ');
@@ -2283,11 +2283,14 @@ document.title = `${data.business} | Junk Removal`;
         ? '<div class="' + galleryItemClass + '" onclick="openLightbox(' + i + ')" style="cursor:pointer;"><img src="' + g.src + '" alt="' + g.alt + '" style="width:100%;height:100%;object-fit:cover;display:block;"></div>'
         : '<div class="' + galleryItemClass + '"><div class="gallery-placeholder">' + g.alt + '</div></div>';
     }).join('');
-    // Center on desktop when fewer than 3 images
     var validGalleryCount = data.gallery.filter(function (g) { return g.src; }).length;
-    if (validGalleryCount < 3) {
-      galleryGrid.style.justifyContent = 'center';
-      galleryGrid.style.gridTemplateColumns = validGalleryCount === 1 ? 'minmax(200px, 420px)' : 'repeat(2, minmax(180px, 360px))';
+    galleryGrid.style.justifyContent = 'center';
+    if (validGalleryCount < 5) {
+      if (validGalleryCount === 1) {
+        galleryGrid.style.gridTemplateColumns = 'minmax(200px, 420px)';
+      } else {
+        galleryGrid.style.gridTemplateColumns = 'repeat(' + Math.min(validGalleryCount, 4) + ', minmax(180px, 360px))';
+      }
     }
   }
 
@@ -2639,17 +2642,23 @@ document.title = `${data.business} | Junk Removal`;
 
   function desktopInner() {
     return '<div style="display:flex;align-items:center;margin-bottom:6px;">' +
-        '<strong style="color:#fff;font-size:15px;line-height:1.3;">Claim Your Website<br>for only $19/mo</strong>' +
+        '<div>' +
+          '<strong style="color:#fff;font-size:15px;line-height:1.3;">Your website is ready</strong>' +
+          '<div style="color:#94a3b8;font-size:12px;margin-top:2px;">Only $19/mo to make it yours</div>' +
+        '</div>' +
       '</div>' +
-      '<a id="voolt-claim-btn" href="' + portalUrl + '" target="_blank" rel="noopener" style="display:block;text-align:center;background:' + btnBg + ';color:' + btnText + ';font-weight:700;font-size:14px;padding:10px 0;border-radius:8px;text-decoration:none;margin:10px 0 8px;">Claim Now</a>' +
+      '<a id="voolt-claim-btn" href="' + portalUrl + '" target="_blank" rel="noopener" style="display:block;text-align:center;background:' + btnBg + ';color:' + btnText + ';font-weight:700;font-size:14px;padding:10px 0;border-radius:8px;text-decoration:none;margin:10px 0 8px;">See what\'s included \u2192</a>' +
       '<div style="text-align:center;color:#64748b;font-size:11px;">Powered by Voolt AI</div>';
   }
 
   function mobileInner() {
     return '<div style="display:flex;align-items:center;margin-bottom:12px;">' +
-        '<strong style="color:#fff;font-size:16px;line-height:1.3;width:100%;">Claim Your Website for only $19/mo</strong>' +
+        '<div style="width:100%;">' +
+          '<strong style="color:#fff;font-size:16px;line-height:1.3;">Your website is ready</strong>' +
+          '<div style="color:#94a3b8;font-size:13px;margin-top:2px;">Only $19/mo to make it yours</div>' +
+        '</div>' +
       '</div>' +
-      '<a id="voolt-claim-btn" href="' + portalUrl + '" target="_blank" rel="noopener" style="display:block;text-align:center;background:' + btnBg + ';color:' + btnText + ';font-weight:700;font-size:16px;padding:14px 0;border-radius:10px;text-decoration:none;margin-bottom:10px;">Claim Now</a>' +
+      '<a id="voolt-claim-btn" href="' + portalUrl + '" target="_blank" rel="noopener" style="display:block;text-align:center;background:' + btnBg + ';color:' + btnText + ';font-weight:700;font-size:16px;padding:14px 0;border-radius:10px;text-decoration:none;margin-bottom:10px;">See what\'s included \u2192</a>' +
       '<div style="text-align:center;color:#64748b;font-size:11px;">Powered by Voolt AI</div>';
   }
 
@@ -2677,9 +2686,9 @@ document.title = `${data.business} | Junk Removal`;
   overlay.innerHTML =
     '<div style="background:#1e293b;border-radius:16px;padding:32px 28px;max-width:420px;width:90%;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.5);position:relative;">' +
       '<div style="font-size:36px;margin-bottom:12px;">&#x1F4EC;</div>' +
-      '<h3 style="color:#fff;margin:0 0 12px;font-size:20px;line-height:1.3;">Thanks for reaching out!</h3>' +
-      '<p style="color:#cbd5e1;font-size:14px;line-height:1.6;margin:0 0 20px;">Once this website is claimed, you\'ll receive every lead directly via email, SMS, or integrated into your own CRM.</p>' +
-      '<button id="voolt-lead-modal-close" style="background:' + btnBg + ';color:' + btnText + ';border:none;padding:12px 32px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;">Got it</button>' +
+      '<h3 style="color:#fff;margin:0 0 12px;font-size:20px;line-height:1.3;">You\'re all set!</h3>' +
+      '<p style="color:#cbd5e1;font-size:14px;line-height:1.6;margin:0 0 20px;">Head to your dashboard to see exactly what\'s included and set up your account \u2014 takes less than 2 minutes.</p>' +
+      '<a id="voolt-lead-modal-close" href="' + portalUrl + '" target="_blank" rel="noopener" style="display:inline-block;background:' + btnBg + ';color:' + btnText + ';border:none;padding:12px 32px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;">Go to my dashboard \u2192</a>' +
     '</div>';
   document.body.appendChild(overlay);
 
@@ -2759,10 +2768,10 @@ document.title = `${data.business} | Junk Removal`;
   phoneOverlay.innerHTML =
     '<div style="background:#1e293b;border-radius:16px;padding:32px 28px;max-width:420px;width:90%;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.5);position:relative;">' +
       '<div style="font-size:36px;margin-bottom:12px;">&#x1F4DE;</div>' +
-      '<h3 style="color:#fff;margin:0 0 12px;font-size:20px;line-height:1.3;">Get calls straight to your phone</h3>' +
-      '<p style="color:#cbd5e1;font-size:14px;line-height:1.6;margin:0 0 20px;">Claim this website and calls will ring directly to your business phone &mdash; no middleman.</p>' +
-      '<a id="voolt-phone-modal-claim" href="' + portalUrl + '" target="_blank" rel="noopener" style="display:inline-block;background:' + btnBg + ';color:' + btnText + ';border:none;padding:12px 32px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;">Claim Now</a>' +
-      '<div style="margin-top:12px;"><button id="voolt-phone-modal-close" style="background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;">Not now</button></div>' +
+      '<h3 style="color:#fff;margin:0 0 12px;font-size:20px;line-height:1.3;">This website is ready to get you calls</h3>' +
+      '<p style="color:#cbd5e1;font-size:14px;line-height:1.6;margin:0 0 20px;">Claim it and every lead goes straight to your phone \u2014 no agency, no middleman, just $19/mo.</p>' +
+      '<a id="voolt-phone-modal-claim" href="' + portalUrl + '" target="_blank" rel="noopener" style="display:inline-block;background:' + btnBg + ';color:' + btnText + ';border:none;padding:12px 32px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;">See what\'s included \u2192</a>' +
+      '<div style="margin-top:12px;"><button id="voolt-phone-modal-close" style="background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;">Not interested</button></div>' +
     '</div>';
   document.body.appendChild(phoneOverlay);
 
