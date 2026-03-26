@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://deebojunkremoval.netlify.app/sitemap.xml
