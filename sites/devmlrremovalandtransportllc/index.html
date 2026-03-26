@@ -2158,8 +2158,12 @@ document.title = `${data.business} | Junk Removal`;
     }).join('');
     var validGalleryCount = data.gallery.filter(function (g) { return g.src; }).length;
     galleryGrid.style.justifyContent = 'center';
-    if (validGalleryCount < 3) {
-      galleryGrid.style.gridTemplateColumns = validGalleryCount === 1 ? 'minmax(200px, 420px)' : 'repeat(2, minmax(180px, 360px))';
+    if (validGalleryCount < 5) {
+      if (validGalleryCount === 1) {
+        galleryGrid.style.gridTemplateColumns = 'minmax(200px, 420px)';
+      } else {
+        galleryGrid.style.gridTemplateColumns = 'repeat(' + Math.min(validGalleryCount, 4) + ', minmax(180px, 360px))';
+      }
     }
   }
 
