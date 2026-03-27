@@ -1941,8 +1941,11 @@ document.title = `${data.business} | Junk Removal`;
     var s = document.createElement('style');
     s.textContent = [
       '.btn-primary { color: ' + btnOnAccent + ' !important; }',
-      '.btn-primary:hover { color: ' + btnOnAccent + ' !important; }',
+      // V2 template: .btn-primary:hover has background:#fff — always use dark text on white hover
+      '.btn-primary:hover { color: var(--dark) !important; }',
       '.nav-phone { color: ' + btnOnAccent + ' !important; }',
+      // V2 template: .nav-phone:hover has background:#fff — always use dark text on white hover
+      '.nav-phone:hover { color: var(--dark) !important; }',
       '.commercial-btn { color: ' + btnOnAccent + ' !important; }',
       '.commercial-btn:hover { color: ' + btnOnAccent + ' !important; }',
       '.form-submit { color: ' + btnOnAccent + ' !important; }',
@@ -1957,8 +1960,8 @@ document.title = `${data.business} | Junk Removal`;
       '.step-number { color: ' + btnOnAccent + ' !important; }',
       // Pricing featured card badge — background uses accent color
       '.featured-badge { color: ' + btnOnAccent + ' !important; }',
-      // What We Haul CTA — text/background uses brand primary color
-      '.wetake-cta { color: ' + btnOnPrimary + ' !important; }',
+      // What We Haul CTA — background uses brand ACCENT color, so contrast against accent
+      '.wetake-cta { color: ' + btnOnAccent + ' !important; }',
     ].join(' ');
     document.head.appendChild(s);
   })();
