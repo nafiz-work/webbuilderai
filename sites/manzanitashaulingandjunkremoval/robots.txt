@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manzanitashaulingandjunkremoval.netlify.app/sitemap.xml
