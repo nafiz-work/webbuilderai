@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://junk-mafia.netlify.app/sitemap.xml
