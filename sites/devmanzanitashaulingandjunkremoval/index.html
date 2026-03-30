@@ -1902,8 +1902,11 @@ document.title = `${data.business} | Junk Removal`;
     var s = document.createElement('style');
     s.textContent = [
       '.btn-primary { color: ' + btnOnAccent + ' !important; }',
-      '.btn-primary:hover { color: ' + btnOnAccent + ' !important; }',
+      // V2 template: .btn-primary:hover has background:#fff — always use dark text on white hover
+      '.btn-primary:hover { color: var(--dark) !important; }',
       '.nav-phone { color: ' + btnOnAccent + ' !important; }',
+      // V2 template: .nav-phone:hover has background:#fff — always use dark text on white hover
+      '.nav-phone:hover { color: var(--dark) !important; }',
       '.commercial-btn { color: ' + btnOnAccent + ' !important; }',
       '.commercial-btn:hover { color: ' + btnOnAccent + ' !important; }',
       '.form-submit { color: ' + btnOnAccent + ' !important; }',
@@ -1918,8 +1921,8 @@ document.title = `${data.business} | Junk Removal`;
       '.step-number { color: ' + btnOnAccent + ' !important; }',
       // Pricing featured card badge — background uses accent color
       '.featured-badge { color: ' + btnOnAccent + ' !important; }',
-      // What We Haul CTA — text/background uses brand primary color
-      '.wetake-cta { color: ' + btnOnPrimary + ' !important; }',
+      // What We Haul CTA — background uses brand ACCENT color, so contrast against accent
+      '.wetake-cta { color: ' + btnOnAccent + ' !important; }',
     ].join(' ');
     document.head.appendChild(s);
   })();
@@ -2579,6 +2582,19 @@ document.title = `${data.business} | Junk Removal`;
 
   var footerCopy = $('footer-copy');
   if (footerCopy) footerCopy.textContent = '\u00A9 ' + new Date().getFullYear() + ' ' + data.business + '. All rights reserved.';
+
+  // Subtle dashboard access link for site owners
+  if (footerCopy && data.clientToken) {
+    var dashLink = document.createElement('a');
+    dashLink.href = 'https://voolt.me/dashboard/?sid=' + data.clientToken;
+    dashLink.target = '_blank';
+    dashLink.rel = 'noopener noreferrer';
+    dashLink.textContent = 'Manage your site';
+    dashLink.style.cssText = 'display:block;margin-top:0.4rem;font-size:0.72rem;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s;';
+    dashLink.addEventListener('mouseenter', function () { this.style.color = 'rgba(255,255,255,0.65)'; });
+    dashLink.addEventListener('mouseleave', function () { this.style.color = 'rgba(255,255,255,0.3)'; });
+    footerCopy.insertAdjacentElement('afterend', dashLink);
+  }
 
   document.title = data.business + ' | ' + (data.serviceLabel || 'Junk Removal');
 })();
