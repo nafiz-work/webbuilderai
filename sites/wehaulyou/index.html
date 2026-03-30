@@ -1694,6 +1694,8 @@ document.title = `${data.business} | Junk Removal`;
       var toL = function (v) { var s = v / 255; return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4); };
       return 0.2126 * toL((c >> 16) & 0xff) + 0.7152 * toL((c >> 8) & 0xff) + 0.0722 * toL(c & 0xff);
     }
+    // Threshold 0.179 is WCAG-derived (midpoint luminance for 4.5:1 ratio against white/black).
+    // Confirmed: #206040 → luminance ≈ 0.090 < 0.179 → correctly returns #ffffff.
     function contrastColor(hex) { return getLuminance(hex) < 0.179 ? '#ffffff' : '#111827'; }
     var btnOnPrimary = contrastColor(data.primaryColor);
     var btnOnAccent  = contrastColor(data.accentColor);
@@ -1702,14 +1704,27 @@ document.title = `${data.business} | Junk Removal`;
     var s = document.createElement('style');
     s.textContent = [
       '.btn-primary { color: ' + btnOnAccent + ' !important; }',
-      '.btn-primary:hover { color: ' + btnOnAccent + ' !important; }',
+      // V2 template: .btn-primary:hover has background:#fff — always use dark text on white hover
+      '.btn-primary:hover { color: var(--dark) !important; }',
       '.nav-phone { color: ' + btnOnAccent + ' !important; }',
+      // V2 template: .nav-phone:hover has background:#fff — always use dark text on white hover
+      '.nav-phone:hover { color: var(--dark) !important; }',
       '.commercial-btn { color: ' + btnOnAccent + ' !important; }',
       '.commercial-btn:hover { color: ' + btnOnAccent + ' !important; }',
       '.form-submit { color: ' + btnOnAccent + ' !important; }',
       '.form-submit:hover { color: #ffffff !important; }',
       '.gallery-load-more { color: #fff !important; }',
       '.wetake-tab.active { color: #fff !important; }',
+      // Value Props strip — section background uses brand primary color
+      '.value-props { color: ' + btnOnPrimary + ' !important; }',
+      '.value-item h3 { color: ' + btnOnPrimary + ' !important; }',
+      '.value-item p { color: ' + btnOnPrimary + ' !important; }',
+      // How It Works step circles — background uses accent color (WCAG-threshold: luminance < 0.179 → white)
+      '.step-number { color: ' + btnOnAccent + ' !important; }',
+      // Pricing featured card badge — background uses accent color
+      '.featured-badge { color: ' + btnOnAccent + ' !important; }',
+      // What We Haul CTA — background uses brand ACCENT color, so contrast against accent
+      '.wetake-cta { color: ' + btnOnAccent + ' !important; }',
     ].join(' ');
     document.head.appendChild(s);
   })();
@@ -2369,6 +2384,19 @@ document.title = `${data.business} | Junk Removal`;
 
   var footerCopy = $('footer-copy');
   if (footerCopy) footerCopy.textContent = '\u00A9 ' + new Date().getFullYear() + ' ' + data.business + '. All rights reserved.';
+
+  // Subtle dashboard access link for site owners
+  if (footerCopy && data.clientToken) {
+    var dashLink = document.createElement('a');
+    dashLink.href = 'https://voolt.me/dashboard/?sid=' + data.clientToken;
+    dashLink.target = '_blank';
+    dashLink.rel = 'noopener noreferrer';
+    dashLink.textContent = 'Manage your site';
+    dashLink.style.cssText = 'display:block;margin-top:0.4rem;font-size:0.72rem;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s;';
+    dashLink.addEventListener('mouseenter', function () { this.style.color = 'rgba(255,255,255,0.65)'; });
+    dashLink.addEventListener('mouseleave', function () { this.style.color = 'rgba(255,255,255,0.3)'; });
+    footerCopy.insertAdjacentElement('afterend', dashLink);
+  }
 
   document.title = data.business + ' | ' + (data.serviceLabel || 'Junk Removal');
 })();
