@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kelvin-moves-it.netlify.app/sitemap.xml
