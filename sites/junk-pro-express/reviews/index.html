@@ -30,7 +30,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
@@ -39,6 +39,7 @@
         "@type": "LocalBusiness",
         "@id": "https://www.junkproexpress.com/#business",
         "name": "Junk Pro Express",
+        "description": "Albuquerque's Most Trusted Junk Removal. Fast, reliable junk hauling throughout Albuquerque and surrounding areas.",
         "url": "https://www.junkproexpress.com",
         "telephone": "505-301-7315",
         "address": {
@@ -46,6 +47,17 @@
             "addressLocality": "Albuquerque",
             "addressRegion": "NM",
             "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 35.08237,
+            "longitude": -106.59739
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "07:00",
+            "closes": "18:00"
         },
         "aggregateRating": {
             "@type": "AggregateRating",
@@ -68,7 +80,7 @@
                     "bestRating": "5",
                     "worstRating": "1"
                 },
-                "reviewBody": "Junk Pro Express did a fantastic job for me today! I had a bunch of old items piling up in my garage just collecting dust and they were able to come out and haul it all away. I'm happy that my garage is finally clutter free so I don't have to worry about tripping over anything now as well as having more space in my garage. They were very fast, friendly and professional!"
+                "reviewBody": "Junk Pro Express did a fantastic job for me today! I had a bunch of old items piling up in my garage just collecting dust and they were able to come out and haul it all away. I'm happy that my garage is finally clutter free so I don't have to worry about tripping over anything now as well as having more space in my garage. They were very fast, friendly, and professional."
             },
             {
                 "@type": "Review",
@@ -113,78 +125,78 @@
         :root {
             --primary: #606040;
             --primary-dark: #4a4a30;
-            --primary-light: #787858;
+            --primary-light: #7a7a5a;
             --secondary: #a0a080;
-            --secondary-light: #c0c0a0;
-            --cream: #f8f7f4;
+            --secondary-light: #c0c0a8;
             --white: #ffffff;
-            --gray-50: #fafafa;
-            --gray-100: #f5f5f5;
-            --gray-200: #e5e5e5;
-            --gray-300: #d4d4d4;
-            --gray-400: #a3a3a3;
-            --gray-500: #737373;
-            --gray-600: #525252;
-            --gray-700: #404040;
-            --gray-800: #262626;
-            --gray-900: #171717;
-            --gold: #f59e0b;
-            --gold-light: #fbbf24;
-            --success: #22c55e;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            --radius: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
+            --off-white: #f8f8f5;
+            --light-bg: #f2f2ec;
+            --gray-100: #f7f7f5;
+            --gray-200: #e8e8e2;
+            --gray-300: #d4d4ca;
+            --gray-400: #9a9a8a;
+            --gray-500: #6a6a5a;
+            --gray-600: #4a4a3a;
+            --gray-700: #3a3a2a;
+            --gray-800: #2a2a1a;
+            --text-primary: #2a2a1a;
+            --text-secondary: #5a5a4a;
+            --text-muted: #7a7a6a;
+            --success: #4a7a4a;
+            --warning: #c9a227;
+            --star-gold: #f5b800;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-xl: 0 20px 50px rgba(0,0,0,0.15);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        *, *::before, *::after {
-            box-sizing: border-box;
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        
+
         html {
             scroll-behavior: smooth;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 16px;
+            color: var(--text-primary);
             line-height: 1.6;
-            color: var(--gray-800);
-            background-color: var(--cream);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            background: var(--white);
+            overflow-x: hidden;
         }
-        
+
         h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
             line-height: 1.2;
-            color: var(--gray-900);
+            font-weight: 700;
         }
-        
+
         a {
             color: inherit;
             text-decoration: none;
+            transition: var(--transition);
         }
-        
+
         img {
             max-width: 100%;
             height: auto;
-            display: block;
         }
-        
+
         .container {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
-        
+
         /* Navigation */
         .nav {
             position: fixed;
@@ -192,511 +204,500 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: var(--white);
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-200);
+            transition: var(--transition);
         }
-        
+
+        .nav.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
         .nav-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 20px;
-            max-width: 1200px;
+            padding: 16px 24px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-        
+
         .nav-logo {
             display: flex;
             align-items: center;
             gap: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             color: var(--primary);
         }
-        
+
         .nav-logo-icon {
             width: 44px;
             height: 44px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: var(--radius);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
-        
+
         .nav-links {
-            display: none;
-            list-style: none;
-            gap: 8px;
+            display: flex;
             align-items: center;
+            gap: 8px;
+            list-style: none;
         }
-        
+
         .nav-link {
-            padding: 10px 16px;
+            padding: 10px 18px;
             font-weight: 500;
-            color: var(--gray-600);
-            border-radius: var(--radius);
-            transition: all 0.2s ease;
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
             position: relative;
         }
-        
-        .nav-link:hover, .nav-link.active {
+
+        .nav-link:hover {
             color: var(--primary);
-            background: var(--gray-50);
+            background: var(--light-bg);
         }
-        
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
+
+        .nav-link.active {
+            color: var(--primary);
+            background: var(--light-bg);
         }
-        
+
         .nav-dropdown {
             position: relative;
         }
-        
-        .nav-dropdown-toggle {
+
+        .nav-dropdown-trigger {
             display: flex;
             align-items: center;
             gap: 6px;
             cursor: pointer;
         }
-        
-        .nav-dropdown-toggle svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.2s ease;
+
+        .nav-dropdown-trigger svg {
+            width: 12px;
+            height: 12px;
+            transition: var(--transition);
         }
-        
-        .nav-dropdown:hover .nav-dropdown-toggle svg {
+
+        .nav-dropdown:hover .nav-dropdown-trigger svg {
             transform: rotate(180deg);
         }
-        
+
         .nav-dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
             min-width: 260px;
             background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-xl);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
             padding: 12px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
-            transition: all 0.2s ease;
-            z-index: 100;
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
         }
-        
+
         .nav-dropdown:hover .nav-dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-        
+
         .nav-dropdown-item {
             display: block;
-            padding: 10px 14px;
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
             font-size: 0.95rem;
-            color: var(--gray-600);
-            border-radius: 8px;
-            transition: all 0.2s ease;
         }
-        
+
         .nav-dropdown-item:hover {
-            background: var(--gray-50);
+            background: var(--light-bg);
             color: var(--primary);
         }
-        
+
         .nav-phone {
-            display: none;
+            display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--text-primary);
             font-weight: 600;
-            color: var(--gray-700);
+            margin-right: 16px;
         }
-        
+
         .nav-phone svg {
             width: 18px;
             height: 18px;
             color: var(--primary);
         }
-        
+
         .nav-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
             font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px rgb(96 96 64 / 0.3);
+            box-shadow: var(--shadow-md);
         }
-        
+
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgb(96 96 64 / 0.4);
+            box-shadow: var(--shadow-lg);
         }
-        
+
         .nav-mobile-toggle {
-            display: flex;
+            display: none;
             flex-direction: column;
             gap: 5px;
-            padding: 8px;
             background: none;
             border: none;
             cursor: pointer;
+            padding: 8px;
         }
-        
+
         .nav-mobile-toggle span {
-            display: block;
             width: 24px;
             height: 2px;
-            background: var(--gray-700);
+            background: var(--text-primary);
             border-radius: 2px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
-        
-        .nav-mobile-menu {
-            display: none;
-            position: fixed;
-            top: 76px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--white);
-            padding: 20px;
-            overflow-y: auto;
-            z-index: 999;
-        }
-        
-        .nav-mobile-menu.active {
-            display: block;
-        }
-        
-        .nav-mobile-link {
-            display: block;
-            padding: 16px 0;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--gray-700);
-            border-bottom: 1px solid var(--gray-100);
-        }
-        
-        .nav-mobile-link.active {
-            color: var(--primary);
-        }
-        
-        .nav-mobile-dropdown-items {
-            padding-left: 20px;
-            display: none;
-        }
-        
-        .nav-mobile-dropdown-items.active {
-            display: block;
-        }
-        
-        .nav-mobile-dropdown-item {
-            display: block;
-            padding: 12px 0;
-            font-size: 1rem;
-            color: var(--gray-600);
-        }
-        
-        .nav-mobile-cta {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 24px;
-        }
-        
-        .nav-mobile-cta a {
+
+        .nav-actions {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.05rem;
         }
-        
-        .nav-mobile-cta .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: var(--white);
-        }
-        
-        .nav-mobile-cta .btn-secondary {
-            background: var(--gray-100);
-            color: var(--gray-800);
-        }
-        
-        @media (min-width: 1024px) {
-            .nav-links {
-                display: flex;
+
+        /* Mobile Navigation */
+        @media (max-width: 1024px) {
+            .nav-links, .nav-phone {
+                display: none;
             }
-            
-            .nav-phone {
-                display: flex;
-            }
-            
+
             .nav-mobile-toggle {
+                display: flex;
+            }
+
+            .nav-mobile {
+                position: fixed;
+                top: 77px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--white);
+                padding: 24px;
+                transform: translateX(100%);
+                transition: var(--transition);
+                overflow-y: auto;
+            }
+
+            .nav-mobile.active {
+                transform: translateX(0);
+            }
+
+            .nav-mobile-links {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .nav-mobile-link {
+                display: block;
+                padding: 16px;
+                font-size: 1.1rem;
+                font-weight: 500;
+                color: var(--text-primary);
+                border-radius: var(--radius-md);
+                background: var(--gray-100);
+            }
+
+            .nav-mobile-link.active {
+                background: var(--light-bg);
+                color: var(--primary);
+            }
+
+            .nav-mobile-dropdown-items {
+                padding-left: 20px;
+                margin-top: 8px;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .nav-mobile-dropdown-item {
+                display: block;
+                padding: 12px 16px;
+                color: var(--text-secondary);
+                font-size: 0.95rem;
+                border-radius: var(--radius-sm);
+            }
+
+            .nav-mobile-phone {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding: 16px;
+                background: var(--light-bg);
+                border-radius: var(--radius-md);
+                margin-top: 16px;
+                font-weight: 600;
+                font-size: 1.2rem;
+                color: var(--primary);
+            }
+
+            .nav-mobile-cta {
+                display: block;
+                text-align: center;
+                padding: 18px;
+                background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+                color: var(--white);
+                border-radius: var(--radius-md);
+                font-weight: 600;
+                font-size: 1.1rem;
+                margin-top: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-cta {
                 display: none;
             }
         }
-        
-        /* Hero Section */
-        .hero {
+
+        /* Page Hero */
+        .page-hero {
             padding: 140px 0 80px;
-            background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
             position: relative;
             overflow: hidden;
         }
-        
-        .hero::before {
+
+        .page-hero::before {
             content: '';
             position: absolute;
             top: -50%;
             right: -20%;
             width: 60%;
-            height: 150%;
-            background: radial-gradient(circle, var(--secondary-light) 0%, transparent 70%);
-            opacity: 0.3;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(96, 96, 64, 0.05) 0%, transparent 70%);
             pointer-events: none;
         }
-        
-        .hero-inner {
-            position: relative;
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .breadcrumb-separator {
+            color: var(--gray-300);
+        }
+
+        .breadcrumb-current {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .page-hero-content {
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
-        
-        .breadcrumb {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--white);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: var(--gray-500);
+
+        .page-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--text-primary);
             margin-bottom: 24px;
-            box-shadow: var(--shadow);
+            letter-spacing: -0.02em;
         }
-        
-        .breadcrumb a {
-            color: var(--primary);
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        
-        .breadcrumb a:hover {
-            color: var(--primary-dark);
-        }
-        
-        .breadcrumb svg {
-            width: 16px;
-            height: 16px;
-            color: var(--gray-400);
-        }
-        
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--gray-900), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .rating-hero {
+
+        /* Aggregate Rating Display */
+        .aggregate-rating {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             gap: 16px;
-            padding: 32px 48px;
             background: var(--white);
+            padding: 32px 48px;
             border-radius: var(--radius-xl);
             box-shadow: var(--shadow-lg);
-            margin-top: 20px;
+            margin-bottom: 32px;
         }
-        
-        .rating-stars-large {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .rating-stars-large svg {
-            width: 36px;
-            height: 36px;
-            color: var(--gold);
-            filter: drop-shadow(0 2px 4px rgb(245 158 11 / 0.3));
-        }
-        
-        .rating-text {
+
+        .rating-score {
             display: flex;
             align-items: center;
             gap: 16px;
         }
-        
+
         .rating-number {
-            font-size: 2.5rem;
+            font-size: 4rem;
             font-weight: 800;
-            color: var(--gray-900);
+            color: var(--text-primary);
+            line-height: 1;
         }
-        
+
         .rating-details {
             text-align: left;
         }
-        
-        .rating-details span {
-            display: block;
+
+        .rating-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+
+        .rating-star {
+            width: 28px;
+            height: 28px;
+            color: var(--star-gold);
+        }
+
+        .rating-star.empty {
+            color: var(--gray-300);
+        }
+
+        .rating-count {
             font-size: 0.95rem;
-            color: var(--gray-500);
+            color: var(--text-muted);
         }
-        
-        .rating-details strong {
-            color: var(--gray-700);
-            font-weight: 600;
-        }
-        
-        .google-badge {
+
+        .rating-source {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
-            background: var(--gray-50);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--gray-600);
+            padding-top: 12px;
+            border-top: 1px solid var(--gray-200);
         }
-        
-        .google-badge svg {
-            width: 20px;
-            height: 20px;
+
+        .google-logo {
+            height: 24px;
         }
-        
-        .hero-cta {
-            margin-top: 32px;
+
+        .rating-source span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
-        
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             padding: 16px 32px;
-            font-size: 1rem;
+            border-radius: var(--radius-md);
             font-weight: 600;
-            border-radius: 50px;
-            border: none;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            border: none;
+            transition: var(--transition);
         }
-        
+
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
-            box-shadow: 0 4px 14px rgb(96 96 64 / 0.3);
+            box-shadow: var(--shadow-md);
         }
-        
+
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgb(96 96 64 / 0.4);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
-        
-        .btn-outline {
-            background: transparent;
+
+        .btn-secondary {
+            background: var(--white);
             color: var(--primary);
             border: 2px solid var(--primary);
         }
-        
-        .btn-outline:hover {
+
+        .btn-secondary:hover {
             background: var(--primary);
             color: var(--white);
         }
-        
+
         .btn svg {
             width: 20px;
             height: 20px;
         }
-        
+
         /* Reviews Section */
         .reviews-section {
             padding: 80px 0;
             background: var(--white);
         }
-        
-        .reviews-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        
-        .reviews-header h2 {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            margin-bottom: 16px;
-        }
-        
-        .reviews-header p {
-            font-size: 1.1rem;
-            color: var(--gray-500);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
+
         .reviews-grid {
             display: grid;
             gap: 24px;
+            margin-bottom: 48px;
         }
-        
+
         .review-card {
-            background: var(--cream);
+            background: var(--white);
+            border: 1px solid var(--gray-200);
             border-radius: var(--radius-lg);
             padding: 32px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             position: relative;
-            overflow: hidden;
         }
-        
+
+        .review-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            border-color: var(--secondary-light);
+        }
+
         .review-card::before {
             content: '"';
             position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 8rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--secondary-light);
-            opacity: 0.3;
+            top: 24px;
+            right: 32px;
+            font-size: 5rem;
+            font-family: Georgia, serif;
+            color: var(--gray-200);
             line-height: 1;
+            pointer-events: none;
         }
-        
-        .review-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-        
+
         .review-header {
             display: flex;
             align-items: center;
             gap: 16px;
             margin-bottom: 20px;
         }
-        
+
         .review-avatar {
             width: 56px;
             height: 56px;
@@ -707,435 +708,431 @@
             justify-content: center;
             color: var(--white);
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
-        
+
         .review-meta {
             flex: 1;
         }
-        
-        .review-name {
-            font-weight: 700;
+
+        .review-author {
+            font-weight: 600;
             font-size: 1.1rem;
-            color: var(--gray-900);
+            color: var(--text-primary);
             margin-bottom: 4px;
         }
-        
+
         .review-date {
-            font-size: 0.9rem;
-            color: var(--gray-500);
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
-        
-        .review-stars {
+
+        .review-rating {
             display: flex;
-            gap: 4px;
+            gap: 3px;
+            margin-bottom: 16px;
         }
-        
-        .review-stars svg {
+
+        .review-rating svg {
             width: 20px;
             height: 20px;
-            color: var(--gold);
+            color: var(--star-gold);
         }
-        
+
         .review-text {
-            font-size: 1.05rem;
+            color: var(--text-secondary);
             line-height: 1.7;
-            color: var(--gray-700);
-            position: relative;
-            z-index: 1;
+            font-size: 1.05rem;
         }
-        
+
         .review-verified {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            margin-top: 20px;
-            padding: 6px 14px;
-            background: var(--white);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--gray-600);
+            margin-top: 16px;
+            padding: 6px 12px;
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
-        
+
         .review-verified svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             color: var(--success);
         }
-        
+
         /* Platform Badges */
-        .platform-section {
+        .platform-badges {
             padding: 60px 0;
-            background: var(--cream);
+            background: var(--light-bg);
         }
-        
-        .platform-inner {
+
+        .platform-badges .container {
             text-align: center;
         }
-        
-        .platform-inner h2 {
-            font-size: 1.5rem;
-            margin-bottom: 32px;
-            color: var(--gray-700);
+
+        .platform-badges h2 {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: var(--text-primary);
         }
-        
-        .platform-badges {
+
+        .badges-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 24px;
+            gap: 32px;
         }
-        
+
         .platform-badge {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 16px;
-            padding: 24px 32px;
+            gap: 12px;
+            padding: 32px 48px;
             background: var(--white);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
         }
-        
+
         .platform-badge:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
-        
-        .platform-icon {
-            width: 48px;
-            height: 48px;
+
+        .platform-badge-logo {
+            height: 32px;
         }
-        
-        .platform-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .platform-info {
-            text-align: left;
-        }
-        
-        .platform-rating {
+
+        .platform-badge-rating {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 4px;
         }
-        
-        .platform-rating strong {
-            font-size: 1.5rem;
+
+        .platform-badge-score {
+            font-size: 2rem;
             font-weight: 800;
-            color: var(--gray-900);
+            color: var(--text-primary);
         }
-        
-        .platform-rating .stars {
+
+        .platform-badge-stars {
             display: flex;
             gap: 2px;
         }
-        
-        .platform-rating .stars svg {
+
+        .platform-badge-stars svg {
             width: 18px;
             height: 18px;
-            color: var(--gold);
+            color: var(--star-gold);
         }
-        
-        .platform-name {
+
+        .platform-badge-count {
             font-size: 0.9rem;
-            color: var(--gray-500);
+            color: var(--text-muted);
         }
-        
-        /* CTA Section */
-        .cta-section {
+
+        /* Quote Form Section */
+        .quote-section {
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             position: relative;
             overflow: hidden;
         }
-        
-        .cta-section::before {
+
+        .quote-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
         }
-        
-        .cta-inner {
+
+        .quote-section .container {
             position: relative;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
+            z-index: 1;
         }
-        
-        .cta-section h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
+
+        .quote-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .quote-text {
             color: var(--white);
-            margin-bottom: 16px;
         }
-        
-        .cta-section p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
+
+        .quote-text h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 20px;
+        }
+
+        .quote-text p {
+            font-size: 1.15rem;
+            opacity: 0.9;
             margin-bottom: 32px;
+            line-height: 1.7;
         }
-        
-        .cta-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+
+        .quote-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 16px;
         }
-        
-        .btn-white {
+
+        .quote-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .quote-feature-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quote-feature-icon svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .quote-form-card {
             background: var(--white);
-            color: var(--primary);
-        }
-        
-        .btn-white:hover {
-            background: var(--cream);
-            transform: translateY(-2px);
-        }
-        
-        .btn-ghost {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-        
-        .btn-ghost:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--white);
-        }
-        
-        /* Quote Form Section */
-        .form-section {
-            padding: 80px 0;
-            background: var(--white);
-        }
-        
-        .form-inner {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .form-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .form-header h2 {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            margin-bottom: 12px;
-        }
-        
-        .form-header p {
-            font-size: 1.1rem;
-            color: var(--gray-500);
-        }
-        
-        .quote-form {
-            background: var(--cream);
-            padding: 40px;
             border-radius: var(--radius-xl);
+            padding: 40px;
+            box-shadow: var(--shadow-xl);
         }
-        
-        .form-grid {
+
+        .quote-form-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .quote-form-card .form-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .form-row {
             display: grid;
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
-        
-        @media (min-width: 640px) {
-            .form-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .form-full {
-                grid-column: span 2;
-            }
+
+        .form-group {
+            margin-bottom: 20px;
         }
-        
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
         .form-group label {
             display: block;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--gray-700);
+            font-weight: 500;
             margin-bottom: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
         }
-        
+
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 14px 18px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
             font-size: 1rem;
             font-family: inherit;
-            border: 2px solid var(--gray-200);
-            border-radius: var(--radius);
+            transition: var(--transition);
             background: var(--white);
-            transition: all 0.2s ease;
         }
-        
+
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgb(96 96 64 / 0.1);
+            box-shadow: 0 0 0 4px rgba(96, 96, 64, 0.1);
         }
-        
+
         .form-group textarea {
-            min-height: 120px;
             resize: vertical;
+            min-height: 120px;
         }
-        
+
         .form-submit {
-            margin-top: 24px;
-            text-align: center;
-        }
-        
-        .form-submit .btn {
             width: 100%;
-            padding: 18px 32px;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
             font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
         }
-        
-        @media (min-width: 640px) {
-            .form-submit .btn {
-                width: auto;
-                min-width: 280px;
-            }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
-        
-        .form-response-note {
+
+        .form-note {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             margin-top: 16px;
-            font-size: 0.95rem;
-            color: var(--gray-600);
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
-        
-        .form-response-note svg {
-            width: 18px;
-            height: 18px;
-            color: var(--gold);
+
+        .form-note svg {
+            width: 16px;
+            height: 16px;
+            color: var(--warning);
         }
-        
-        /* Footer */
-        .footer {
-            background: var(--gray-900);
-            color: var(--gray-300);
-            padding: 80px 0 0;
-        }
-        
-        .footer-grid {
-            display: grid;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr 1fr;
+
+        @media (max-width: 900px) {
+            .quote-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .quote-text {
+                text-align: center;
+            }
+
+            .quote-features {
+                justify-content: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
             }
         }
-        
-        .footer-brand {
-            max-width: 300px;
+
+        /* Footer */
+        .footer {
+            background: var(--gray-800);
+            color: var(--white);
+            padding: 80px 0 0;
         }
-        
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr 1.2fr;
+            gap: 48px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         .footer-logo {
             display: flex;
             align-items: center;
             gap: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
-            font-size: 1.25rem;
-            color: var(--white);
-            margin-bottom: 16px;
+            font-size: 1.4rem;
         }
-        
+
         .footer-logo-icon {
             width: 44px;
             height: 44px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: var(--radius);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-weight: 800;
         }
-        
+
         .footer-tagline {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 24px;
+            color: var(--gray-400);
+            line-height: 1.6;
         }
-        
+
         .footer-social {
             display: flex;
             gap: 12px;
         }
-        
+
         .footer-social a {
             width: 40px;
             height: 40px;
-            background: var(--gray-800);
-            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s ease;
+            transition: var(--transition);
         }
-        
+
         .footer-social a:hover {
             background: var(--primary);
         }
-        
+
         .footer-social svg {
             width: 20px;
             height: 20px;
         }
-        
+
         .footer-column h4 {
-            color: var(--white);
             font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-column a {
-            font-size: 0.95rem;
-            color: var(--gray-400);
-            transition: color 0.2s ease;
-        }
-        
-        .footer-column a:hover {
+            margin-bottom: 24px;
             color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 4px;
+        }
+
         .footer-contact-item {
             display: flex;
-            align-items: flex-start;
             gap: 12px;
             margin-bottom: 16px;
+            color: var(--gray-400);
         }
-        
+
         .footer-contact-item svg {
             width: 20px;
             height: 20px;
@@ -1143,114 +1140,166 @@
             flex-shrink: 0;
             margin-top: 2px;
         }
-        
-        .footer-contact-item a,
-        .footer-contact-item span {
-            font-size: 0.95rem;
+
+        .footer-contact-item a {
             color: var(--gray-400);
         }
-        
+
         .footer-contact-item a:hover {
             color: var(--white);
         }
-        
+
         .footer-bottom {
-            border-top: 1px solid var(--gray-800);
             padding: 24px 0;
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
             gap: 16px;
         }
-        
-        .footer-bottom p {
+
+        .footer-copyright {
+            color: var(--gray-400);
             font-size: 0.9rem;
-            color: var(--gray-500);
         }
-        
+
         .footer-legal {
             display: flex;
             gap: 24px;
         }
-        
+
         .footer-legal a {
+            color: var(--gray-400);
             font-size: 0.9rem;
-            color: var(--gray-500);
-            transition: color 0.2s ease;
         }
-        
+
         .footer-legal a:hover {
             color: var(--white);
         }
-        
-        /* Utility Classes */
-        .section-label {
-            display: inline-block;
-            padding: 8px 16px;
-            background: linear-gradient(135deg, var(--secondary-light), var(--secondary));
-            color: var(--primary-dark);
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 50px;
-            margin-bottom: 16px;
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
         }
-        
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .rating-hero {
+            .page-hero {
+                padding: 120px 0 60px;
+            }
+
+            .aggregate-rating {
                 padding: 24px 32px;
             }
-            
-            .rating-stars-large svg {
-                width: 28px;
-                height: 28px;
-            }
-            
+
             .rating-number {
-                font-size: 2rem;
+                font-size: 3rem;
             }
-            
-            .platform-badge {
-                width: 100%;
-                justify-content: center;
+
+            .rating-star {
+                width: 22px;
+                height: 22px;
             }
-            
-            .quote-form {
+
+            .review-card {
                 padding: 24px;
+            }
+
+            .review-card::before {
+                font-size: 4rem;
+                right: 24px;
+                top: 16px;
+            }
+
+            .reviews-section {
+                padding: 60px 0;
+            }
+
+            .platform-badges {
+                padding: 40px 0;
+            }
+
+            .platform-badge {
+                padding: 24px 36px;
+            }
+
+            .quote-section {
+                padding: 60px 0;
+            }
+
+            .quote-form-card {
+                padding: 28px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="nav">
+    <nav class="nav" id="nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">
-                <div class="nav-logo-icon">JP</div>
-                <span>Junk Pro Express</span>
+                <div class="nav-logo-icon">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                    </svg>
+                </div>
+                Junk Pro Express
             </a>
             
             <ul class="nav-links">
                 <li><a href="/" class="nav-link">Home</a></li>
                 <li class="nav-dropdown">
-                    <a href="/services/" class="nav-link nav-dropdown-toggle">
+                    <a href="/services/" class="nav-link nav-dropdown-trigger">
                         Services
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </a>
                     <div class="nav-dropdown-menu">
-                        <a href="/services/residential-junk-removal/" class="nav-dropdown-item">Residential Junk Removal</a>
-                        <a href="/services/commercial-junk-removal/" class="nav-dropdown-item">Commercial Junk Removal</a>
-                        <a href="/services/appliance-removal/" class="nav-dropdown-item">Appliance Removal</a>
-                        <a href="/services/furniture-removal/" class="nav-dropdown-item">Furniture Removal</a>
-                        <a href="/services/construction-debris/" class="nav-dropdown-item">Construction Debris</a>
-                        <a href="/services/yard-waste-removal/" class="nav-dropdown-item">Yard Waste Removal</a>
+                        <a href="/services/clutter-removal/" class="nav-dropdown-item">Clutter Removal</a>
                         <a href="/services/eviction-clean-outs/" class="nav-dropdown-item">Eviction Clean-outs</a>
-                        <a href="/services/hoarder-homes/" class="nav-dropdown-item">Hoarder Homes</a>
+                        <a href="/services/hoarder-homes-junk-removal/" class="nav-dropdown-item">Hoarder Homes Junk Removal</a>
+                        <a href="/services/pre-post-estate-sale-clean-outs/" class="nav-dropdown-item">Pre & Post Estate Sale Clean-outs</a>
+                        <a href="/services/unwanted-sofa-removal/" class="nav-dropdown-item">Unwanted Sofa Removal</a>
+                        <a href="/services/appliance-removal/" class="nav-dropdown-item">Appliance Removal</a>
+                        <a href="/services/yard-debris-removal/" class="nav-dropdown-item">Yard Debris Removal</a>
                     </div>
                 </li>
                 <li><a href="/about/" class="nav-link">About</a></li>
@@ -1258,361 +1307,381 @@
                 <li><a href="/contact/" class="nav-link">Contact</a></li>
             </ul>
             
-            <div style="display: flex; align-items: center; gap: 20px;">
+            <div class="nav-actions">
                 <a href="tel:505-301-7315" class="nav-phone">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                     </svg>
                     505-301-7315
                 </a>
                 <a href="/contact/" class="nav-cta">Get a Free Quote</a>
+                <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            
-            <button class="nav-mobile-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
         
-        <div class="nav-mobile-menu" id="mobileMenu">
-            <a href="/" class="nav-mobile-link">Home</a>
-            <div>
-                <a href="/services/" class="nav-mobile-link" onclick="toggleMobileDropdown(event)">
-                    Services
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 20px; height: 20px; float: right;">
-                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-                <div class="nav-mobile-dropdown-items" id="mobileServicesDropdown">
-                    <a href="/services/residential-junk-removal/" class="nav-mobile-dropdown-item">Residential Junk Removal</a>
-                    <a href="/services/commercial-junk-removal/" class="nav-mobile-dropdown-item">Commercial Junk Removal</a>
-                    <a href="/services/appliance-removal/" class="nav-mobile-dropdown-item">Appliance Removal</a>
-                    <a href="/services/furniture-removal/" class="nav-mobile-dropdown-item">Furniture Removal</a>
-                    <a href="/services/construction-debris/" class="nav-mobile-dropdown-item">Construction Debris</a>
-                    <a href="/services/yard-waste-removal/" class="nav-mobile-dropdown-item">Yard Waste Removal</a>
-                    <a href="/services/eviction-clean-outs/" class="nav-mobile-dropdown-item">Eviction Clean-outs</a>
-                    <a href="/services/hoarder-homes/" class="nav-mobile-dropdown-item">Hoarder Homes</a>
-                </div>
-            </div>
-            <a href="/about/" class="nav-mobile-link">About</a>
-            <a href="/reviews/" class="nav-mobile-link active">Reviews</a>
-            <a href="/contact/" class="nav-mobile-link">Contact</a>
-            <div class="nav-mobile-cta">
-                <a href="/contact/" class="btn-primary">Get a Free Quote</a>
-                <a href="tel:505-301-7315" class="btn-secondary">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 20px; height: 20px;">
-                        <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
-                    </svg>
-                    Call 505-301-7315
-                </a>
-            </div>
+        <!-- Mobile Navigation -->
+        <div class="nav-mobile" id="mobileNav">
+            <ul class="nav-mobile-links">
+                <li><a href="/" class="nav-mobile-link">Home</a></li>
+                <li>
+                    <a href="/services/" class="nav-mobile-link">Services</a>
+                    <div class="nav-mobile-dropdown-items">
+                        <a href="/services/clutter-removal/" class="nav-mobile-dropdown-item">Clutter Removal</a>
+                        <a href="/services/eviction-clean-outs/" class="nav-mobile-dropdown-item">Eviction Clean-outs</a>
+                        <a href="/services/hoarder-homes-junk-removal/" class="nav-mobile-dropdown-item">Hoarder Homes Junk Removal</a>
+                        <a href="/services/pre-post-estate-sale-clean-outs/" class="nav-mobile-dropdown-item">Pre & Post Estate Sale Clean-outs</a>
+                        <a href="/services/unwanted-sofa-removal/" class="nav-mobile-dropdown-item">Unwanted Sofa Removal</a>
+                        <a href="/services/appliance-removal/" class="nav-mobile-dropdown-item">Appliance Removal</a>
+                        <a href="/services/yard-debris-removal/" class="nav-mobile-dropdown-item">Yard Debris Removal</a>
+                    </div>
+                </li>
+                <li><a href="/about/" class="nav-mobile-link">About</a></li>
+                <li><a href="/reviews/" class="nav-mobile-link active">Reviews</a></li>
+                <li><a href="/contact/" class="nav-mobile-link">Contact</a></li>
+            </ul>
+            <a href="tel:505-301-7315" class="nav-mobile-phone">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="24" height="24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+                505-301-7315
+            </a>
+            <a href="/contact/" class="nav-mobile-cta">Get a Free Quote</a>
         </div>
     </nav>
-    
-    <!-- Hero Section -->
-    <section class="hero">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
-            <div class="hero-inner">
-                <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <a href="/">Home</a>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                    </svg>
-                    <span>Reviews</span>
-                </nav>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="/">Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">Reviews</span>
+            </nav>
+            
+            <div class="page-hero-content">
+                <h1 class="animate-in">What Our Customers Say About Junk Pro Express</h1>
                 
-                <h1>What Our Customers Say About Junk Pro Express</h1>
-                
-                <div class="rating-hero">
-                    <div class="rating-stars-large">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    </div>
-                    <div class="rating-text">
+                <div class="aggregate-rating animate-in delay-1">
+                    <div class="rating-score">
                         <span class="rating-number">4.9</span>
                         <div class="rating-details">
-                            <span>Average rating from</span>
-                            <strong>2 verified reviews</strong>
+                            <div class="rating-stars">
+                                <svg class="rating-star" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="rating-star" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="rating-star" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="rating-star" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="rating-star" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                            <span class="rating-count">Based on 2 reviews</span>
                         </div>
                     </div>
-                    <div class="google-badge">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    <div class="rating-source">
+                        <svg class="google-logo" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#4285F4" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+                            <path fill="#EA4335" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+                            <path fill="#FBBC05" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
+                            <path fill="#4285F4" d="M225 3v65h-9.5V3h9.5z"/>
+                            <path fill="#34A853" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
+                            <path fill="#EA4335" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"/>
                         </svg>
-                        Verified Google Reviews
+                        <span>Reviews</span>
                     </div>
                 </div>
                 
-                <div class="hero-cta">
+                <div class="hero-cta-group animate-in delay-2">
                     <a href="https://www.google.com/maps/place/Junk+Pro+Express/@35.0823726,-106.5973885,15z/data=!4m2!3m1!1s0x80b12c2ba8732c9f:0x151312287064dfb6" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;">
-                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
                         </svg>
-                        Leave Us a Review
+                        Leave a Google Review
+                    </a>
+                    <a href="/contact/" class="btn btn-secondary">
+                        Get a Free Quote
                     </a>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Reviews Section -->
     <section class="reviews-section">
         <div class="container">
-            <div class="reviews-header">
-                <span class="section-label">Customer Reviews</span>
-                <h2>Real Feedback From Our Customers</h2>
-                <p>Don't just take our word for it — hear what our satisfied customers have to say about their experience with Junk Pro Express.</p>
-            </div>
-            
             <div class="reviews-grid">
-                <div class="review-card">
+                <!-- Review 1 -->
+                <article class="review-card animate-in">
                     <div class="review-header">
                         <div class="review-avatar">JW</div>
                         <div class="review-meta">
-                            <div class="review-name">Jonny Wilson</div>
+                            <div class="review-author">Jonny Wilson</div>
                             <div class="review-date">January 7, 2023</div>
                         </div>
-                        <div class="review-stars">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        </div>
                     </div>
-                    <p class="review-text">Junk Pro Express did a fantastic job for me today! I had a bunch of old items piling up in my garage just collecting dust and they were able to come out and haul it all away. I'm happy that my garage is finally clutter free so I don't have to worry about tripping over anything now as well as having more space in my garage. They were very fast, friendly and professional!</p>
+                    <div class="review-rating">
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="review-text">Junk Pro Express did a fantastic job for me today! I had a bunch of old items piling up in my garage just collecting dust and they were able to come out and haul it all away. I'm happy that my garage is finally clutter free so I don't have to worry about tripping over anything now as well as having more space in my garage. They were very fast, friendly, and professional.</p>
                     <div class="review-verified">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                         </svg>
                         Verified Google Review
                     </div>
-                </div>
-                
-                <div class="review-card">
+                </article>
+
+                <!-- Review 2 -->
+                <article class="review-card animate-in delay-1">
                     <div class="review-header">
                         <div class="review-avatar">TK</div>
                         <div class="review-meta">
-                            <div class="review-name">Tom Kuehn</div>
+                            <div class="review-author">Tom Kuehn</div>
                             <div class="review-date">April 9, 2025</div>
                         </div>
-                        <div class="review-stars">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        </div>
                     </div>
-                    <p class="review-text">Al and his crew did a wonderful job. I highly recommend Junk Pro Express to everyone who needs this type of service</p>
+                    <div class="review-rating">
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="review-text">Al and his crew did a wonderful job. I highly recommend Junk Pro Express to everyone who needs this type of service.</p>
                     <div class="review-verified">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                         </svg>
                         Verified Google Review
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
-    
-    <!-- Platform Badges Section -->
-    <section class="platform-section">
+
+    <!-- Platform Badges -->
+    <section class="platform-badges">
         <div class="container">
-            <div class="platform-inner">
-                <h2>Find Us On Google</h2>
-                <div class="platform-badges">
-                    <a href="https://www.google.com/maps/place/Junk+Pro+Express/@35.0823726,-106.5973885,15z/data=!4m2!3m1!1s0x80b12c2ba8732c9f:0x151312287064dfb6" target="_blank" rel="noopener noreferrer" class="platform-badge">
-                        <div class="platform-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                            </svg>
+            <h2>Trusted Across Platforms</h2>
+            <div class="badges-grid">
+                <a href="https://www.google.com/maps/place/Junk+Pro+Express/@35.0823726,-106.5973885,15z/data=!4m2!3m1!1s0x80b12c2ba8732c9f:0x151312287064dfb6" target="_blank" rel="noopener noreferrer" class="platform-badge">
+                    <svg class="platform-badge-logo" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#4285F4" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+                        <path fill="#EA4335" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+                        <path fill="#FBBC05" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
+                        <path fill="#4285F4" d="M225 3v65h-9.5V3h9.5z"/>
+                        <path fill="#34A853" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
+                        <path fill="#EA4335" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"/>
+                    </svg>
+                    <div class="platform-badge-rating">
+                        <span class="platform-badge-score">4.9</span>
+                        <div class="platform-badge-stars">
+                            <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
                         </div>
-                        <div class="platform-info">
-                            <div class="platform-rating">
-                                <strong>4.9</strong>
-                                <div class="stars">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </div>
-                            </div>
-                            <div class="platform-name">Google Reviews</div>
-                        </div>
-                    </a>
-                </div>
+                    </div>
+                    <span class="platform-badge-count">2 Reviews</span>
+                </a>
             </div>
         </div>
     </section>
-    
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-inner">
-                <h2>Ready to Join Our Happy Customers?</h2>
-                <p>Experience the same fast, friendly, and professional junk removal service that our customers rave about.</p>
-                <div class="cta-buttons">
-                    <a href="/contact/" class="btn btn-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 20px; height: 20px;">
-                            <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
-                            <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
-                        </svg>
-                        Get a Free Quote
-                    </a>
-                    <a href="tel:505-301-7315" class="btn btn-ghost">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 20px; height: 20px;">
-                            <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
-                        </svg>
-                        Call 505-301-7315
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
+
     <!-- Quote Form Section -->
-    <section class="form-section">
+    <section class="quote-section">
         <div class="container">
-            <div class="form-inner">
-                <div class="form-header">
-                    <span class="section-label">Free Quote</span>
-                    <h2>Get Your Free Quote Today</h2>
-                    <p>Fill out the form below and we'll get back to you with a no-obligation quote.</p>
+            <div class="quote-content">
+                <div class="quote-text">
+                    <h2>Ready to Reclaim Your Space?</h2>
+                    <p>Join our satisfied customers and experience the Junk Pro Express difference. Our friendly team is ready to help you with fast, reliable junk removal service in Albuquerque and surrounding areas.</p>
+                    <div class="quote-features">
+                        <div class="quote-feature">
+                            <div class="quote-feature-icon">
+                                <svg fill="currentColor" viewBox="0 0 20 20" width="14" height="14">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            Free Quotes
+                        </div>
+                        <div class="quote-feature">
+                            <div class="quote-feature-icon">
+                                <svg fill="currentColor" viewBox="0 0 20 20" width="14" height="14">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            Same-Day Service
+                        </div>
+                        <div class="quote-feature">
+                            <div class="quote-feature-icon">
+                                <svg fill="currentColor" viewBox="0 0 20 20" width="14" height="14">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            Eco-Friendly Disposal
+                        </div>
+                        <div class="quote-feature">
+                            <div class="quote-feature-icon">
+                                <svg fill="currentColor" viewBox="0 0 20 20" width="14" height="14">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            Licensed & Insured
+                        </div>
+                    </div>
                 </div>
                 
-                <form class="quote-form" action="/contact/" method="POST">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" name="firstName" required placeholder="John">
+                <div class="quote-form-card">
+                    <h3>Get Your Free Quote</h3>
+                    <p class="form-subtitle">We'll respond within 1 hour during business hours.</p>
+                    <form action="/contact/" method="GET">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="john@example.com">
-                        </div>
-                        <div class="form-group form-full">
+                        <div class="form-group full-width">
                             <label for="service">Service Needed</label>
                             <select id="service" name="service" required>
                                 <option value="">Select a service...</option>
-                                <option value="residential-junk-removal">Residential Junk Removal</option>
-                                <option value="commercial-junk-removal">Commercial Junk Removal</option>
-                                <option value="appliance-removal">Appliance Removal</option>
-                                <option value="furniture-removal">Furniture Removal</option>
-                                <option value="construction-debris">Construction Debris</option>
-                                <option value="yard-waste-removal">Yard Waste Removal</option>
+                                <option value="clutter-removal">Clutter Removal</option>
                                 <option value="eviction-clean-outs">Eviction Clean-outs</option>
-                                <option value="hoarder-homes">Hoarder Homes</option>
-                                <option value="estate-sale-clean-outs">Estate Sale Clean-outs</option>
+                                <option value="hoarder-homes">Hoarder Homes Junk Removal</option>
+                                <option value="estate-sale">Pre & Post Estate Sale Clean-outs</option>
+                                <option value="sofa-removal">Unwanted Sofa Removal</option>
+                                <option value="appliance-removal">Appliance Removal</option>
+                                <option value="yard-debris">Yard Debris Removal</option>
                             </select>
                         </div>
-                        <div class="form-group form-full">
+                        <div class="form-group full-width">
                             <label for="message">Tell Us About Your Project</label>
-                            <textarea id="message" name="message" placeholder="Describe what you need removed, including approximate quantity and location..."></textarea>
+                            <textarea id="message" name="message" placeholder="Describe what you need removed, approximate amount, location, etc."></textarea>
                         </div>
-                    </div>
-                    <div class="form-submit">
-                        <button type="submit" class="btn btn-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width: 20px; height: 20px;">
-                                <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
-                                <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
-                            </svg>
-                            Send My Free Quote Request
-                        </button>
-                        <div class="form-response-note">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                        <button type="submit" class="form-submit">Get My Free Quote</button>
+                        <div class="form-note">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
                             </svg>
                             We typically respond within 1 hour
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="/" class="footer-logo">
-                        <div class="footer-logo-icon">JP</div>
-                        <span>Junk Pro Express</span>
-                    </a>
-                    <p class="footer-tagline">Albuquerque's Most Trusted Junk Removal. Fast, friendly junk hauling throughout Albuquerque, Rio Rancho, and surrounding areas.</p>
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="24" height="24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                            </svg>
+                        </div>
+                        Junk Pro Express
+                    </div>
+                    <p class="footer-tagline">Albuquerque's Most Trusted Junk Removal. Fast, reliable junk hauling throughout Albuquerque and surrounding areas.</p>
                     <div class="footer-social">
                         <a href="https://www.google.com/maps/place/Junk+Pro+Express/@35.0823726,-106.5973885,15z/data=!4m2!3m1!1s0x80b12c2ba8732c9f:0x151312287064dfb6" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/></svg>
+                            <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                                <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+                            </svg>
                         </a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Services</h4>
-                    <ul>
-                        <li><a href="/services/residential-junk-removal/">Residential Junk Removal</a></li>
-                        <li><a href="/services/commercial-junk-removal/">Commercial Junk Removal</a></li>
-                        <li><a href="/services/appliance-removal/">Appliance Removal</a></li>
-                        <li><a href="/services/furniture-removal/">Furniture Removal</a></li>
-                        <li><a href="/services/construction-debris/">Construction Debris</a></li>
-                        <li><a href="/services/yard-waste-removal/">Yard Waste Removal</a></li>
+                    <ul class="footer-links">
+                        <li><a href="/services/clutter-removal/">Clutter Removal</a></li>
                         <li><a href="/services/eviction-clean-outs/">Eviction Clean-outs</a></li>
-                        <li><a href="/services/hoarder-homes/">Hoarder Homes</a></li>
+                        <li><a href="/services/hoarder-homes-junk-removal/">Hoarder Homes Junk Removal</a></li>
+                        <li><a href="/services/pre-post-estate-sale-clean-outs/">Estate Sale Clean-outs</a></li>
+                        <li><a href="/services/unwanted-sofa-removal/">Unwanted Sofa Removal</a></li>
+                        <li><a href="/services/appliance-removal/">Appliance Removal</a></li>
+                        <li><a href="/services/yard-debris-removal/">Yard Debris Removal</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Service Areas</h4>
-                    <ul>
-                        <li><span style="color: var(--gray-400);">Albuquerque</span></li>
-                        <li><span style="color: var(--gray-400);">Rio Rancho</span></li>
+                    <ul class="footer-links">
+                        <li><a href="/areas/albuquerque/">Albuquerque</a></li>
+                        <li><a href="/areas/rio-rancho/">Rio Rancho</a></li>
+                        <li><a href="/areas/south-valley/">South Valley</a></li>
+                        <li><a href="/areas/los-ranchos/">Los Ranchos de Albuquerque</a></li>
+                        <li><a href="/areas/paradise-hills/">Paradise Hills</a></li>
+                        <li><a href="/areas/corrales/">Corrales</a></li>
+                        <li><a href="/areas/bernalillo/">Bernalillo</a></li>
+                        <li><a href="/areas/cedar-crest/">Cedar Crest</a></li>
                     </ul>
-                    
-                    <h4 style="margin-top: 24px;">Quick Links</h4>
-                    <ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/services/">Services</a></li>
                         <li><a href="/about/">About Us</a></li>
                         <li><a href="/reviews/">Reviews</a></li>
                         <li><a href="/contact/">Contact</a></li>
+                        <li><a href="/privacy/">Privacy Policy</a></li>
+                        <li><a href="/terms/">Terms of Service</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Contact Us</h4>
                     <div class="footer-contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                         </svg>
                         <a href="tel:505-301-7315">505-301-7315</a>
                     </div>
                     <div class="footer-contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
-                        <span>Albuquerque, NM</span>
+                        <span>Serving Albuquerque & Surrounding Areas</span>
                     </div>
                     <div class="footer-contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" />
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         <span>Mon–Sat: 7:00 AM – 6:00 PM</span>
                     </div>
@@ -1620,7 +1689,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Junk Pro Express. All rights reserved.</p>
+                <p class="footer-copyright">© 2025 Junk Pro Express. All rights reserved.</p>
                 <div class="footer-legal">
                     <a href="/privacy/">Privacy Policy</a>
                     <a href="/terms/">Terms of Service</a>
@@ -1628,37 +1697,71 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
-        }
-        
-        function toggleMobileDropdown(event) {
-            event.preventDefault();
-            const dropdown = document.getElementById('mobileServicesDropdown');
-            dropdown.classList.toggle('active');
-        }
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.querySelector('.nav-mobile-toggle');
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
             
-            if (!menu.contains(event.target) && !toggle.contains(event.target) && menu.classList.contains('active')) {
-                menu.classList.remove('active');
-            }
-        });
-        
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('.nav');
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            if (currentScroll > 50) {
+                nav.classList.add('scrolled');
             } else {
-                nav.style.boxShadow = '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)';
+                nav.classList.remove('scrolled');
             }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Mobile navigation toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+
+        // Close mobile nav when clicking a link
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe review cards for animation
+        document.querySelectorAll('.review-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Observe platform badges
+        document.querySelectorAll('.platform-badge').forEach((badge, index) => {
+            badge.style.opacity = '0';
+            badge.style.transform = 'translateY(20px)';
+            badge.style.transition = `opacity 0.5s ease ${index * 0.15}s, transform 0.5s ease ${index * 0.15}s`;
+            observer.observe(badge);
         });
     </script>
 </body>
