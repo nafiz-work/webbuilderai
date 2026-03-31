@@ -16,9 +16,9 @@
     
     <!-- Open Graph -->
     <meta property="og:url" content="https://www.junkproexpress.com/contact/">
+    <meta property="og:type" content="website">
     <meta property="og:title" content="Contact & Free Quote | Junk Pro Express">
     <meta property="og:description" content="Get a free quote from Junk Pro Express. Call 505-301-7315 or fill out our online form.">
-    <meta property="og:type" content="website">
     <meta property="og:image" content="https://lh3.googleusercontent.com/p/AF1QipNvjQRzaT7K5Up-tYsFLGtQoFaZaDQWR5iuyJGl=w3120-h4160-k-no">
     
     <!-- Twitter Card -->
@@ -30,7 +30,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
@@ -40,11 +40,17 @@
         "@id": "https://www.junkproexpress.com/#business",
         "name": "Junk Pro Express",
         "telephone": "505-301-7315",
+        "url": "https://www.junkproexpress.com",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Albuquerque",
             "addressRegion": "NM",
             "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 35.08237,
+            "longitude": -106.59739
         },
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
@@ -52,12 +58,12 @@
             "opens": "07:00",
             "closes": "18:00"
         },
-        "url": "https://www.junkproexpress.com",
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "2"
-        }
+        "areaServed": [
+            {"@type": "City", "name": "Albuquerque"},
+            {"@type": "City", "name": "Rio Rancho"},
+            {"@type": "City", "name": "Bernalillo"},
+            {"@type": "City", "name": "Corrales"}
+        ]
     }
     </script>
     <script type="application/ld+json">
@@ -85,64 +91,60 @@
         :root {
             --primary: #606040;
             --primary-dark: #4a4a30;
-            --primary-light: #7a7a5a;
             --secondary: #a0a080;
-            --secondary-light: #c0c0a0;
-            --cream: #f8f7f4;
+            --secondary-light: #c5c5a8;
             --white: #ffffff;
-            --gray-50: #fafafa;
-            --gray-100: #f4f4f5;
-            --gray-200: #e4e4e7;
-            --gray-300: #d4d4d8;
-            --gray-400: #a1a1aa;
-            --gray-500: #71717a;
-            --gray-600: #52525b;
-            --gray-700: #3f3f46;
-            --gray-800: #27272a;
-            --gray-900: #18181b;
+            --off-white: #f8f8f5;
+            --gray-50: #fafaf8;
+            --gray-100: #f0f0eb;
+            --gray-200: #e5e5dd;
+            --gray-300: #d0d0c5;
+            --gray-400: #a0a095;
+            --gray-500: #707068;
+            --gray-600: #505048;
+            --gray-700: #353530;
+            --gray-800: #252522;
+            --gray-900: #151513;
             --success: #22c55e;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
         }
         
-        * {
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--gray-800);
+            font-size: 16px;
             line-height: 1.6;
+            color: var(--gray-700);
             background: var(--white);
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-            line-height: 1.2;
-            color: var(--gray-900);
-        }
-        
-        a {
-            color: inherit;
-            text-decoration: none;
+            -webkit-font-smoothing: antialiased;
         }
         
         img {
             max-width: 100%;
             height: auto;
+            display: block;
         }
         
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+        a {
+            color: inherit;
+            text-decoration: none;
         }
         
         /* Navigation */
@@ -151,13 +153,16 @@
             top: 0;
             left: 0;
             right: 0;
-            background: var(--white);
             z-index: 1000;
-            box-shadow: var(--shadow);
+            background: var(--white);
+            box-shadow: var(--shadow-md);
             transition: all 0.3s ease;
         }
         
-        .nav-inner {
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -167,18 +172,17 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.5rem;
+            gap: 0.75rem;
             font-weight: 800;
+            font-size: 1.375rem;
             color: var(--primary);
         }
         
         .nav-logo-icon {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -189,27 +193,25 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 0.5rem;
         }
         
         .nav-link {
-            padding: 10px 18px;
-            font-size: 0.95rem;
+            padding: 0.625rem 1rem;
             font-weight: 500;
-            color: var(--gray-700);
-            border-radius: 8px;
+            color: var(--gray-600);
+            border-radius: var(--radius-md);
             transition: all 0.2s ease;
-            position: relative;
         }
         
         .nav-link:hover {
             color: var(--primary);
-            background: var(--gray-50);
+            background: var(--gray-100);
         }
         
         .nav-link.active {
             color: var(--primary);
-            background: rgba(96, 96, 64, 0.08);
+            background: var(--gray-100);
         }
         
         .nav-dropdown {
@@ -219,29 +221,31 @@
         .nav-dropdown-btn {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 10px 18px;
-            font-size: 0.95rem;
+            gap: 0.375rem;
+            padding: 0.625rem 1rem;
             font-weight: 500;
-            color: var(--gray-700);
-            border-radius: 8px;
+            color: var(--gray-600);
+            border-radius: var(--radius-md);
             transition: all 0.2s ease;
             cursor: pointer;
             background: none;
             border: none;
             font-family: inherit;
+            font-size: inherit;
         }
         
         .nav-dropdown-btn:hover {
             color: var(--primary);
-            background: var(--gray-50);
+            background: var(--gray-100);
         }
         
-        .nav-dropdown-icon {
+        .nav-dropdown-btn svg {
+            width: 16px;
+            height: 16px;
             transition: transform 0.2s ease;
         }
         
-        .nav-dropdown:hover .nav-dropdown-icon {
+        .nav-dropdown:hover .nav-dropdown-btn svg {
             transform: rotate(180deg);
         }
         
@@ -251,14 +255,14 @@
             left: 0;
             min-width: 260px;
             background: var(--white);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow-xl);
-            padding: 8px;
+            padding: 0.5rem;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: all 0.2s ease;
-            border: 1px solid var(--gray-100);
+            border: 1px solid var(--gray-200);
         }
         
         .nav-dropdown:hover .nav-dropdown-menu {
@@ -267,53 +271,57 @@
             transform: translateY(0);
         }
         
-        .nav-dropdown-item {
+        .nav-dropdown-link {
             display: block;
-            padding: 12px 16px;
-            font-size: 0.9rem;
-            color: var(--gray-700);
-            border-radius: 8px;
-            transition: all 0.2s ease;
+            padding: 0.75rem 1rem;
+            font-size: 0.9375rem;
+            color: var(--gray-600);
+            border-radius: var(--radius-md);
+            transition: all 0.15s ease;
         }
         
-        .nav-dropdown-item:hover {
-            background: var(--gray-50);
+        .nav-dropdown-link:hover {
             color: var(--primary);
+            background: var(--gray-100);
         }
         
         .nav-phone {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
+            gap: 0.5rem;
             font-weight: 600;
             color: var(--primary);
+            margin-right: 0.5rem;
+        }
+        
+        .nav-phone svg {
+            width: 18px;
+            height: 18px;
         }
         
         .nav-cta {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
             font-weight: 600;
-            font-size: 0.95rem;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px rgba(96, 96, 64, 0.3);
+            border-radius: var(--radius-lg);
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-md);
         }
         
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(96, 96, 64, 0.4);
+            box-shadow: var(--shadow-lg);
         }
         
         .nav-mobile-toggle {
             display: none;
             flex-direction: column;
             gap: 5px;
-            padding: 10px;
+            padding: 0.5rem;
             background: none;
             border: none;
             cursor: pointer;
@@ -335,7 +343,7 @@
             right: 0;
             bottom: 0;
             background: var(--white);
-            padding: 24px;
+            padding: 1.5rem;
             overflow-y: auto;
         }
         
@@ -345,64 +353,78 @@
         
         .nav-mobile-link {
             display: block;
-            padding: 16px 0;
-            font-size: 1.1rem;
+            padding: 1rem;
             font-weight: 500;
             color: var(--gray-700);
-            border-bottom: 1px solid var(--gray-100);
+            border-bottom: 1px solid var(--gray-200);
         }
         
-        .nav-mobile-dropdown-items {
-            padding-left: 20px;
+        .nav-mobile-dropdown-links {
+            padding-left: 1rem;
+            background: var(--gray-50);
             display: none;
         }
         
-        .nav-mobile-dropdown-items.active {
+        .nav-mobile-dropdown-links.active {
             display: block;
         }
         
-        .nav-mobile-dropdown-item {
+        .nav-mobile-dropdown-link {
             display: block;
-            padding: 12px 0;
-            font-size: 1rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.9375rem;
             color: var(--gray-600);
+            border-bottom: 1px solid var(--gray-200);
         }
         
-        /* Hero Section */
-        .hero {
-            padding: 140px 0 80px;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+        @media (max-width: 1024px) {
+            .nav-links, .nav-phone, .nav-cta {
+                display: none;
+            }
+            
+            .nav-mobile-toggle {
+                display: flex;
+            }
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            padding: 140px 1.5rem 80px;
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--off-white) 100%);
             position: relative;
             overflow: hidden;
         }
         
-        .hero::before {
+        .page-hero::before {
             content: '';
             position: absolute;
             top: -50%;
             right: -20%;
-            width: 80%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(96, 96, 64, 0.03) 0%, transparent 70%);
+            width: 60%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(96, 96, 64, 0.05) 0%, transparent 70%);
             pointer-events: none;
         }
         
-        .hero-content {
+        .page-hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
             position: relative;
             z-index: 1;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
         }
         
         .breadcrumb {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.9rem;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--white);
+            border-radius: 50px;
+            font-size: 0.875rem;
             color: var(--gray-500);
-            margin-bottom: 24px;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
         }
         
         .breadcrumb a {
@@ -414,89 +436,97 @@
             color: var(--primary-dark);
         }
         
-        .breadcrumb-separator {
-            color: var(--gray-300);
+        .breadcrumb-sep {
+            color: var(--gray-400);
         }
         
-        .hero h1 {
-            font-size: clamp(2.25rem, 5vw, 3.25rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--gray-900) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--gray-800);
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
         
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--gray-600);
-            max-width: 550px;
+        .page-hero h1 span {
+            color: var(--primary);
+        }
+        
+        .page-hero-sub {
+            font-size: 1.125rem;
+            color: var(--gray-500);
+            max-width: 600px;
             margin: 0 auto;
         }
         
         /* Contact Section */
         .contact-section {
-            padding: 80px 0 100px;
-            background: var(--white);
+            padding: 80px 1.5rem;
         }
         
-        .contact-grid {
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1.3fr;
-            gap: 60px;
-            align-items: start;
+            gap: 4rem;
+        }
+        
+        @media (max-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
         }
         
         /* Contact Info */
         .contact-info {
-            position: sticky;
-            top: 120px;
-        }
-        
-        .contact-info-header {
-            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
         
         .contact-info-header h2 {
             font-size: 1.75rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            color: var(--gray-800);
+            margin-bottom: 0.75rem;
         }
         
         .contact-info-header p {
-            color: var(--gray-600);
+            color: var(--gray-500);
+            line-height: 1.7;
         }
         
         .contact-cards {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 1rem;
         }
         
         .contact-card {
             display: flex;
             align-items: flex-start;
-            gap: 20px;
-            padding: 24px;
+            gap: 1rem;
+            padding: 1.25rem;
             background: var(--gray-50);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-xl);
+            transition: all 0.2s ease;
+            border: 1px solid var(--gray-200);
         }
         
         .contact-card:hover {
             background: var(--white);
-            box-shadow: var(--shadow-lg);
-            border-color: transparent;
-            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--secondary);
         }
         
         .contact-card-icon {
-            width: 52px;
-            height: 52px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 14px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -504,341 +534,401 @@
             flex-shrink: 0;
         }
         
-        .contact-card-content h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 6px;
+        .contact-card-icon svg {
+            width: 22px;
+            height: 22px;
         }
         
-        .contact-card-content a {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
-            transition: color 0.2s ease;
+        .contact-card-content h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-card-content a,
+        .contact-card-content p {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-800);
         }
         
         .contact-card-content a:hover {
-            color: var(--primary-dark);
+            color: var(--primary);
         }
         
-        .contact-card-content p {
+        .contact-card-content .sub {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--gray-500);
+            margin-top: 0.25rem;
+        }
+        
+        .hours-grid {
+            display: grid;
+            gap: 0.375rem;
+            margin-top: 0.5rem;
+        }
+        
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9375rem;
+        }
+        
+        .hours-row .day {
             color: var(--gray-600);
-            font-size: 0.95rem;
         }
         
-        .contact-hours {
-            margin-top: 8px;
+        .hours-row .time {
+            font-weight: 500;
+            color: var(--gray-800);
         }
         
-        .contact-hours-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: rgba(34, 197, 94, 0.1);
-            color: var(--success);
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 20px;
-        }
-        
-        .contact-hours-badge.closed {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
+        .hours-row .closed {
+            color: var(--gray-400);
         }
         
         .contact-social {
-            margin-top: 32px;
-            padding-top: 32px;
+            padding-top: 1rem;
             border-top: 1px solid var(--gray-200);
         }
         
         .contact-social h3 {
-            font-size: 1rem;
+            font-size: 0.875rem;
             font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--gray-700);
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
         }
         
         .social-links {
             display: flex;
-            gap: 12px;
+            gap: 0.75rem;
         }
         
         .social-link {
             width: 44px;
             height: 44px;
+            background: var(--gray-100);
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--gray-100);
-            border-radius: 12px;
             color: var(--gray-600);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         
         .social-link:hover {
             background: var(--primary);
             color: var(--white);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+        }
+        
+        .social-link svg {
+            width: 20px;
+            height: 20px;
         }
         
         /* Quote Form */
-        .form-container {
+        .quote-form-card {
             background: var(--white);
-            border-radius: 24px;
+            border-radius: var(--radius-2xl);
+            padding: 2.5rem;
             box-shadow: var(--shadow-xl);
-            padding: 48px;
-            border: 1px solid var(--gray-100);
+            border: 1px solid var(--gray-200);
         }
         
-        .form-header {
-            margin-bottom: 36px;
+        .quote-form-header {
+            text-align: center;
+            margin-bottom: 2rem;
         }
         
-        .form-header h2 {
+        .quote-form-header h2 {
             font-size: 1.75rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
         }
         
-        .form-header p {
-            color: var(--gray-600);
+        .quote-form-header p {
+            color: var(--gray-500);
         }
         
         .quote-form {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 1.25rem;
         }
         
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 1rem;
+        }
+        
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
         
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 0.5rem;
         }
         
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-        
-        .form-label {
-            font-size: 0.9rem;
-            font-weight: 600;
+        .form-group label {
+            font-weight: 500;
+            font-size: 0.9375rem;
             color: var(--gray-700);
         }
         
-        .form-label span {
+        .form-group label .required {
             color: #ef4444;
         }
         
-        .form-input,
-        .form-select,
-        .form-textarea {
-            padding: 16px 20px;
-            border: 2px solid var(--gray-200);
-            border-radius: 12px;
-            font-size: 1rem;
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-lg);
             font-family: inherit;
+            font-size: 1rem;
             color: var(--gray-800);
             background: var(--white);
             transition: all 0.2s ease;
-            width: 100%;
         }
         
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(96, 96, 64, 0.1);
+            box-shadow: 0 0 0 3px rgba(96, 96, 64, 0.1);
         }
         
-        .form-input::placeholder,
-        .form-textarea::placeholder {
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
             color: var(--gray-400);
         }
         
-        .form-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-            background-size: 20px;
-            padding-right: 50px;
-            cursor: pointer;
-        }
-        
-        .form-textarea {
-            min-height: 140px;
+        .form-group textarea {
+            min-height: 120px;
             resize: vertical;
         }
         
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23707068' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+        
         .form-submit {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 18px 36px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 600;
+            font-size: 1.0625rem;
             border: none;
-            border-radius: 14px;
+            border-radius: var(--radius-lg);
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 14px rgba(96, 96, 64, 0.3);
-            font-family: inherit;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-md);
+            width: 100%;
+            margin-top: 0.5rem;
         }
         
         .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(96, 96, 64, 0.4);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
         
-        .form-submit:active {
-            transform: translateY(-1px);
+        .form-submit svg {
+            width: 20px;
+            height: 20px;
         }
         
-        .form-response-time {
+        .form-note {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            color: var(--gray-600);
-            margin-top: 8px;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-top: 0.5rem;
         }
         
-        .form-response-time svg {
+        .form-note svg {
+            width: 18px;
+            height: 18px;
             color: var(--success);
         }
         
         /* Map Section */
         .map-section {
-            padding: 0 0 100px;
-            background: var(--white);
+            padding: 0 1.5rem 80px;
         }
         
         .map-container {
-            border-radius: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .map-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .map-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+        }
+        
+        .map-header p {
+            color: var(--gray-500);
+        }
+        
+        .map-wrapper {
+            background: var(--gray-100);
+            border-radius: var(--radius-2xl);
             overflow: hidden;
+            height: 400px;
+            position: relative;
             box-shadow: var(--shadow-lg);
-            border: 1px solid var(--gray-100);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
         .map-placeholder {
             width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 16px;
-            color: var(--gray-500);
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
         }
         
         .map-placeholder svg {
             width: 64px;
             height: 64px;
-            color: var(--gray-400);
+            color: var(--secondary);
         }
         
         .map-placeholder p {
-            font-size: 1rem;
+            color: var(--gray-500);
+            font-weight: 500;
         }
         
         .map-placeholder a {
-            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: var(--white);
             font-weight: 600;
-            text-decoration: underline;
+            border-radius: var(--radius-lg);
+            transition: all 0.2s ease;
+        }
+        
+        .map-placeholder a:hover {
+            background: var(--primary-dark);
         }
         
         /* FAQ Section */
         .faq-section {
-            padding: 80px 0;
-            background: var(--cream);
+            padding: 80px 1.5rem;
+            background: var(--gray-50);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .faq-header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 3rem;
         }
         
         .faq-header h2 {
             font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            color: var(--gray-800);
+            margin-bottom: 0.75rem;
         }
         
         .faq-header p {
-            color: var(--gray-600);
-            font-size: 1.1rem;
+            color: var(--gray-500);
         }
         
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
         
         .faq-item {
             background: var(--white);
-            border-radius: 16px;
+            border-radius: var(--radius-xl);
             overflow: hidden;
-            border: 1px solid var(--gray-100);
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
         }
         
         .faq-question {
             width: 100%;
-            padding: 24px;
+            padding: 1.25rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 16px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            text-align: left;
+            gap: 1rem;
             font-family: inherit;
-        }
-        
-        .faq-question h3 {
             font-size: 1rem;
             font-weight: 600;
             color: var(--gray-800);
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
         
-        .faq-icon {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gray-100);
-            border-radius: 8px;
-            color: var(--gray-600);
+        .faq-question:hover {
+            background: var(--gray-50);
+        }
+        
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            color: var(--primary);
+            transition: transform 0.3s ease;
             flex-shrink: 0;
-            transition: all 0.3s ease;
         }
         
-        .faq-item.active .faq-icon {
-            background: var(--primary);
-            color: var(--white);
+        .faq-item.active .faq-question svg {
             transform: rotate(180deg);
         }
         
@@ -848,688 +938,593 @@
             transition: max-height 0.3s ease;
         }
         
-        .faq-answer-content {
-            padding: 0 24px 24px;
+        .faq-answer-inner {
+            padding: 0 1.5rem 1.25rem;
             color: var(--gray-600);
             line-height: 1.7;
         }
         
         .faq-item.active .faq-answer {
-            max-height: 300px;
-        }
-        
-        .faq-cta {
-            text-align: center;
-            margin-top: 40px;
-        }
-        
-        .faq-cta p {
-            color: var(--gray-600);
-            margin-bottom: 16px;
-        }
-        
-        .faq-cta a {
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: underline;
+            max-height: 500px;
         }
         
         /* Footer */
         .footer {
             background: var(--gray-900);
             color: var(--gray-300);
-            padding: 80px 0 0;
+            padding: 60px 1.5rem 0;
         }
         
-        .footer-grid {
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .footer-top {
             display: grid;
-            grid-template-columns: 1.5fr repeat(3, 1fr);
-            gap: 60px;
-            padding-bottom: 60px;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
             border-bottom: 1px solid var(--gray-700);
         }
         
+        @media (max-width: 900px) {
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         .footer-brand {
-            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
         
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.4rem;
+            gap: 0.75rem;
             font-weight: 800;
+            font-size: 1.375rem;
             color: var(--white);
-            margin-bottom: 20px;
         }
         
         .footer-logo-icon {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
+            font-size: 1.25rem;
         }
         
-        .footer-tagline {
-            font-size: 0.95rem;
+        .footer-brand p {
+            font-size: 0.9375rem;
             line-height: 1.7;
-            margin-bottom: 24px;
+            color: var(--gray-400);
         }
         
         .footer-social {
             display: flex;
-            gap: 12px;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
         }
         
         .footer-social a {
             width: 40px;
             height: 40px;
+            background: var(--gray-800);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--gray-800);
-            border-radius: 10px;
             color: var(--gray-400);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         
         .footer-social a:hover {
             background: var(--primary);
             color: var(--white);
-            transform: translateY(-3px);
+        }
+        
+        .footer-social svg {
+            width: 18px;
+            height: 18px;
         }
         
         .footer-column h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
             color: var(--white);
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 24px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
         }
         
-        .footer-links {
+        .footer-column ul {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 0.625rem;
         }
         
-        .footer-links a {
+        .footer-column a {
+            font-size: 0.9375rem;
             color: var(--gray-400);
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            transition: color 0.2s ease;
         }
         
-        .footer-links a:hover {
-            color: var(--white);
-            transform: translateX(4px);
+        .footer-column a:hover {
+            color: var(--secondary);
         }
         
         .footer-contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
         }
         
         .footer-contact-item svg {
+            width: 18px;
+            height: 18px;
+            color: var(--secondary);
             flex-shrink: 0;
             margin-top: 2px;
-            color: var(--primary-light);
         }
         
+        .footer-contact-item span,
         .footer-contact-item a {
-            color: var(--gray-300);
-            transition: color 0.2s ease;
-        }
-        
-        .footer-contact-item a:hover {
-            color: var(--white);
+            font-size: 0.9375rem;
         }
         
         .footer-bottom {
-            padding: 24px 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 1rem;
+            padding: 1.5rem 0;
         }
         
-        .footer-copyright {
-            font-size: 0.9rem;
+        .footer-bottom p {
+            font-size: 0.875rem;
             color: var(--gray-500);
         }
         
         .footer-legal {
             display: flex;
-            gap: 24px;
+            gap: 1.5rem;
         }
         
         .footer-legal a {
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             color: var(--gray-500);
             transition: color 0.2s ease;
         }
         
         .footer-legal a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
             color: var(--white);
+            border: none;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
         }
         
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-            }
-            
-            .footer-brand {
-                grid-column: 1 / -1;
-                max-width: none;
-            }
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
         
-        @media (max-width: 900px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-            
-            .contact-info {
-                position: static;
-            }
-            
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
+        .scroll-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
         }
         
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .nav-phone {
-                display: none;
-            }
-            
-            .nav-cta {
-                display: none;
-            }
-            
-            .nav-mobile-toggle {
-                display: flex;
-            }
-            
-            .hero {
-                padding: 120px 0 60px;
-            }
-            
-            .form-container {
-                padding: 32px 24px;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .contact-card {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-            }
+        .scroll-top svg {
+            width: 24px;
+            height: 24px;
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav">
-        <div class="container">
-            <div class="nav-inner">
-                <a href="/" class="nav-logo">
-                    <span class="nav-logo-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9,22 9,12 15,12 15,22"/>
-                        </svg>
-                    </span>
-                    Junk Pro Express
-                </a>
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="nav-logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </span>
+                Junk Pro Express
+            </a>
+            
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
                 
-                <div class="nav-links">
-                    <a href="/" class="nav-link">Home</a>
-                    
-                    <div class="nav-dropdown">
-                        <button class="nav-dropdown-btn">
-                            Services
-                            <svg class="nav-dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6,9 12,15 18,9"/>
-                            </svg>
-                        </button>
-                        <div class="nav-dropdown-menu">
-                            <a href="/services/residential-junk-removal/" class="nav-dropdown-item">Residential Junk Removal</a>
-                            <a href="/services/commercial-junk-removal/" class="nav-dropdown-item">Commercial Junk Removal</a>
-                            <a href="/services/appliance-removal/" class="nav-dropdown-item">Appliance Removal</a>
-                            <a href="/services/furniture-removal/" class="nav-dropdown-item">Furniture Removal</a>
-                            <a href="/services/construction-debris/" class="nav-dropdown-item">Construction Debris</a>
-                            <a href="/services/yard-waste-removal/" class="nav-dropdown-item">Yard Waste Removal</a>
-                            <a href="/services/eviction-clean-outs/" class="nav-dropdown-item">Eviction Clean-outs</a>
-                            <a href="/services/hoarder-homes/" class="nav-dropdown-item">Hoarder Homes</a>
-                        </div>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">
+                        Services
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/services/clutter-removal/" class="nav-dropdown-link">Clutter Removal</a>
+                        <a href="/services/eviction-clean-outs/" class="nav-dropdown-link">Eviction Clean-outs</a>
+                        <a href="/services/hoarder-homes-junk-removal/" class="nav-dropdown-link">Hoarder Homes Junk Removal</a>
+                        <a href="/services/pre-post-estate-sale-clean-outs/" class="nav-dropdown-link">Pre & Post Estate Sale Clean-outs</a>
+                        <a href="/services/unwanted-sofa-removal/" class="nav-dropdown-link">Unwanted Sofa Removal</a>
+                        <a href="/services/appliance-removal/" class="nav-dropdown-link">Appliance Removal</a>
+                        <a href="/services/yard-debris-removal/" class="nav-dropdown-link">Yard Debris Removal</a>
+                        <a href="/services/" class="nav-dropdown-link" style="border-top: 1px solid var(--gray-200); margin-top: 0.5rem; padding-top: 0.75rem; font-weight: 600; color: var(--primary);">View All Services →</a>
                     </div>
-                    
-                    <a href="/about/" class="nav-link">About</a>
-                    <a href="/reviews/" class="nav-link">Reviews</a>
-                    <a href="/contact/" class="nav-link active">Contact</a>
                 </div>
                 
-                <a href="tel:505-301-7315" class="nav-phone">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
-                    505-301-7315
-                </a>
-                
-                <a href="/contact/" class="nav-cta">Get a Free Quote</a>
-                
-                <button class="nav-mobile-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/reviews/" class="nav-link">Reviews</a>
+                <a href="/contact/" class="nav-link active">Contact</a>
             </div>
+            
+            <a href="tel:505-301-7315" class="nav-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                505-301-7315
+            </a>
+            
+            <a href="/contact/" class="nav-cta">Get a Free Quote</a>
+            
+            <button class="nav-mobile-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
         
-        <div class="nav-mobile-menu">
+        <div class="nav-mobile-menu" id="mobileMenu">
             <a href="/" class="nav-mobile-link">Home</a>
-            <div class="nav-mobile-dropdown">
-                <a href="#" class="nav-mobile-link nav-mobile-dropdown-toggle">Services ▾</a>
-                <div class="nav-mobile-dropdown-items">
-                    <a href="/services/residential-junk-removal/" class="nav-mobile-dropdown-item">Residential Junk Removal</a>
-                    <a href="/services/commercial-junk-removal/" class="nav-mobile-dropdown-item">Commercial Junk Removal</a>
-                    <a href="/services/appliance-removal/" class="nav-mobile-dropdown-item">Appliance Removal</a>
-                    <a href="/services/furniture-removal/" class="nav-mobile-dropdown-item">Furniture Removal</a>
-                    <a href="/services/construction-debris/" class="nav-mobile-dropdown-item">Construction Debris</a>
-                    <a href="/services/yard-waste-removal/" class="nav-mobile-dropdown-item">Yard Waste Removal</a>
-                    <a href="/services/eviction-clean-outs/" class="nav-mobile-dropdown-item">Eviction Clean-outs</a>
-                    <a href="/services/hoarder-homes/" class="nav-mobile-dropdown-item">Hoarder Homes</a>
-                </div>
+            <button class="nav-mobile-link" onclick="toggleMobileDropdown(this)" style="width: 100%; text-align: left; background: none; border: none; font-family: inherit; font-size: inherit; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                Services
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="nav-mobile-dropdown-links">
+                <a href="/services/clutter-removal/" class="nav-mobile-dropdown-link">Clutter Removal</a>
+                <a href="/services/eviction-clean-outs/" class="nav-mobile-dropdown-link">Eviction Clean-outs</a>
+                <a href="/services/hoarder-homes-junk-removal/" class="nav-mobile-dropdown-link">Hoarder Homes Junk Removal</a>
+                <a href="/services/pre-post-estate-sale-clean-outs/" class="nav-mobile-dropdown-link">Pre & Post Estate Sale Clean-outs</a>
+                <a href="/services/unwanted-sofa-removal/" class="nav-mobile-dropdown-link">Unwanted Sofa Removal</a>
+                <a href="/services/appliance-removal/" class="nav-mobile-dropdown-link">Appliance Removal</a>
+                <a href="/services/yard-debris-removal/" class="nav-mobile-dropdown-link">Yard Debris Removal</a>
+                <a href="/services/" class="nav-mobile-dropdown-link" style="font-weight: 600;">View All Services</a>
             </div>
             <a href="/about/" class="nav-mobile-link">About</a>
             <a href="/reviews/" class="nav-mobile-link">Reviews</a>
-            <a href="/contact/" class="nav-mobile-link">Contact</a>
-            <a href="tel:505-301-7315" class="nav-mobile-link" style="color: var(--primary); font-weight: 600;">📞 505-301-7315</a>
+            <a href="/contact/" class="nav-mobile-link" style="color: var(--primary); font-weight: 600;">Contact</a>
+            <a href="tel:505-301-7315" class="nav-mobile-link" style="background: var(--primary); color: white; border-radius: var(--radius-lg); text-align: center; margin-top: 1rem;">
+                Call 505-301-7315
+            </a>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <nav class="breadcrumb">
-                    <a href="/">Home</a>
-                    <span class="breadcrumb-separator">›</span>
-                    <span>Contact</span>
-                </nav>
-                <h1>Get a Free Junk Removal Quote in Albuquerque</h1>
-                <p class="hero-subtitle">Fast response, no obligation, completely free. Let us know what you need hauled away and we'll provide an honest quote.</p>
-            </div>
+    
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-container">
+            <nav class="breadcrumb">
+                <a href="/">Home</a>
+                <span class="breadcrumb-sep">›</span>
+                <span>Contact</span>
+            </nav>
+            <h1>Get a Free <span>Junk Removal Quote</span> in Albuquerque</h1>
+            <p class="page-hero-sub">Ready to clear your space? Call us now or fill out our form for a fast, no-obligation quote. Same-day service available!</p>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
     <section class="contact-section">
-        <div class="container">
-            <div class="contact-grid">
-                <!-- Contact Info Column -->
-                <div class="contact-info">
-                    <div class="contact-info-header">
-                        <h2>Get in Touch</h2>
-                        <p>Prefer to talk? Give us a call or send an email. We're here to help.</p>
+        <div class="contact-container">
+            <!-- Contact Info Column -->
+            <div class="contact-info">
+                <div class="contact-info-header">
+                    <h2>Get in Touch</h2>
+                    <p>We're here to help you reclaim your space. Reach out by phone for the fastest response, or send us a message using the form. We serve Albuquerque and all surrounding areas.</p>
+                </div>
+                
+                <div class="contact-cards">
+                    <a href="tel:505-301-7315" class="contact-card">
+                        <div class="contact-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Phone</h3>
+                            <span>505-301-7315</span>
+                            <p class="sub">Tap to call now</p>
+                        </div>
+                    </a>
+                    
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Service Area</h3>
+                            <p>Serving Albuquerque & Surrounding Areas</p>
+                            <p class="sub">Rio Rancho, Corrales, Bernalillo & more</p>
+                        </div>
                     </div>
                     
-                    <div class="contact-cards">
-                        <div class="contact-card">
-                            <div class="contact-card-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </div>
-                            <div class="contact-card-content">
-                                <h3>Call Us Directly</h3>
-                                <a href="tel:505-301-7315">505-301-7315</a>
-                                <p>Tap to call now</p>
-                            </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                         </div>
-                        
-                        <div class="contact-card">
-                            <div class="contact-card-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="10" r="3"/>
-                                    <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/>
-                                </svg>
-                            </div>
-                            <div class="contact-card-content">
-                                <h3>Service Area</h3>
-                                <p>Albuquerque, NM</p>
-                                <p>Serving Albuquerque, Rio Rancho & surrounding areas</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-card">
-                            <div class="contact-card-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12,6 12,12 16,14"/>
-                                </svg>
-                            </div>
-                            <div class="contact-card-content">
-                                <h3>Business Hours</h3>
-                                <p>Mon–Sat: 7:00 AM – 6:00 PM</p>
-                                <div class="contact-hours">
-                                    <span class="contact-hours-badge">
-                                        <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
-                                        Open Now
-                                    </span>
+                        <div class="contact-card-content">
+                            <h3>Business Hours</h3>
+                            <div class="hours-grid">
+                                <div class="hours-row">
+                                    <span class="day">Monday – Saturday</span>
+                                    <span class="time">7:00 AM – 6:00 PM</span>
+                                </div>
+                                <div class="hours-row">
+                                    <span class="day">Sunday</span>
+                                    <span class="closed">Closed</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="contact-social">
-                        <h3>Follow Us</h3>
-                        <div class="social-links">
-                            <a href="https://www.google.com/maps/place/Junk+Pro+Express/@35.0823726,-106.5973885,15z/data=!4m2!3m1!1s0x80b12c2ba8732c9f:0x151312287064dfb6" target="_blank" rel="noopener" class="social-link" aria-label="Google Business Profile">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
                 </div>
                 
-                <!-- Quote Form Column -->
-                <div class="form-container">
-                    <div class="form-header">
-                        <h2>Send Us a Message</h2>
-                        <p>Fill out the form below and we'll get back to you as soon as possible with a free, no-obligation quote.</p>
+                <div class="contact-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.google.com/maps/place/Junk+Pro+Express/@35.0823726,-106.5973885,15z/data=!4m2!3m1!1s0x80b12c2ba8732c9f:0x151312287064dfb6" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Google Business Profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quote Form Column -->
+            <div class="quote-form-card">
+                <div class="quote-form-header">
+                    <h2>Request a Free Quote</h2>
+                    <p>Fill out the form below and we'll get back to you shortly</p>
+                </div>
+                
+                <form class="quote-form" action="" method="post">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Smith" required>
+                        </div>
                     </div>
                     
-                    <form class="quote-form" action="" method="post">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="first-name">First Name <span>*</span></label>
-                                <input type="text" id="first-name" name="first_name" class="form-input" placeholder="John" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="last-name">Last Name <span>*</span></label>
-                                <input type="text" id="last-name" name="last_name" class="form-input" placeholder="Smith" required>
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="(505) 555-0123" required>
                         </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="phone">Phone Number <span>*</span></label>
-                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="(505) 555-1234" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="email">Email Address <span>*</span></label>
-                                <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
                         </div>
-                        
-                        <div class="form-group full-width">
-                            <label class="form-label" for="service">Service Needed <span>*</span></label>
-                            <select id="service" name="service" class="form-select" required>
-                                <option value="" disabled selected>Select a service...</option>
-                                <option value="residential-junk-removal">Residential Junk Removal</option>
-                                <option value="commercial-junk-removal">Commercial Junk Removal</option>
-                                <option value="appliance-removal">Appliance Removal</option>
-                                <option value="furniture-removal">Furniture Removal</option>
-                                <option value="construction-debris">Construction Debris</option>
-                                <option value="yard-waste-removal">Yard Waste Removal</option>
-                                <option value="eviction-clean-outs">Eviction Clean-outs</option>
-                                <option value="hoarder-homes">Hoarder Homes</option>
-                                <option value="estate-sale-clean-outs">Estate Sale Clean-outs</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label class="form-label" for="message">Message / Details</label>
-                            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your junk removal needs — what items need to go, approximate quantity, and any special circumstances..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="form-submit">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="22" y1="2" x2="11" y2="13"/>
-                                <polygon points="22,2 15,22 11,13 2,9"/>
-                            </svg>
-                            Get My Free Quote
-                        </button>
-                        
-                        <div class="form-response-time">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
-                            </svg>
-                            We typically respond within 1 hour
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Needed <span class="required">*</span></label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Select a service...</option>
+                            <option value="clutter-removal">Clutter Removal</option>
+                            <option value="eviction-clean-outs">Eviction Clean-outs</option>
+                            <option value="hoarder-homes-junk-removal">Hoarder Homes Junk Removal</option>
+                            <option value="pre-post-estate-sale-clean-outs">Pre & Post Estate Sale Clean-outs</option>
+                            <option value="unwanted-sofa-removal">Unwanted Sofa Removal</option>
+                            <option value="appliance-removal">Appliance Removal</option>
+                            <option value="yard-debris-removal">Yard Debris Removal</option>
+                            <option value="other">Other / General Inquiry</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message / Details</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your junk removal needs, including item types, location in the property, and any access considerations..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        Send My Quote Request
+                    </button>
+                    
+                    <p class="form-note">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        We typically respond within 1 hour
+                    </p>
+                </form>
             </div>
         </div>
     </section>
-
+    
     <!-- Map Section -->
     <section class="map-section">
-        <div class="container">
-            <div class="map-container">
+        <div class="map-container">
+            <div class="map-header">
+                <h2>Our Service Area</h2>
+                <p>Serving Albuquerque and all surrounding communities in New Mexico</p>
+            </div>
+            <div class="map-wrapper">
                 <div class="map-placeholder">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="10" r="3"/>
-                        <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/>
-                    </svg>
-                    <p>Serving Albuquerque, Rio Rancho & Surrounding Areas</p>
-                    <a href="https://www.google.com/maps/place/Junk+Pro+Express/@35.0823726,-106.5973885,15z/data=!4m2!3m1!1s0x80b12c2ba8732c9f:0x151312287064dfb6" target="_blank" rel="noopener">View on Google Maps →</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <p>Albuquerque, NM & Surrounding Areas</p>
+                    <a href="https://www.google.com/maps/place/Junk+Pro+Express/@35.0823726,-106.5973885,15z/data=!4m2!3m1!1s0x80b12c2ba8732c9f:0x151312287064dfb6" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        View on Google Maps
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- FAQ Section -->
     <section class="faq-section">
-        <div class="container">
+        <div class="faq-container">
             <div class="faq-header">
                 <h2>Frequently Asked Questions</h2>
-                <p>Got questions? We've got answers.</p>
+                <p>Quick answers to common questions about our junk removal services</p>
             </div>
             
-            <div class="faq-grid">
+            <div class="faq-list">
                 <div class="faq-item">
-                    <button class="faq-question">
-                        <h3>How quickly can you come out?</h3>
-                        <span class="faq-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6,9 12,15 18,9"/>
-                            </svg>
-                        </span>
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How do I get a quote for junk removal?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            We offer same-day service for most junk removal jobs in Albuquerque and Rio Rancho. Call us at 505-301-7315 and we'll do our best to accommodate your schedule, often arriving within just a few hours.
+                        <div class="faq-answer-inner">
+                            Getting a quote is easy! You can call us directly at 505-301-7315 for an immediate estimate, or fill out the form on this page and we'll get back to you within the hour. For the most accurate quote, we offer free on-site estimates where we can see exactly what needs to be removed.
                         </div>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <button class="faq-question">
-                        <h3>How much does junk removal cost?</h3>
-                        <span class="faq-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6,9 12,15 18,9"/>
-                            </svg>
-                        </span>
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do you offer same-day junk removal in Albuquerque?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Pricing depends on the volume of items and the type of material. We provide free, no-obligation quotes before any work begins. Our prices are competitive and transparent with no hidden fees.
+                        <div class="faq-answer-inner">
+                            Yes! We frequently offer same-day service throughout Albuquerque and surrounding areas. Give us a call in the morning and we can often be there by the afternoon. Availability depends on our current schedule, so call early for the best chance at same-day pickup.
                         </div>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <button class="faq-question">
-                        <h3>What items do you take?</h3>
-                        <span class="faq-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6,9 12,15 18,9"/>
-                            </svg>
-                        </span>
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What areas do you serve?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            We haul almost everything! This includes furniture, appliances, yard waste, construction debris, electronics, and general household junk. We handle specialized cleanouts for hoarder homes and evictions too. Just ask us about specific items.
+                        <div class="faq-answer-inner">
+                            We proudly serve Albuquerque and all surrounding communities including Rio Rancho, Bernalillo, Corrales, South Valley, Los Ranchos de Albuquerque, Paradise Hills, Tijeras, Cedar Crest, and more. If you're in the greater Albuquerque metro area, we can help!
                         </div>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <button class="faq-question">
-                        <h3>Do I need to be home during removal?</h3>
-                        <span class="faq-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6,9 12,15 18,9"/>
-                            </svg>
-                        </span>
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do I need to be home during the junk removal?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            It's helpful if you can be present to point out items, but it's not required. Just let us know what needs to go and provide access, and we'll take care of the rest. We'll confirm the price before we start.
+                        <div class="faq-answer-inner">
+                            Not necessarily! If you can point us to what needs to go and handle payment beforehand, we can often complete the job while you're away. Just let us know your preference when scheduling and we'll accommodate your needs.
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="faq-cta">
-                <p>Still have questions? We're happy to help!</p>
-                <a href="tel:505-301-7315">Call us at 505-301-7315</a>
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
+        <div class="footer-container">
+            <div class="footer-top">
                 <div class="footer-brand">
-                    <div class="footer-logo">
+                    <a href="/" class="footer-logo">
                         <span class="footer-logo-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                <polyline points="9,22 9,12 15,12 15,22"/>
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                         </span>
                         Junk Pro Express
-                    </div>
-                    <p class="footer-tagline">Albuquerque's Most Trusted Junk Removal. Fast, friendly junk hauling throughout Albuquerque, Rio Rancho, and surrounding areas.</p>
+                    </a>
+                    <p>Albuquerque's Most Trusted Junk Removal. Fast, reliable junk hauling throughout Albuquerque and surrounding areas.</p>
                     <div class="footer-social">
-                        <a href="https://www.google.com/maps/place/Junk+Pro+Express/@35.0823726,-106.5973885,15z/data=!4m2!3m1!1s0x80b12c2ba8732c9f:0x151312287064dfb6" target="_blank" rel="noopener" aria-label="Google Business Profile">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                            </svg>
+                        <a href="https://www.google.com/maps/place/Junk+Pro+Express/@35.0823726,-106.5973885,15z/data=!4m2!3m1!1s0x80b12c2ba8732c9f:0x151312287064dfb6" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                         </a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Services</h4>
-                    <div class="footer-links">
-                        <a href="/services/residential-junk-removal/">Residential Junk Removal</a>
-                        <a href="/services/commercial-junk-removal/">Commercial Junk Removal</a>
-                        <a href="/services/appliance-removal/">Appliance Removal</a>
-                        <a href="/services/furniture-removal/">Furniture Removal</a>
-                        <a href="/services/construction-debris/">Construction Debris</a>
-                        <a href="/services/yard-waste-removal/">Yard Waste Removal</a>
-                        <a href="/services/eviction-clean-outs/">Eviction Clean-outs</a>
-                        <a href="/services/hoarder-homes/">Hoarder Homes</a>
-                    </div>
+                    <ul>
+                        <li><a href="/services/clutter-removal/">Clutter Removal</a></li>
+                        <li><a href="/services/eviction-clean-outs/">Eviction Clean-outs</a></li>
+                        <li><a href="/services/hoarder-homes-junk-removal/">Hoarder Homes Junk Removal</a></li>
+                        <li><a href="/services/pre-post-estate-sale-clean-outs/">Estate Sale Clean-outs</a></li>
+                        <li><a href="/services/unwanted-sofa-removal/">Unwanted Sofa Removal</a></li>
+                        <li><a href="/services/appliance-removal/">Appliance Removal</a></li>
+                        <li><a href="/services/yard-debris-removal/">Yard Debris Removal</a></li>
+                    </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Service Areas</h4>
-                    <div class="footer-links">
-                        <a href="/areas/albuquerque/">Albuquerque</a>
-                        <a href="/areas/rio-rancho/">Rio Rancho</a>
-                    </div>
-                    
-                    <h4 style="margin-top: 32px;">Quick Links</h4>
-                    <div class="footer-links">
-                        <a href="/about/">About Us</a>
-                        <a href="/reviews/">Reviews</a>
-                        <a href="/contact/">Contact</a>
-                    </div>
+                    <ul>
+                        <li><a href="/areas/albuquerque/">Albuquerque</a></li>
+                        <li><a href="/areas/rio-rancho/">Rio Rancho</a></li>
+                        <li><a href="/areas/bernalillo/">Bernalillo</a></li>
+                        <li><a href="/areas/corrales/">Corrales</a></li>
+                        <li><a href="/areas/south-valley/">South Valley</a></li>
+                        <li><a href="/areas/los-ranchos/">Los Ranchos</a></li>
+                        <li><a href="/areas/paradise-hills/">Paradise Hills</a></li>
+                        <li><a href="/areas/tijeras/">Tijeras</a></li>
+                        <li><a href="/areas/cedar-crest/">Cedar Crest</a></li>
+                    </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <div class="footer-contact-item">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         <a href="tel:505-301-7315">505-301-7315</a>
                     </div>
                     <div class="footer-contact-item">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="10" r="3"/>
-                            <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/>
-                        </svg>
-                        <span>Albuquerque, NM</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span>Albuquerque & Surrounding Areas</span>
                     </div>
                     <div class="footer-contact-item">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12,6 12,12 16,14"/>
-                        </svg>
-                        <span>Mon–Sat: 7:00 AM – 6:00 PM</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <span>Mon–Sat: 7AM – 6PM</span>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <h4 style="margin-bottom: 0.75rem;">Quick Links</h4>
+                        <ul>
+                            <li><a href="/about/">About Us</a></li>
+                            <li><a href="/reviews/">Reviews</a></li>
+                            <li><a href="/contact/">Contact</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2025 Junk Pro Express. All rights reserved.</p>
+                <p>&copy; 2025 Junk Pro Express. All rights reserved.</p>
                 <div class="footer-legal">
                     <a href="/privacy/">Privacy Policy</a>
                     <a href="/terms/">Terms of Service</a>
@@ -1537,77 +1532,95 @@
             </div>
         </div>
     </footer>
-
+    
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+    
     <script>
-        // Mobile Navigation Toggle
-        const mobileToggle = document.querySelector('.nav-mobile-toggle');
-        const mobileMenu = document.querySelector('.nav-mobile-menu');
-        
-        mobileToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
-        });
-        
-        // Mobile Dropdown Toggle
-        const mobileDropdownToggle = document.querySelector('.nav-mobile-dropdown-toggle');
-        const mobileDropdownItems = document.querySelector('.nav-mobile-dropdown-items');
-        
-        if (mobileDropdownToggle) {
-            mobileDropdownToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                mobileDropdownItems.classList.toggle('active');
-            });
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
         }
         
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                // Close all items
-                faqItems.forEach(i => i.classList.remove('active'));
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-        
-        // Open first FAQ by default
-        if (faqItems.length > 0) {
-            faqItems[0].classList.add('active');
+        // Mobile dropdown toggle
+        function toggleMobileDropdown(button) {
+            const dropdown = button.nextElementSibling;
+            dropdown.classList.toggle('active');
+            const svg = button.querySelector('svg');
+            svg.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
         }
         
-        // Update open/closed status based on current time
-        function updateOpenStatus() {
-            const badge = document.querySelector('.contact-hours-badge');
-            if (!badge) return;
+        // FAQ toggle
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
             
-            const now = new Date();
-            const day = now.getDay();
-            const hour = now.getHours();
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
             
-            // Check if it's Mon-Sat (1-6) and between 7am-6pm
-            const isOpen = day >= 1 && day <= 6 && hour >= 7 && hour < 18;
-            
-            if (isOpen) {
-                badge.innerHTML = '<svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg> Open Now';
-                badge.classList.remove('closed');
-            } else {
-                badge.innerHTML = '<svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg> Closed';
-                badge.classList.add('closed');
+            // Open clicked one if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
             }
         }
         
-        updateOpenStatus();
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
         
-        // Smooth scroll behavior
-        document.documentElement.style.scrollBehavior = 'smooth';
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+        
+        // Nav scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav');
+            if (window.pageYOffset > 50) {
+                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.1)';
+            }
+        });
+        
+        // Form validation enhancement
+        const form = document.querySelector('.quote-form');
+        form.addEventListener('submit', function(e) {
+            // Basic validation - the form will still submit normally
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#ef4444';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
+            }
+        });
+        
+        // Reset field border on input
+        document.querySelectorAll('.quote-form input, .quote-form select, .quote-form textarea').forEach(field => {
+            field.addEventListener('input', function() {
+                this.style.borderColor = '';
+            });
+        });
     </script>
 </body>
 </html>
