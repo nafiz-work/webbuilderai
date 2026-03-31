@@ -950,6 +950,14 @@ const data = {
       "alt": "Business photo"
     },
     {
+      "src": "https://static.wixstatic.com/media/81f8d1_a02f4c0c59d14d44bbce7939e080ab9f~mv2.png/v1/fill/w_73",
+      "alt": "Business photo"
+    },
+    {
+      "src": "https://static.wixstatic.com/media/81f8d1_98b84a5a63cf446f95c8dc789f0e33f3~mv2.png/v1/fill/w_160",
+      "alt": "Business photo"
+    },
+    {
       "src": "https://static.wixstatic.com/media/e1aa082f7c0747168d9cf43e77046142.png/v1/fill/w_28",
       "alt": "Business photo"
     },
@@ -1117,7 +1125,7 @@ const data = {
   "serviceLabel": "Junk Removal",
   "clientToken": "9a8348bf-063d-41b9-bef7-5d51c47a8c45",
   "isClaimed": false,
-  "bbbEnabled": true
+  "templateVersion": "v1"
 };
 </script>
 
@@ -1872,7 +1880,7 @@ document.title = `${data.business} | Junk Removal`;
     document.documentElement.style.setProperty('--btn-text-on-primary', btnOnPrimary);
     document.documentElement.style.setProperty('--btn-text-on-accent',  btnOnAccent);
     var s = document.createElement('style');
-    s.textContent = [
+    var cssRules = [
       '.btn-primary { color: ' + btnOnAccent + ' !important; }',
       // V2 template: .btn-primary:hover has background:#fff — always use dark text on white hover
       '.btn-primary:hover { color: var(--dark) !important; }',
@@ -1885,17 +1893,22 @@ document.title = `${data.business} | Junk Removal`;
       '.form-submit:hover { color: #ffffff !important; }',
       '.gallery-load-more { color: #fff !important; }',
       '.wetake-tab.active { color: #fff !important; }',
-      // Value Props strip — section background uses brand primary color
-      '.value-props { color: ' + btnOnPrimary + ' !important; }',
-      '.value-item h3 { color: ' + btnOnPrimary + ' !important; }',
-      '.value-item p { color: ' + btnOnPrimary + ' !important; }',
       // How It Works step circles — background uses accent color (WCAG-threshold: luminance < 0.179 → white)
       '.step-number { color: ' + btnOnAccent + ' !important; }',
       // Pricing featured card badge — background uses accent color
       '.featured-badge { color: ' + btnOnAccent + ' !important; }',
       // What We Haul CTA — background uses brand ACCENT color, so contrast against accent
       '.wetake-cta { color: ' + btnOnAccent + ' !important; }',
-    ].join(' ');
+    ];
+    // Value Props strip — only applies to templates where .value-props has a primary-colored background.
+    // V1 junk-removal has background:white, so injecting white text would make it invisible.
+    // V2 junk-removal and handyman templates have a primary-colored strip.
+    if (data.templateVersion !== 'v1') {
+      cssRules.push('.value-props { color: ' + btnOnPrimary + ' !important; }');
+      cssRules.push('.value-item h3 { color: ' + btnOnPrimary + ' !important; }');
+      cssRules.push('.value-item p { color: ' + btnOnPrimary + ' !important; }');
+    }
+    s.textContent = cssRules.join(' ');
     document.head.appendChild(s);
   })();
 
@@ -2037,21 +2050,6 @@ document.title = `${data.business} | Junk Removal`;
     heroStats.innerHTML = data.stats.map(function (s) {
       return '<div class="stat"><div class="stat-num">' + s.num + '</div><div class="stat-label">' + s.label + '</div></div>';
     }).join('');
-    if (data.bbbEnabled) {
-      var lastStat = heroStats.querySelector('.stat:last-child') || heroStats.lastElementChild;
-      var bbbImg = document.createElement('img');
-      bbbImg.src = 'images/bbb-accredited.png';
-      bbbImg.alt = 'BBB Accredited Business';
-      bbbImg.style.cssText = 'height:40px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);margin-top:6px;margin-left:auto;margin-right:auto;';
-      if (lastStat) {
-        lastStat.appendChild(bbbImg);
-      } else {
-        var bbbWrap = document.createElement('div');
-        bbbWrap.className = 'stat';
-        bbbWrap.appendChild(bbbImg);
-        heroStats.appendChild(bbbWrap);
-      }
-    }
   }
 
   // ── Services ──
@@ -2618,7 +2616,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-v15pc0dn.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
