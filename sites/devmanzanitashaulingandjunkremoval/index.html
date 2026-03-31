@@ -726,8 +726,8 @@ const data = {
   "isHandyman": false,
   "business": "Manzanita's Hauling And Junk Removal",
   "tagline": "Oakland's Trusted Junk Removal Service",
-  "subheadline": "Hello Fast, friendly junk hauling throughout Oakland and surrounding areas. Same-day service available. Fully licensed, insured, and eco-minded.",
-  "footerTagline": "Hello",
+  "subheadline": "Easy peasy junk removal guru",
+  "footerTagline": null,
   "phone": "(561) 632-0900",
   "email": null,
   "address": "945 73rd Ave",
@@ -2642,7 +2642,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-ii1ls2tg.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
