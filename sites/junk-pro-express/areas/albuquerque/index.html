@@ -28,6 +28,7 @@
         "name": "Junk Pro Express",
         "image": "https://lh3.googleusercontent.com/p/AF1QipNvjQRzaT7K5Up-tYsFLGtQoFaZaDQWR5iuyJGl=w3120-h4160-k-no",
         "telephone": "505-301-7315",
+        "url": "https://www.junkproexpress.com",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Albuquerque",
@@ -39,7 +40,6 @@
             "latitude": 35.08237,
             "longitude": -106.59739
         },
-        "url": "https://www.junkproexpress.com",
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -66,7 +66,7 @@
         "@type": "Service",
         "serviceType": "Junk Removal",
         "name": "Junk Removal in Albuquerque, NM",
-        "description": "Professional junk removal services in Albuquerque, NM. Residential and commercial junk hauling, appliance removal, furniture removal, and more.",
+        "description": "Professional junk removal services in Albuquerque, NM. We handle clutter removal, appliances, furniture, yard debris, and more with same-day service available.",
         "provider": {
             "@id": "https://www.junkproexpress.com/#business"
         },
@@ -116,23 +116,7 @@
                 "name": "Do you offer same-day junk removal in Albuquerque?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes! Junk Pro Express offers same-day junk removal services throughout Albuquerque. Give us a call at 505-301-7315 and we'll do our best to accommodate your schedule."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What areas of Albuquerque do you serve?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We serve all of Albuquerque including Downtown, Nob Hill, Northeast Heights, the West Side, South Valley, North Valley, and all surrounding neighborhoods."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How much does junk removal cost in Albuquerque?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Pricing depends on the volume of junk and type of items. We offer free, no-obligation quotes. Contact us for an accurate estimate for your specific junk removal needs."
+                    "text": "Yes! Junk Pro Express offers same-day junk removal throughout Albuquerque and surrounding areas. Call us at 505-301-7315 to schedule your pickup today."
                 }
             },
             {
@@ -140,15 +124,31 @@
                 "name": "What items do you remove in Albuquerque?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "We remove furniture, appliances, yard waste, construction debris, electronics, mattresses, and most household items. We also handle estate cleanouts, eviction cleanouts, and hoarder home cleanups."
+                    "text": "We remove furniture, appliances, yard debris, household clutter, electronics, and more. We handle eviction clean-outs, hoarder homes, and estate sale cleanups throughout Albuquerque."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Do I need to be home during the junk removal in Albuquerque?",
+                "name": "How much does junk removal cost in Albuquerque?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "While it's helpful to be present, it's not always necessary. As long as the items are accessible and you've approved the quote, we can complete the job. Contact us to make arrangements."
+                    "text": "Pricing depends on the volume of junk and type of items. Contact us for a free, no-obligation quote. We offer transparent pricing with no hidden fees."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need to be home during junk removal in Albuquerque?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "While it's helpful to be present, it's not always required. We can arrange access to your property and communicate via phone if needed. Just let us know your situation when booking."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What areas near Albuquerque do you serve?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We serve all of Albuquerque plus surrounding areas including South Valley, Los Ranchos, Paradise Hills, Corrales, Rio Rancho, Tijeras, Cedar Crest, Bernalillo, and more."
                 }
             }
         ]
@@ -159,20 +159,19 @@
         :root {
             --primary: #606040;
             --primary-dark: #4a4a30;
-            --primary-light: #7a7a5a;
             --secondary: #a0a080;
-            --secondary-light: #c5c5a8;
+            --secondary-light: #c8c8b0;
+            --text-dark: #2d2d1f;
+            --text-medium: #5a5a4a;
+            --text-light: #7a7a6a;
+            --bg-cream: #faf9f6;
+            --bg-sage: #f5f5f0;
             --white: #ffffff;
-            --off-white: #f8f8f5;
-            --light-gray: #e8e8e2;
-            --gray: #6b6b6b;
-            --dark: #2a2a2a;
-            --success: #4a7c4a;
-            --shadow: 0 4px 20px rgba(96, 96, 64, 0.12);
-            --shadow-lg: 0 8px 40px rgba(96, 96, 64, 0.18);
+            --border: #e5e5dc;
+            --shadow: 0 4px 6px -1px rgba(96, 96, 64, 0.1), 0 2px 4px -1px rgba(96, 96, 64, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(96, 96, 64, 0.1), 0 4px 6px -2px rgba(96, 96, 64, 0.05);
             --radius: 12px;
             --radius-lg: 20px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         * {
@@ -184,18 +183,18 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background: var(--white);
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
+            color: var(--text-dark);
+            background: var(--bg-cream);
         }
         
         a {
             color: inherit;
             text-decoration: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
         }
         
         .container {
@@ -206,11 +205,11 @@
         
         /* Navigation */
         .nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: var(--white);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
         }
         
         .nav-container {
@@ -220,59 +219,81 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 75px;
+            height: 72px;
         }
         
         .nav-logo {
             font-size: 1.5rem;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--primary);
-            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .nav-logo span {
-            color: var(--secondary);
+        .nav-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
         }
         
         .nav-links {
             display: flex;
             align-items: center;
             gap: 8px;
-            list-style: none;
         }
         
-        .nav-links a {
+        .nav-link {
             padding: 10px 16px;
+            color: var(--text-medium);
             font-weight: 500;
-            color: var(--dark);
             border-radius: 8px;
-            transition: var(--transition);
+            transition: all 0.2s;
         }
         
-        .nav-links a:hover {
-            background: var(--off-white);
+        .nav-link:hover {
             color: var(--primary);
+            background: var(--bg-sage);
         }
         
         .nav-dropdown {
             position: relative;
         }
         
-        .nav-dropdown-toggle {
+        .nav-dropdown-btn {
             display: flex;
             align-items: center;
             gap: 6px;
+            padding: 10px 16px;
+            color: var(--text-medium);
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s;
             cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
         }
         
-        .nav-dropdown-toggle::after {
-            content: '';
-            border: 5px solid transparent;
-            border-top-color: var(--gray);
-            transition: var(--transition);
+        .nav-dropdown-btn:hover {
+            color: var(--primary);
+            background: var(--bg-sage);
         }
         
-        .nav-dropdown:hover .nav-dropdown-toggle::after {
+        .nav-dropdown-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-btn svg {
             transform: rotate(180deg);
         }
         
@@ -280,16 +301,15 @@
             position: absolute;
             top: 100%;
             left: 0;
-            min-width: 260px;
             background: var(--white);
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
+            padding: 8px;
+            min-width: 260px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
-            transition: var(--transition);
-            padding: 8px;
-            list-style: none;
+            transition: all 0.2s;
         }
         
         .nav-dropdown:hover .nav-dropdown-menu {
@@ -298,100 +318,124 @@
             transform: translateY(0);
         }
         
-        .nav-dropdown-menu a {
+        .nav-dropdown-link {
             display: block;
-            padding: 12px 16px;
+            padding: 10px 14px;
+            color: var(--text-medium);
             border-radius: 8px;
+            transition: all 0.2s;
             font-size: 0.95rem;
         }
         
-        .nav-dropdown-menu a:hover {
-            background: var(--off-white);
+        .nav-dropdown-link:hover {
+            background: var(--bg-sage);
+            color: var(--primary);
         }
         
         .nav-phone {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-weight: 600;
+            padding: 10px 16px;
             color: var(--primary);
-            margin-right: 12px;
-        }
-        
-        .nav-phone svg {
-            width: 18px;
-            height: 18px;
+            font-weight: 600;
         }
         
         .nav-cta {
             background: var(--primary);
-            color: var(--white) !important;
-            padding: 12px 24px !important;
-            border-radius: 50px !important;
-            font-weight: 600 !important;
-            transition: var(--transition);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
         }
         
         .nav-cta:hover {
-            background: var(--primary-dark) !important;
-            transform: translateY(-2px);
+            background: var(--primary-dark);
+            transform: translateY(-1px);
         }
         
-        .mobile-toggle {
+        .nav-mobile-toggle {
             display: none;
-            flex-direction: column;
-            gap: 5px;
+            background: none;
+            border: none;
+            padding: 8px;
             cursor: pointer;
-            padding: 10px;
+            color: var(--text-dark);
         }
         
-        .mobile-toggle span {
-            width: 24px;
-            height: 2px;
-            background: var(--dark);
-            transition: var(--transition);
+        .nav-mobile-menu {
+            display: none;
+            position: absolute;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .nav-mobile-menu.active {
+            display: block;
+        }
+        
+        .nav-mobile-link {
+            display: block;
+            padding: 12px 0;
+            color: var(--text-medium);
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-mobile-dropdown {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-mobile-dropdown-title {
+            font-weight: 500;
+            color: var(--text-medium);
+            margin-bottom: 8px;
+        }
+        
+        .nav-mobile-dropdown-links {
+            padding-left: 16px;
+        }
+        
+        .nav-mobile-dropdown-links a {
+            display: block;
+            padding: 8px 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
         
         /* Breadcrumb */
         .breadcrumb {
-            padding: 16px 0;
-            background: var(--off-white);
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        .breadcrumb-list {
             display: flex;
             align-items: center;
             gap: 8px;
-            list-style: none;
             font-size: 0.9rem;
-            color: var(--gray);
+            color: var(--text-light);
+            margin-bottom: 16px;
         }
         
-        .breadcrumb-list a {
+        .breadcrumb a {
             color: var(--primary);
-            transition: var(--transition);
         }
         
-        .breadcrumb-list a:hover {
-            color: var(--primary-dark);
+        .breadcrumb a:hover {
+            text-decoration: underline;
         }
         
-        .breadcrumb-list li:not(:last-child)::after {
-            content: '›';
-            margin-left: 8px;
-            color: var(--gray);
+        .breadcrumb-sep {
+            color: var(--border);
         }
         
-        .breadcrumb-list li:last-child {
-            color: var(--dark);
-            font-weight: 500;
-        }
-        
-        /* Hero Section */
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 80px 0 100px;
+            color: var(--white);
+            padding: 80px 0;
             position: relative;
             overflow: hidden;
         }
@@ -400,52 +444,42 @@
             content: '';
             position: absolute;
             top: 0;
+            left: 0;
             right: 0;
-            width: 50%;
-            height: 100%;
-            background: url('https://lh3.googleusercontent.com/p/AF1QipNvjQRzaT7K5Up-tYsFLGtQoFaZaDQWR5iuyJGl=w3120-h4160-k-no') center/cover;
-            opacity: 0.15;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
         
         .hero-content {
             position: relative;
-            z-index: 2;
-            max-width: 700px;
+            z-index: 1;
+            max-width: 800px;
         }
         
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.15);
-            padding: 10px 20px;
-            border-radius: 50px;
+        .hero .breadcrumb {
+            color: var(--secondary-light);
+        }
+        
+        .hero .breadcrumb a {
             color: var(--white);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 24px;
-            backdrop-filter: blur(10px);
         }
         
-        .hero-badge svg {
-            width: 18px;
-            height: 18px;
+        .hero .breadcrumb-sep {
+            color: var(--secondary);
         }
         
         .hero h1 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-size: 3rem;
             font-weight: 800;
-            color: var(--white);
             line-height: 1.15;
             margin-bottom: 20px;
-            letter-spacing: -1px;
         }
         
         .hero-subheadline {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 36px;
-            line-height: 1.7;
+            font-size: 1.25rem;
+            color: var(--secondary-light);
+            margin-bottom: 32px;
+            max-width: 600px;
         }
         
         .hero-ctas {
@@ -459,15 +493,14 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             padding: 16px 32px;
-            border-radius: 50px;
-            font-size: 1rem;
+            border-radius: 8px;
             font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
             cursor: pointer;
-            transition: var(--transition);
             border: none;
-            text-align: center;
         }
         
         .btn-primary {
@@ -476,14 +509,14 @@
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
         
         .btn-secondary {
             background: transparent;
             color: var(--white);
-            border: 2px solid rgba(255,255,255,0.4);
+            border: 2px solid var(--secondary);
         }
         
         .btn-secondary:hover {
@@ -491,53 +524,52 @@
             border-color: var(--white);
         }
         
-        .btn-dark {
-            background: var(--primary);
-            color: var(--white);
-        }
-        
-        .btn-dark:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-        }
-        
-        .hero-stats {
+        .hero-badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 32px;
+            gap: 12px;
         }
         
-        .hero-stat {
-            text-align: left;
-        }
-        
-        .hero-stat-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--white);
-        }
-        
-        .hero-stat-label {
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 16px;
+            border-radius: 50px;
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.75);
+            font-weight: 500;
         }
         
-        /* Sections */
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+            color: var(--secondary-light);
+        }
+        
+        /* Section Styles */
         .section {
             padding: 80px 0;
         }
         
-        .section-light {
-            background: var(--off-white);
+        .section-sage {
+            background: var(--bg-sage);
+        }
+        
+        .section-white {
+            background: var(--white);
         }
         
         .section-label {
             display: inline-block;
+            background: var(--secondary-light);
+            color: var(--primary-dark);
+            padding: 6px 14px;
+            border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--primary);
+            letter-spacing: 0.5px;
             margin-bottom: 12px;
         }
         
@@ -548,20 +580,18 @@
         }
         
         .section-header h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: 2.25rem;
             font-weight: 700;
-            color: var(--dark);
+            color: var(--text-dark);
             margin-bottom: 16px;
-            letter-spacing: -0.5px;
         }
         
         .section-header p {
             font-size: 1.1rem;
-            color: var(--gray);
-            line-height: 1.7;
+            color: var(--text-medium);
         }
         
-        /* Area Introduction */
+        /* Area Intro */
         .area-intro {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -572,15 +602,18 @@
         .area-intro-content h2 {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--dark);
             margin-bottom: 24px;
+            color: var(--text-dark);
         }
         
         .area-intro-content p {
-            color: var(--gray);
-            margin-bottom: 20px;
+            color: var(--text-medium);
+            margin-bottom: 16px;
             font-size: 1.05rem;
-            line-height: 1.8;
+        }
+        
+        .area-intro-content p:last-of-type {
+            margin-bottom: 0;
         }
         
         .area-intro-image {
@@ -598,7 +631,7 @@
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 24px;
         }
         
@@ -607,57 +640,57 @@
             border-radius: var(--radius-lg);
             padding: 32px;
             box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--light-gray);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
         }
         
         .service-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 14px;
+            background: var(--bg-sage);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
+            color: var(--primary);
         }
         
         .service-icon svg {
             width: 28px;
             height: 28px;
-            color: var(--white);
         }
         
         .service-card h3 {
             font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--dark);
+            font-weight: 600;
             margin-bottom: 12px;
+            color: var(--text-dark);
         }
         
         .service-card p {
-            color: var(--gray);
+            color: var(--text-medium);
             margin-bottom: 20px;
-            line-height: 1.7;
+            font-size: 0.95rem;
         }
         
         .service-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             color: var(--primary);
             font-weight: 600;
-            transition: var(--transition);
+            transition: gap 0.2s;
         }
         
         .service-link:hover {
-            gap: 12px;
-            color: var(--primary-dark);
+            gap: 10px;
         }
         
         .service-link svg {
@@ -669,96 +702,95 @@
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 32px;
         }
         
         .step-card {
             text-align: center;
-            position: relative;
-        }
-        
-        .step-card:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 40px;
-            right: -20px;
-            width: 40px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--secondary), transparent);
+            padding: 32px;
         }
         
         .step-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--white);
+            font-size: 1.75rem;
+            font-weight: 700;
             margin: 0 auto 24px;
-            box-shadow: 0 8px 25px rgba(96, 96, 64, 0.3);
         }
         
         .step-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--dark);
+            font-size: 1.25rem;
+            font-weight: 600;
             margin-bottom: 12px;
+            color: var(--text-dark);
         }
         
         .step-card p {
-            color: var(--gray);
-            line-height: 1.7;
+            color: var(--text-medium);
+            font-size: 0.95rem;
         }
         
         /* Quote Form */
         .quote-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 80px 0;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
         }
         
-        .quote-container {
+        .quote-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .quote-content {
+            position: relative;
+            z-index: 1;
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
+            grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
         }
         
-        .quote-content {
-            color: var(--white);
-        }
-        
-        .quote-content h2 {
-            font-size: 2.2rem;
+        .quote-text h2 {
+            font-size: 2.25rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         
-        .quote-content p {
+        .quote-text p {
             font-size: 1.1rem;
-            opacity: 0.9;
+            color: var(--secondary-light);
             margin-bottom: 24px;
-            line-height: 1.7;
         }
         
         .quote-features {
-            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
         }
         
-        .quote-features li {
+        .quote-feature {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-            font-size: 1.05rem;
+            gap: 8px;
+            font-size: 0.95rem;
         }
         
-        .quote-features svg {
-            width: 22px;
-            height: 22px;
+        .quote-feature svg {
+            width: 20px;
+            height: 20px;
             color: var(--secondary-light);
         }
         
@@ -766,13 +798,12 @@
             background: var(--white);
             border-radius: var(--radius-lg);
             padding: 40px;
-            box-shadow: var(--shadow-lg);
+            color: var(--text-dark);
         }
         
         .quote-form-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--dark);
             margin-bottom: 24px;
             text-align: center;
         }
@@ -784,28 +815,31 @@
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
         }
         
         .form-group label {
             display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 8px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+            font-size: 0.95rem;
         }
         
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 14px 18px;
-            border: 2px solid var(--light-gray);
-            border-radius: 10px;
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
             font-size: 1rem;
+            transition: all 0.2s;
             font-family: inherit;
-            transition: var(--transition);
-            background: var(--white);
         }
         
         .form-group input:focus,
@@ -813,25 +847,25 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(96, 96, 64, 0.1);
+            box-shadow: 0 0 0 3px rgba(96, 96, 64, 0.1);
         }
         
         .form-group textarea {
-            min-height: 100px;
             resize: vertical;
+            min-height: 100px;
         }
         
         .form-submit {
             width: 100%;
-            padding: 16px;
             background: var(--primary);
             color: var(--white);
+            padding: 16px 32px;
             border: none;
-            border-radius: 50px;
+            border-radius: 8px;
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.2s;
         }
         
         .form-submit:hover {
@@ -843,15 +877,15 @@
             text-align: center;
             margin-top: 16px;
             font-size: 0.9rem;
-            color: var(--gray);
+            color: var(--text-light);
         }
         
         .form-note svg {
             width: 16px;
             height: 16px;
+            display: inline;
             vertical-align: middle;
-            margin-right: 6px;
-            color: var(--success);
+            margin-right: 4px;
         }
         
         /* Why Choose Us */
@@ -862,55 +896,91 @@
         }
         
         .feature-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 28px;
             text-align: center;
+            padding: 32px 24px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--light-gray);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
         }
         
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--secondary-light), var(--secondary));
+            width: 64px;
+            height: 64px;
+            background: var(--bg-sage);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 18px;
+            margin: 0 auto 20px;
+            color: var(--primary);
         }
         
         .feature-icon svg {
             width: 28px;
             height: 28px;
-            color: var(--primary-dark);
         }
         
         .feature-card h3 {
             font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 10px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
         }
         
         .feature-card p {
-            font-size: 0.95rem;
-            color: var(--gray);
-            line-height: 1.6;
+            color: var(--text-medium);
+            font-size: 0.9rem;
         }
         
         /* Reviews */
+        .reviews-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .reviews-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .reviews-rating {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .reviews-stars {
+            display: flex;
+            gap: 2px;
+            color: #FBBF24;
+        }
+        
+        .reviews-stars svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+        
+        .reviews-score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .reviews-count {
+            color: var(--text-light);
+        }
+        
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 24px;
+            margin-bottom: 32px;
         }
         
         .review-card {
@@ -918,93 +988,105 @@
             border-radius: var(--radius-lg);
             padding: 32px;
             box-shadow: var(--shadow);
-            border: 1px solid var(--light-gray);
+            border: 1px solid var(--border);
         }
         
-        .review-stars {
-            color: #f5b942;
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-        }
-        
-        .review-text {
-            font-size: 1.05rem;
-            color: var(--dark);
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        
-        .review-author {
+        .review-header {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
+            margin-bottom: 16px;
         }
         
         .review-avatar {
             width: 48px;
             height: 48px;
             background: var(--primary);
+            color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.1rem;
         }
         
-        .review-name {
+        .review-meta h4 {
             font-weight: 600;
-            color: var(--dark);
+            color: var(--text-dark);
+            margin-bottom: 4px;
         }
         
-        .review-date {
+        .review-meta span {
             font-size: 0.85rem;
-            color: var(--gray);
+            color: var(--text-light);
+        }
+        
+        .review-stars {
+            display: flex;
+            gap: 2px;
+            color: #FBBF24;
+            margin-bottom: 12px;
+        }
+        
+        .review-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+        
+        .review-text {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
         
         .reviews-cta {
             text-align: center;
-            margin-top: 40px;
+        }
+        
+        .reviews-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .reviews-cta a:hover {
+            text-decoration: underline;
         }
         
         /* Nearby Areas */
-        .areas-section {
-            background: var(--off-white);
+        .nearby-areas h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 32px;
         }
         
         .areas-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 14px;
             justify-content: center;
+            gap: 12px;
         }
         
         .area-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 24px;
+            display: inline-block;
+            padding: 12px 24px;
             background: var(--white);
+            border: 1px solid var(--border);
             border-radius: 50px;
-            font-weight: 600;
-            color: var(--dark);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 2px solid transparent;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.2s;
         }
         
         .area-tag:hover {
+            background: var(--primary);
+            color: var(--white);
             border-color: var(--primary);
-            transform: translateY(-3px);
-            color: var(--primary);
-        }
-        
-        .area-tag svg {
-            width: 18px;
-            height: 18px;
-            color: var(--primary);
         }
         
         /* FAQ */
@@ -1016,132 +1098,125 @@
         .faq-item {
             background: var(--white);
             border-radius: var(--radius);
-            margin-bottom: 16px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--light-gray);
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
             overflow: hidden;
         }
         
         .faq-question {
             width: 100%;
-            padding: 22px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
             background: none;
             border: none;
             text-align: left;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark);
             cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-family: inherit;
         }
         
         .faq-question:hover {
+            background: var(--bg-sage);
+        }
+        
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
             color: var(--primary);
-        }
-        
-        .faq-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--off-white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
+            transition: transform 0.3s;
             flex-shrink: 0;
+            margin-left: 16px;
         }
         
-        .faq-item.active .faq-icon {
-            background: var(--primary);
-            color: var(--white);
+        .faq-item.active .faq-question svg {
             transform: rotate(180deg);
         }
         
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-answer-inner {
+            padding: 0 24px 24px;
+            color: var(--text-medium);
+            line-height: 1.7;
         }
         
         .faq-item.active .faq-answer {
             max-height: 300px;
         }
         
-        .faq-answer-content {
-            padding: 0 28px 22px;
-            color: var(--gray);
-            line-height: 1.7;
-        }
-        
         /* Footer */
         .footer {
-            background: var(--dark);
+            background: var(--text-dark);
             color: var(--white);
-            padding: 70px 0 0;
+            padding: 80px 0 0;
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 50px;
-            padding-bottom: 50px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            gap: 48px;
+            margin-bottom: 60px;
         }
         
-        .footer-brand {
-            max-width: 300px;
-        }
-        
-        .footer-logo {
-            font-size: 1.6rem;
-            font-weight: 800;
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .footer-logo span {
-            color: var(--secondary);
+        .footer-brand-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .footer-tagline {
+        .footer-brand p {
             color: rgba(255,255,255,0.7);
-            margin-bottom: 24px;
-            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
         }
         
         .footer-social {
             display: flex;
-            gap: 14px;
+            gap: 12px;
         }
         
         .footer-social a {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             background: rgba(255,255,255,0.1);
-            border-radius: 50%;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
+            transition: all 0.2s;
         }
         
         .footer-social a:hover {
             background: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .footer-social svg {
-            width: 20px;
-            height: 20px;
         }
         
         .footer-column h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: var(--white);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .footer-links {
@@ -1149,54 +1224,54 @@
         }
         
         .footer-links li {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
             color: rgba(255,255,255,0.7);
-            transition: var(--transition);
+            transition: color 0.2s;
+            font-size: 0.95rem;
         }
         
         .footer-links a:hover {
             color: var(--white);
-            padding-left: 5px;
         }
         
         .footer-contact-item {
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
         }
         
         .footer-contact-item svg {
             width: 20px;
             height: 20px;
-            color: var(--secondary);
             flex-shrink: 0;
-            margin-top: 3px;
+            margin-top: 2px;
         }
         
         .footer-contact-item a {
-            color: rgba(255,255,255,0.7);
-            transition: var(--transition);
-        }
-        
-        .footer-contact-item a:hover {
             color: var(--white);
         }
         
+        .footer-contact-item a:hover {
+            text-decoration: underline;
+        }
+        
         .footer-bottom {
-            padding: 28px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 24px 0;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             flex-wrap: wrap;
             gap: 16px;
         }
         
-        .footer-copyright {
+        .footer-bottom p {
             color: rgba(255,255,255,0.5);
             font-size: 0.9rem;
         }
@@ -1209,14 +1284,13 @@
         .footer-legal a {
             color: rgba(255,255,255,0.5);
             font-size: 0.9rem;
-            transition: var(--transition);
         }
         
         .footer-legal a:hover {
             color: var(--white);
         }
         
-        /* Mobile Responsive */
+        /* Responsive */
         @media (max-width: 1024px) {
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1228,42 +1302,20 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links,
-            .nav-phone {
+            .nav-links {
                 display: none;
             }
             
-            .mobile-toggle {
-                display: flex;
+            .nav-mobile-toggle {
+                display: block;
             }
             
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 75px;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                padding: 20px;
-                box-shadow: var(--shadow);
+            .hero h1 {
+                font-size: 2rem;
             }
             
-            .nav-dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                padding-left: 20px;
-            }
-            
-            .hero {
-                padding: 60px 0 80px;
-            }
-            
-            .hero-stats {
-                gap: 24px;
+            .hero-subheadline {
+                font-size: 1.1rem;
             }
             
             .area-intro {
@@ -1281,19 +1333,26 @@
             
             .steps-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .step-card:not(:last-child)::after {
-                display: none;
-            }
-            
-            .quote-container {
-                grid-template-columns: 1fr;
             }
             
             .quote-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote-text {
                 text-align: center;
+            }
+            
+            .quote-features {
+                justify-content: center;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
             }
             
             .features-grid {
@@ -1304,26 +1363,18 @@
                 grid-template-columns: 1fr;
             }
             
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
             .footer-grid {
                 grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .footer-brand {
-                max-width: 100%;
-            }
-            
-            .footer-social {
-                justify-content: center;
+                gap: 32px;
             }
             
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
+            }
+            
+            .section-header h2 {
+                font-size: 1.75rem;
             }
         }
     </style>
@@ -1332,139 +1383,170 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="/" class="nav-logo">Junk Pro <span>Express</span></a>
+            <a href="/" class="nav-logo">
+                <span class="nav-logo-icon">🚛</span>
+                Junk Pro Express
+            </a>
             
-            <ul class="nav-links">
-                <li class="nav-dropdown">
-                    <a href="/services/" class="nav-dropdown-toggle">Services</a>
-                    <ul class="nav-dropdown-menu">
-                        <li><a href="/services/residential-junk-removal/">Residential Junk Removal</a></li>
-                        <li><a href="/services/commercial-junk-removal/">Commercial Junk Removal</a></li>
-                        <li><a href="/services/appliance-removal/">Appliance Removal</a></li>
-                        <li><a href="/services/furniture-removal/">Furniture Removal</a></li>
-                        <li><a href="/services/construction-debris/">Construction Debris</a></li>
-                        <li><a href="/services/yard-waste-removal/">Yard Waste Removal</a></li>
-                        <li><a href="/services/eviction-clean-outs/">Eviction Clean-outs</a></li>
-                        <li><a href="/services/hoarder-homes/">Hoarder Homes</a></li>
-                        <li><a href="/services/estate-sale-clean-outs/">Estate Sale Clean-outs</a></li>
-                    </ul>
-                </li>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/reviews/">Reviews</a></li>
-                <li><a href="/contact/">Contact</a></li>
-                <li>
-                    <a href="tel:505-301-7315" class="nav-phone">
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-btn">
+                        Services
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
-                        505-301-7315
-                    </a>
-                </li>
-                <li><a href="/contact/" class="nav-cta">Get a Free Quote</a></li>
-            </ul>
-            
-            <div class="mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/services/clutter-removal/" class="nav-dropdown-link">Clutter Removal</a>
+                        <a href="/services/eviction-clean-outs/" class="nav-dropdown-link">Eviction Clean-outs</a>
+                        <a href="/services/hoarder-homes-junk-removal/" class="nav-dropdown-link">Hoarder Homes Junk Removal</a>
+                        <a href="/services/pre-post-estate-sale-clean-outs/" class="nav-dropdown-link">Pre & Post Estate Sale Clean-outs</a>
+                        <a href="/services/unwanted-sofa-removal/" class="nav-dropdown-link">Unwanted Sofa Removal</a>
+                        <a href="/services/appliance-removal/" class="nav-dropdown-link">Appliance Removal</a>
+                        <a href="/services/yard-debris-removal/" class="nav-dropdown-link">Yard Debris Removal</a>
+                        <a href="/services/" class="nav-dropdown-link" style="border-top: 1px solid var(--border); margin-top: 8px; padding-top: 14px;">View All Services →</a>
+                    </div>
+                </div>
+                
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/reviews/" class="nav-link">Reviews</a>
+                <a href="/contact/" class="nav-link">Contact</a>
+                
+                <a href="tel:505-301-7315" class="nav-phone">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    505-301-7315
+                </a>
+                
+                <a href="/contact/" class="nav-cta">Get a Free Quote</a>
             </div>
+            
+            <button class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="nav-mobile-menu" id="mobileMenu">
+            <a href="/" class="nav-mobile-link">Home</a>
+            <div class="nav-mobile-dropdown">
+                <div class="nav-mobile-dropdown-title">Services</div>
+                <div class="nav-mobile-dropdown-links">
+                    <a href="/services/clutter-removal/">Clutter Removal</a>
+                    <a href="/services/eviction-clean-outs/">Eviction Clean-outs</a>
+                    <a href="/services/hoarder-homes-junk-removal/">Hoarder Homes Junk Removal</a>
+                    <a href="/services/pre-post-estate-sale-clean-outs/">Pre & Post Estate Sale Clean-outs</a>
+                    <a href="/services/unwanted-sofa-removal/">Unwanted Sofa Removal</a>
+                    <a href="/services/appliance-removal/">Appliance Removal</a>
+                    <a href="/services/yard-debris-removal/">Yard Debris Removal</a>
+                    <a href="/services/">View All Services</a>
+                </div>
+            </div>
+            <a href="/about/" class="nav-mobile-link">About</a>
+            <a href="/reviews/" class="nav-mobile-link">Reviews</a>
+            <a href="/contact/" class="nav-mobile-link">Contact</a>
+            <a href="tel:505-301-7315" class="nav-mobile-link" style="color: var(--primary); font-weight: 600;">📞 505-301-7315</a>
         </div>
     </nav>
-    
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <div class="container">
-            <ol class="breadcrumb-list">
-                <li><a href="/">Home</a></li>
-                <li><a href="/areas/">Areas</a></li>
-                <li>Albuquerque</li>
-            </ol>
-        </div>
-    </div>
-    
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    Serving Albuquerque & Surrounding Areas
-                </div>
+                <nav class="breadcrumb">
+                    <a href="/">Home</a>
+                    <span class="breadcrumb-sep">›</span>
+                    <a href="/areas/">Areas</a>
+                    <span class="breadcrumb-sep">›</span>
+                    <span>Albuquerque</span>
+                </nav>
                 
                 <h1>Junk Removal in Albuquerque, NM</h1>
-                
-                <p class="hero-subheadline">Fast, friendly junk hauling throughout Albuquerque. Same-day service available with our professional team handling all your clutter needs. Fully insured and locally owned.</p>
+                <p class="hero-subheadline">Fast, reliable junk hauling throughout Albuquerque and surrounding areas. Our professional team handles your clutter, appliances, furniture, and more — with same-day service available.</p>
                 
                 <div class="hero-ctas">
                     <a href="#quote-form" class="btn btn-primary">Get a Free Quote in Albuquerque</a>
                     <a href="tel:505-301-7315" class="btn btn-secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                         </svg>
-                        505-301-7315
+                        Call 505-301-7315
                     </a>
                 </div>
                 
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">4.9★</div>
-                        <div class="hero-stat-label">Customer Rating</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">Same-Day</div>
-                        <div class="hero-stat-label">Service Available</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">100%</div>
-                        <div class="hero-stat-label">Fully Insured</div>
-                    </div>
+                <div class="hero-badges">
+                    <span class="hero-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        Licensed & Insured
+                    </span>
+                    <span class="hero-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                        Same-Day Service
+                    </span>
+                    <span class="hero-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Free Quotes
+                    </span>
+                    <span class="hero-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                        4.9★ Rated
+                    </span>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Area Introduction -->
-    <section class="section">
+    <section class="section section-white">
         <div class="container">
             <div class="area-intro">
                 <div class="area-intro-content">
                     <h2>Junk Removal Services in Albuquerque</h2>
-                    <p>Junk Pro Express is proud to serve the Albuquerque community with professional junk removal services. As a locally owned business, we understand the unique needs of Albuquerque residents—from clearing out garages in the Northeast Heights to helping families in the South Valley declutter their homes.</p>
-                    <p>Whether you're dealing with old furniture, broken appliances, yard debris, or just years of accumulated clutter, our experienced team is ready to help. We know Albuquerque's neighborhoods inside and out, from Nob Hill to the West Side, ensuring fast arrival times and efficient service no matter where you're located.</p>
-                    <p>Our commitment to the Duke City goes beyond just hauling junk. We prioritize eco-friendly disposal, donating usable items to local charities and recycling whenever possible. When you choose Junk Pro Express, you're choosing a team that cares about keeping Albuquerque clean and beautiful.</p>
+                    <p>Junk Pro Express is proud to serve the Albuquerque community with professional, dependable junk removal services. As locals who understand the unique needs of Duke City residents, we're committed to making your space clutter-free — whether it's your home, garage, yard, or commercial property.</p>
+                    <p>From the historic neighborhoods of Old Town to the growing communities of the Northeast Heights, we've helped countless Albuquerque homeowners and businesses reclaim their space. Our team navigates Albuquerque's diverse neighborhoods with ease, from the South Valley to the Far Northeast, providing prompt and professional service throughout the metro area.</p>
+                    <p>We know that dealing with junk and clutter can be stressful. That's why we make the process simple: just point to what needs to go, and we'll handle the heavy lifting, loading, and responsible disposal. Most jobs can be completed same-day, so you can enjoy your clean space before dinner.</p>
                 </div>
                 <div class="area-intro-image">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipNvjQRzaT7K5Up-tYsFLGtQoFaZaDQWR5iuyJGl=w3120-h4160-k-no" alt="Junk removal service in Albuquerque, NM by Junk Pro Express">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNvjQRzaT7K5Up-tYsFLGtQoFaZaDQWR5iuyJGl=w3120-h4160-k-no" alt="Junk removal service in Albuquerque, NM — Junk Pro Express">
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Services Available -->
-    <section class="section section-light">
+
+    <!-- Services in Albuquerque -->
+    <section class="section section-sage">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Our Services</span>
                 <h2>Junk Removal Services in Albuquerque</h2>
-                <p>From residential cleanouts to commercial debris removal, we offer comprehensive junk hauling services throughout Albuquerque and surrounding areas.</p>
+                <p>From residential cleanups to commercial junk hauling, we offer comprehensive services to meet all your removal needs in Albuquerque.</p>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                         </svg>
                     </div>
-                    <h3>Residential Junk Removal in Albuquerque</h3>
-                    <p>Clear out your home, garage, attic, or basement. We handle all types of household junk with care and efficiency throughout Albuquerque neighborhoods.</p>
-                    <a href="/services/residential-junk-removal/" class="service-link">
+                    <h3>Clutter Removal</h3>
+                    <p>Overwhelmed by household clutter? We'll clear out unwanted items from any room, leaving your Albuquerque home clean and organized.</p>
+                    <a href="/services/clutter-removal/" class="service-link">
                         Learn More
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
                 </div>
@@ -1472,15 +1554,15 @@
                 <div class="service-card">
                     <div class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                         </svg>
                     </div>
-                    <h3>Commercial Junk Removal in Albuquerque</h3>
-                    <p>Office cleanouts, retail space clearing, and warehouse debris removal for Albuquerque businesses. Flexible scheduling to minimize disruption.</p>
-                    <a href="/services/commercial-junk-removal/" class="service-link">
+                    <h3>Eviction Clean-outs</h3>
+                    <p>Property managers and landlords trust us for fast, thorough eviction clean-outs throughout Albuquerque. We'll get your rental property ready for new tenants.</p>
+                    <a href="/services/eviction-clean-outs/" class="service-link">
                         Learn More
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
                 </div>
@@ -1488,15 +1570,15 @@
                 <div class="service-card">
                     <div class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                         </svg>
                     </div>
-                    <h3>Appliance Removal in Albuquerque</h3>
-                    <p>Safe removal and disposal of refrigerators, washers, dryers, ovens, and other household appliances. We handle the heavy lifting for you.</p>
-                    <a href="/services/appliance-removal/" class="service-link">
+                    <h3>Hoarder Homes Junk Removal</h3>
+                    <p>Compassionate, discreet hoarder home cleanouts in Albuquerque. We work with sensitivity and respect to restore living spaces safely.</p>
+                    <a href="/services/hoarder-homes-junk-removal/" class="service-link">
                         Learn More
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </a>
                 </div>
@@ -1504,111 +1586,4 @@
                 <div class="service-card">
                     <div class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                        </svg>
-                    </div>
-                    <h3>Furniture Removal in Albuquerque</h3>
-                    <p>Old sofas, mattresses, desks, and more. We'll remove any furniture from your Albuquerque home quickly and responsibly.</p>
-                    <a href="/services/furniture-removal/" class="service-link">
-                        Learn More
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                        </svg>
-                    </div>
-                    <h3>Construction Debris in Albuquerque</h3>
-                    <p>Renovation waste, drywall, lumber, and construction materials hauled away from your Albuquerque job site quickly and safely.</p>
-                    <a href="/services/construction-debris/" class="service-link">
-                        Learn More
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                        </svg>
-                    </div>
-                    <h3>Yard Waste Removal in Albuquerque</h3>
-                    <p>Branches, leaves, brush, and landscaping debris removed from your Albuquerque property. Perfect for seasonal cleanups.</p>
-                    <a href="/services/yard-waste-removal/" class="service-link">
-                        Learn More
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- How It Works -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Simple Process</span>
-                <h2>How Our Albuquerque Junk Removal Works</h2>
-                <p>Getting rid of your junk in Albuquerque has never been easier. Just three simple steps and we handle the rest.</p>
-            </div>
-            
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>Schedule Your Pickup</h3>
-                    <p>Call us at 505-301-7315 or fill out our online form. We'll schedule a convenient time to visit your Albuquerque location—often same-day service is available!</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>Get Your Free Quote</h3>
-                    <p>Our friendly team arrives at your Albuquerque home or business, assesses your junk, and provides an upfront, no-obligation quote before we start any work.</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>We Haul It Away</h3>
-                    <p>Approve the quote and we get to work immediately. We load everything, clean up the area, and haul your junk away. You don't lift a finger!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Quote Form -->
-    <section class="quote-section" id="quote-form">
-        <div class="container">
-            <div class="quote-container">
-                <div class="quote-content">
-                    <h2>Get a Free Quote in Albuquerque</h2>
-                    <p>Ready to clear out the clutter? Contact Junk Pro Express for fast, friendly junk removal service anywhere in Albuquerque. We typically respond within 1 hour!</p>
-                    
-                    <ul class="quote-features">
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            Free, No-Obligation Quotes
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            Same-Day Service Available
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            Fully Licensed & Insured
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2
