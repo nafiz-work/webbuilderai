@@ -726,8 +726,8 @@ const data = {
   "isHandyman": false,
   "business": "Manzanita's Hauling And Junk Removal",
   "tagline": "Oakland's Trusted Junk Removal Service",
-  "subheadline": "Hello Fast, friendly junk hauling throughout Oakland and surrounding areas. Same-day service available. Fully licensed, insured, and eco-minded.",
-  "footerTagline": "Hello",
+  "subheadline": "Fast, friendly junk hauling throughout Oakland and surrounding areas. Same-day service available. Fully licensed, insured, and eco-minded.",
+  "footerTagline": null,
   "phone": "(561) 632-0900",
   "email": null,
   "address": "945 73rd Ave",
@@ -1467,7 +1467,7 @@ const data = {
   <div class="footer-grid">
     <div class="footer-col">
       <div class="footer-logo" id="footer-logo"></div>
-      <p class="footer-tagline">Fast, honest junk removal. We show up, haul it away, and leave your space clean.</p>
+      <p id="footer-tagline" class="footer-tagline">Fast, honest junk removal. We show up, haul it away, and leave your space clean.</p>
       <div class="footer-social" id="footer-social"></div>
     </div>
     <div class="footer-col">
@@ -2563,7 +2563,7 @@ document.title = `${data.business} | Junk Removal`;
     }
   }
 
-  var footerTaglineEl = $('footer-tagline');
+  var footerTaglineEl = $('footer-tagline') || document.querySelector('.footer-tagline');
   if (footerTaglineEl) {
     footerTaglineEl.textContent = data.footerTagline || '';
   }
