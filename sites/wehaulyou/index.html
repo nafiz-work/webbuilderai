@@ -868,6 +868,7 @@ const data = {
   "business": "We Haul You",
   "tagline": "San Diego's Most <span>Trusted Junk Removal<\/span>",
   "subheadline": "Fast, friendly junk hauling throughout San Diego and surrounding areas. Same-day service available. Fully licensed, insured, and eco-minded.",
+  "footerTagline": null,
   "phone": "(619) 900-3118",
   "email": "nuf+test88@voolt.com",
   "address": "San Diego, CA 92107, US",
@@ -1087,7 +1088,11 @@ const data = {
   "social": {
     "google": "https://www.google.com/maps/place/We+Haul+You/@32.8055758,-117.2241939,17z/data=!3m1!4b1!4m6!3m5!1s0x80deab6e4f16953d:0xdbab0c301c10cd5e!8m2!3d32.8055759!4d-117.219323!16s%2Fg%2F11f650ks7w?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
   },
-  "serviceLabel": "Junk Removal"
+  "serviceLabel": "Junk Removal",
+  "clientToken": "3ba5e737-94f0-4636-8e66-a6541335ee9b",
+  "isClaimed": true,
+  "bbbEnabled": false,
+  "templateVersion": "v2"
 };
 </script>
 
@@ -1424,7 +1429,7 @@ const data = {
   <div class="footer-grid">
     <div class="footer-col">
       <div class="footer-logo" id="footer-logo"></div>
-      <p class="footer-tagline">Fast, honest junk removal. We show up, haul it away, and leave your space clean.</p>
+      <p id="footer-tagline" class="footer-tagline">Fast, honest junk removal. We show up, haul it away, and leave your space clean.</p>
       <div class="footer-social" id="footer-social"></div>
     </div>
     <div class="footer-col">
@@ -1861,7 +1866,7 @@ document.title = `${data.business} | Junk Removal`;
     document.documentElement.style.setProperty('--btn-text-on-primary', btnOnPrimary);
     document.documentElement.style.setProperty('--btn-text-on-accent',  btnOnAccent);
     var s = document.createElement('style');
-    s.textContent = [
+    var cssRules = [
       '.btn-primary { color: ' + btnOnAccent + ' !important; }',
       // V2 template: .btn-primary:hover has background:#fff — always use dark text on white hover
       '.btn-primary:hover { color: var(--dark) !important; }',
@@ -1874,17 +1879,22 @@ document.title = `${data.business} | Junk Removal`;
       '.form-submit:hover { color: #ffffff !important; }',
       '.gallery-load-more { color: #fff !important; }',
       '.wetake-tab.active { color: #fff !important; }',
-      // Value Props strip — section background uses brand primary color
-      '.value-props { color: ' + btnOnPrimary + ' !important; }',
-      '.value-item h3 { color: ' + btnOnPrimary + ' !important; }',
-      '.value-item p { color: ' + btnOnPrimary + ' !important; }',
       // How It Works step circles — background uses accent color (WCAG-threshold: luminance < 0.179 → white)
       '.step-number { color: ' + btnOnAccent + ' !important; }',
       // Pricing featured card badge — background uses accent color
       '.featured-badge { color: ' + btnOnAccent + ' !important; }',
       // What We Haul CTA — background uses brand ACCENT color, so contrast against accent
       '.wetake-cta { color: ' + btnOnAccent + ' !important; }',
-    ].join(' ');
+    ];
+    // Value Props strip — only applies to templates where .value-props has a primary-colored background.
+    // V1 junk-removal has background:white, so injecting white text would make it invisible.
+    // V2 junk-removal and handyman templates have a primary-colored strip.
+    if (data.templateVersion !== 'v1') {
+      cssRules.push('.value-props { color: ' + btnOnPrimary + ' !important; }');
+      cssRules.push('.value-item h3 { color: ' + btnOnPrimary + ' !important; }');
+      cssRules.push('.value-item p { color: ' + btnOnPrimary + ' !important; }');
+    }
+    s.textContent = cssRules.join(' ');
     document.head.appendChild(s);
   })();
 
@@ -2026,6 +2036,25 @@ document.title = `${data.business} | Junk Removal`;
     heroStats.innerHTML = data.stats.map(function (s) {
       return '<div class="stat"><div class="stat-num">' + s.num + '</div><div class="stat-label">' + s.label + '</div></div>';
     }).join('');
+    if (data.bbbEnabled) {
+      var bbbBadge = document.createElement('div');
+      bbbBadge.className = 'stat stat-bbb';
+      bbbBadge.style.cssText = 'display:flex;align-items:center;justify-content:center;padding:0 6px;min-width:0;flex-shrink:1;';
+      bbbBadge.innerHTML = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:44px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
+      heroStats.appendChild(bbbBadge);
+      var computedDisplay = window.getComputedStyle(heroStats).display;
+      if (computedDisplay === 'grid') {
+        var cols = heroStats.style.gridTemplateColumns || window.getComputedStyle(heroStats).gridTemplateColumns;
+        heroStats.style.gridTemplateColumns = 'repeat(4, 1fr)';
+      } else {
+        heroStats.style.display = 'flex';
+        heroStats.style.flexWrap = 'nowrap';
+      }
+      Array.prototype.forEach.call(heroStats.querySelectorAll('.stat'), function(el) {
+        el.style.minWidth = '0';
+        el.style.flexShrink = '1';
+      });
+    }
   }
 
   // ── Services ──
@@ -2518,6 +2547,11 @@ document.title = `${data.business} | Junk Removal`;
     }
   }
 
+  var footerTaglineEl = $('footer-tagline') || document.querySelector('.footer-tagline');
+  if (footerTaglineEl) {
+    footerTaglineEl.textContent = data.footerTagline || '';
+  }
+
   var footerPhone = $('footer-phone');
   if (footerPhone) {
     footerPhone.textContent = data.phone;
@@ -2545,7 +2579,7 @@ document.title = `${data.business} | Junk Removal`;
   if (footerCopy) footerCopy.textContent = '\u00A9 ' + new Date().getFullYear() + ' ' + data.business + '. All rights reserved.';
 
   // Subtle dashboard access link for site owners
-  if (footerCopy && data.clientToken) {
+  if (data.isClaimed && data.clientToken) {
     var dashLink = document.createElement('a');
     dashLink.href = 'https://voolt.me/dashboard/?sid=' + data.clientToken;
     dashLink.target = '_blank';
@@ -2554,7 +2588,13 @@ document.title = `${data.business} | Junk Removal`;
     dashLink.style.cssText = 'display:block;margin-top:0.4rem;font-size:0.72rem;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s;';
     dashLink.addEventListener('mouseenter', function () { this.style.color = 'rgba(255,255,255,0.65)'; });
     dashLink.addEventListener('mouseleave', function () { this.style.color = 'rgba(255,255,255,0.3)'; });
-    footerCopy.insertAdjacentElement('afterend', dashLink);
+    // Try the footer-copy element first, then any <footer>, then document.body
+    if (footerCopy) {
+      footerCopy.insertAdjacentElement('afterend', dashLink);
+    } else {
+      var footerEl = document.querySelector('footer') || document.body;
+      footerEl.appendChild(dashLink);
+    }
   }
 
   document.title = data.business + ' | ' + (data.serviceLabel || 'Junk Removal');
@@ -2586,7 +2626,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-fybah5rs.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-ii1ls2tg.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
