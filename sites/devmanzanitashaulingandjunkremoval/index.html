@@ -1872,7 +1872,7 @@ document.title = `${data.business} | Junk Removal`;
     document.documentElement.style.setProperty('--btn-text-on-primary', btnOnPrimary);
     document.documentElement.style.setProperty('--btn-text-on-accent',  btnOnAccent);
     var s = document.createElement('style');
-    s.textContent = [
+    var cssRules = [
       '.btn-primary { color: ' + btnOnAccent + ' !important; }',
       // V2 template: .btn-primary:hover has background:#fff — always use dark text on white hover
       '.btn-primary:hover { color: var(--dark) !important; }',
@@ -1885,17 +1885,22 @@ document.title = `${data.business} | Junk Removal`;
       '.form-submit:hover { color: #ffffff !important; }',
       '.gallery-load-more { color: #fff !important; }',
       '.wetake-tab.active { color: #fff !important; }',
-      // Value Props strip — section background uses brand primary color
-      '.value-props { color: ' + btnOnPrimary + ' !important; }',
-      '.value-item h3 { color: ' + btnOnPrimary + ' !important; }',
-      '.value-item p { color: ' + btnOnPrimary + ' !important; }',
       // How It Works step circles — background uses accent color (WCAG-threshold: luminance < 0.179 → white)
       '.step-number { color: ' + btnOnAccent + ' !important; }',
       // Pricing featured card badge — background uses accent color
       '.featured-badge { color: ' + btnOnAccent + ' !important; }',
       // What We Haul CTA — background uses brand ACCENT color, so contrast against accent
       '.wetake-cta { color: ' + btnOnAccent + ' !important; }',
-    ].join(' ');
+    ];
+    // Value Props strip — only applies to templates where .value-props has a primary-colored background.
+    // V1 junk-removal has background:white, so injecting white text would make it invisible.
+    // V2 junk-removal and handyman templates have a primary-colored strip.
+    if (data.templateVersion !== 'v1') {
+      cssRules.push('.value-props { color: ' + btnOnPrimary + ' !important; }');
+      cssRules.push('.value-item h3 { color: ' + btnOnPrimary + ' !important; }');
+      cssRules.push('.value-item p { color: ' + btnOnPrimary + ' !important; }');
+    }
+    s.textContent = cssRules.join(' ');
     document.head.appendChild(s);
   })();
 
@@ -2040,11 +2045,21 @@ document.title = `${data.business} | Junk Removal`;
     if (data.bbbEnabled) {
       var bbbBadge = document.createElement('div');
       bbbBadge.className = 'stat stat-bbb';
-      bbbBadge.innerHTML = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:52px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
-      var s = document.createElement('style');
-      s.textContent = '#hero-stats { flex-wrap: nowrap !important; } #hero-stats .stat { flex-shrink: 1; min-width: 0; } .stat-bbb { display:flex !important; align-items:center; justify-content:center; padding:0 6px; } .stat-bbb img { height:44px !important; }';
-      document.head.appendChild(s);
+      bbbBadge.style.cssText = 'display:flex;align-items:center;justify-content:center;padding:0 6px;min-width:0;flex-shrink:1;';
+      bbbBadge.innerHTML = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:44px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
       heroStats.appendChild(bbbBadge);
+      var computedDisplay = window.getComputedStyle(heroStats).display;
+      if (computedDisplay === 'grid') {
+        var cols = heroStats.style.gridTemplateColumns || window.getComputedStyle(heroStats).gridTemplateColumns;
+        heroStats.style.gridTemplateColumns = 'repeat(4, 1fr)';
+      } else {
+        heroStats.style.display = 'flex';
+        heroStats.style.flexWrap = 'nowrap';
+      }
+      Array.prototype.forEach.call(heroStats.querySelectorAll('.stat'), function(el) {
+        el.style.minWidth = '0';
+        el.style.flexShrink = '1';
+      });
     }
   }
 
