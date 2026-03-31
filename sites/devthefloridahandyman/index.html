@@ -1094,7 +1094,10 @@ const data = {
   "social": {
     "google": "https://www.google.com/maps/place/The+Florida+Handyman/@26.1042803,-81.737977,15z/data=!4m2!3m1!1s0x88dae39c35e55555:0x8a1a88830f5b7969"
   },
-  "serviceLabel": "Junk Removal"
+  "serviceLabel": "Junk Removal",
+  "clientToken": "3bde3dfd-5d19-4347-ace0-85cee482ae43",
+  "isClaimed": false,
+  "bbbEnabled": false
 };
 </script>
 
@@ -2033,6 +2036,15 @@ document.title = `${data.business} | Junk Removal`;
     heroStats.innerHTML = data.stats.map(function (s) {
       return '<div class="stat"><div class="stat-num">' + s.num + '</div><div class="stat-label">' + s.label + '</div></div>';
     }).join('');
+    if (data.bbbEnabled) {
+      var bbbBadge = document.createElement('div');
+      bbbBadge.className = 'stat stat-bbb';
+      bbbBadge.innerHTML = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:52px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
+      var s = document.createElement('style');
+      s.textContent = '.stat-bbb { display:flex!important; align-items:center; justify-content:center; padding:0 8px; } @media(max-width:600px){ .stat-bbb img { height:40px!important; } }';
+      document.head.appendChild(s);
+      heroStats.appendChild(bbbBadge);
+    }
   }
 
   // ── Services ──
@@ -2552,7 +2564,7 @@ document.title = `${data.business} | Junk Removal`;
   if (footerCopy) footerCopy.textContent = '\u00A9 ' + new Date().getFullYear() + ' ' + data.business + '. All rights reserved.';
 
   // Subtle dashboard access link for site owners
-  if (footerCopy && data.clientToken) {
+  if (data.isClaimed && data.clientToken) {
     var dashLink = document.createElement('a');
     dashLink.href = 'https://voolt.me/dashboard/?sid=' + data.clientToken;
     dashLink.target = '_blank';
@@ -2561,7 +2573,13 @@ document.title = `${data.business} | Junk Removal`;
     dashLink.style.cssText = 'display:block;margin-top:0.4rem;font-size:0.72rem;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s;';
     dashLink.addEventListener('mouseenter', function () { this.style.color = 'rgba(255,255,255,0.65)'; });
     dashLink.addEventListener('mouseleave', function () { this.style.color = 'rgba(255,255,255,0.3)'; });
-    footerCopy.insertAdjacentElement('afterend', dashLink);
+    // Try the footer-copy element first, then any <footer>, then document.body
+    if (footerCopy) {
+      footerCopy.insertAdjacentElement('afterend', dashLink);
+    } else {
+      var footerEl = document.querySelector('footer') || document.body;
+      footerEl.appendChild(dashLink);
+    }
   }
 
   document.title = data.business + ' | ' + (data.serviceLabel || 'Junk Removal');
@@ -2593,7 +2611,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-fybah5rs.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-v15pc0dn.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
