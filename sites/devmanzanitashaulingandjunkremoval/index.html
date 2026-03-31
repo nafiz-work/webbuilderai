@@ -2038,13 +2038,19 @@ document.title = `${data.business} | Junk Removal`;
       return '<div class="stat"><div class="stat-num">' + s.num + '</div><div class="stat-label">' + s.label + '</div></div>';
     }).join('');
     if (data.bbbEnabled) {
-      var bbbBadge = document.createElement('div');
-      bbbBadge.className = 'stat stat-bbb';
-      bbbBadge.innerHTML = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:52px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
-      var s = document.createElement('style');
-      s.textContent = '.stat-bbb { display:flex!important; align-items:center; justify-content:center; padding:0 8px; } @media(max-width:600px){ .stat-bbb img { height:40px!important; } }';
-      document.head.appendChild(s);
-      heroStats.appendChild(bbbBadge);
+      var lastStat = heroStats.querySelector('.stat:last-child') || heroStats.lastElementChild;
+      var bbbImg = document.createElement('img');
+      bbbImg.src = 'images/bbb-accredited.png';
+      bbbImg.alt = 'BBB Accredited Business';
+      bbbImg.style.cssText = 'height:40px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);margin-top:6px;margin-left:auto;margin-right:auto;';
+      if (lastStat) {
+        lastStat.appendChild(bbbImg);
+      } else {
+        var bbbWrap = document.createElement('div');
+        bbbWrap.className = 'stat';
+        bbbWrap.appendChild(bbbImg);
+        heroStats.appendChild(bbbWrap);
+      }
     }
   }
 
