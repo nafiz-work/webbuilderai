@@ -2523,14 +2523,14 @@ document.title = `${data.business} | Junk Removal`;
       contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.email + '</div><div><h4>Email</h4><p>' + data.email + '</p></div></div>';
     }
     if (data.allLocations && data.allLocations.length > 1) {
-      contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Our Locations</h4>' +
-        data.allLocations.map(function (loc, idx) {
-          var parts = [loc.address];
-          if (loc.city) parts.push(loc.city);
-          if (loc.provinceState) parts.push(loc.provinceState);
-          if (loc.country) parts.push(loc.country);
-          return '<p style="margin-bottom:' + (idx < data.allLocations.length - 1 ? '0.5rem' : '0') + ';">' + parts.join(', ') + '</p>';
-        }).join('') + '</div></div>';
+      var locCities = data.allLocations.map(function (loc) { return loc.city || loc.address || ''; }).filter(function (c) { return c; });
+      var locStates = data.allLocations.map(function (loc) { return loc.provinceState || ''; }).filter(function (s) { return s; });
+      var locSameState = locStates.length > 0 && locStates.every(function (s) { return s === locStates[0]; });
+      var locCityList = locCities.length > 1
+        ? locCities.slice(0, -1).join(', ') + ' and ' + locCities[locCities.length - 1]
+        : locCities[0] || data.address;
+      var locText = locCityList + (locSameState ? ' ' + locStates[0] : '');
+      contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Our Locations</h4><p>' + locText + '</p></div></div>';
     } else {
       contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Service Area</h4><p>' + data.address + '</p></div></div>';
     }
