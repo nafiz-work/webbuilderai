@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rojasjunkremovalraleigh.netlify.app/sitemap.xml
