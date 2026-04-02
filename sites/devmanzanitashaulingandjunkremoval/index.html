@@ -721,7 +721,7 @@ const data = {
   "isHandyman": false,
   "business": "Manzanita's Hauling And Junk Removal",
   "tagline": "Oakland's Trusted Junk Removal Service",
-  "subheadline": "Easy peasy junk removal guru",
+  "subheadline": "Fast, friendly junk hauling throughout Oakland and surrounding areas. Same-day service available. Fully licensed, insured, and eco-minded.",
   "footerTagline": null,
   "phone": "(561) 632-0900",
   "email": null,
@@ -1130,9 +1130,9 @@ const data = {
       "city": "Los Angles",
       "provinceState": "CA",
       "country": "USA",
-      "geoLat": 34.0549,
-      "geoLng": 118.2426,
-      "mapEmbedUrl": "https://maps.google.com/maps?q=34.0549,118.2426&t=&z=13&ie=UTF8&iwloc=&output=embed"
+      "geoLat": 34.05,
+      "geoLng": 118.24,
+      "mapEmbedUrl": "https://maps.google.com/maps?q=34.05,118.24&t=&z=13&ie=UTF8&iwloc=&output=embed"
     }
   ],
   "social": {
@@ -2636,12 +2636,13 @@ document.title = `${data.business} | Junk Removal`;
   var footerAddress = $('footer-address');
   if (footerAddress) {
     if (data.allLocations && data.allLocations.length > 1) {
-      footerAddress.innerHTML = data.allLocations.map(function (loc) {
-        var parts = [loc.address];
-        if (loc.city) parts.push(loc.city);
-        if (loc.provinceState) parts.push(loc.provinceState);
-        return '<span style="display:block;">' + parts.join(', ') + '</span>';
-      }).join('');
+      var cities = data.allLocations.map(function (loc) { return loc.city || loc.address || ''; }).filter(function (c) { return c; });
+      var states = data.allLocations.map(function (loc) { return loc.provinceState || ''; }).filter(function (s) { return s; });
+      var allSameState = states.length > 0 && states.every(function (s) { return s === states[0]; });
+      var cityList = cities.length > 1
+        ? cities.slice(0, -1).join(', ') + ' and ' + cities[cities.length - 1]
+        : cities[0] || data.address;
+      footerAddress.textContent = cityList + (allSameState ? ' ' + states[0] : '');
     } else {
       footerAddress.textContent = data.address;
     }
