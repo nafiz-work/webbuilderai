@@ -722,8 +722,9 @@ const data = {
   "isHandyman": false,
   "business": "Solely Junk LLC",
   "tagline": "Portland's Most Trusted Junk Removal",
-  "subheadline": "We offer same-day and next-day service with 1-hour arrival windows, and we show up ready to haul so you don’t have to wait around.",
-  "footerTagline": "Fast, honest junk removal. We show up, haul it away, and leave your space clean.",
+  "subheadline": "Fast, friendly junk hauling throughout Portland and surrounding areas. Same-day service available. Fully licensed, insured, and eco-minded.",
+  "footerTagline": null,
+  "aboutText": "Solely Junk LLC is a locally owned and operated junk removal company serving Portland and the surrounding communities. We're passionate about keeping our neighbourhoods clean, and we go above and beyond to recycle, donate, and responsibly dispose of whatever you need hauled away. Fast response times, fair prices, and friendly service — that's our promise to every customer.",
   "phone": "(971) 325-2491",
   "email": "info@solelyjunk.com",
   "address": "Serving Portland & Surrounding Areas",
@@ -1030,7 +1031,7 @@ const data = {
   "clientToken": "56f7fd93-5903-407d-b340-77d2438730f1",
   "isClaimed": true,
   "bbbEnabled": true,
-  "bbbUrl": "https://www.bbb.org/us/or/portland/profile/junk-removal/solely-junk-llc-1296-1000188391",
+  "bbbUrl": null,
   "templateVersion": "v1"
 };
 </script>
@@ -1264,7 +1265,7 @@ const data = {
   <div class="about-wrap">
     <div class="section-label">About Us</div>
     <h2>Portland's Trusted <span>Junk Removal</span> Crew</h2>
-    <p>We're a locally owned and operated junk removal service based right here in Portland. We built this business on one simple idea: show up on time, charge a fair price, and leave the place cleaner than we found it.</p>
+    <p id="about-text">We're a locally owned and operated junk removal service based right here in Portland. We built this business on one simple idea: show up on time, charge a fair price, and leave the place cleaner than we found it.</p>
     <p>Whether it's a single item or a full property cleanout, we treat every job with the same care and professionalism. We're your neighbours, and we take pride in keeping our community clean.</p>
     <div class="about-trust">
       <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#C9A800" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#C9A800" stroke-width="2" stroke-linecap="round"/></svg><span>Fully Licensed & Insured</span></div>
@@ -1744,6 +1745,7 @@ document.title = `${data.business} | Junk Removal`;
  *   footer-address      – Footer address text
  *   footer-hours        – Footer hours text
  *   footer-copy         – Footer copyright text
+ *   about-text          – About Us body paragraph
  * ============================================================
  */
 (function () {
@@ -2549,6 +2551,12 @@ document.title = `${data.business} | Junk Removal`;
   var footerTaglineEl = $('footer-tagline') || document.querySelector('.footer-tagline');
   if (footerTaglineEl) {
     footerTaglineEl.textContent = data.footerTagline || '';
+  }
+
+  // ── About Us ──
+  var aboutText = $('about-text');
+  if (aboutText && data.aboutText) {
+    aboutText.textContent = data.aboutText;
   }
 
   var footerPhone = $('footer-phone');
