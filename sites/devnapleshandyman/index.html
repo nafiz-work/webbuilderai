@@ -1012,7 +1012,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="about-text">
       <div class="section-label">Our Story</div>
       <h2>Naples's Most Trusted <span>Home Repair</span> Team</h2>
-      <p>We're a Naples-based handyman company that has been specializing in the smaller jobs since 2006. Our commitment to customer satisfaction has always been the backbone of our success.</p>
+      <p id="about-text">We're a Naples-based handyman company that has been specializing in the smaller jobs since 2006. Our commitment to customer satisfaction has always been the backbone of our success.</p>
       <p>Naples Handyman LLC has risen to become one of the most reputable handyman companies in the area. We provide reliable quality service, and pride ourselves on being on time, efficient, and affordable.</p>
       <p>Give us a call today. We look forward to hearing from you.</p>
       <div class="about-stats">
@@ -1219,6 +1219,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "business": "Naples Handyman LLC",
   "tagline": "Naples' Reliable Handyman Service",
   "subheadline": "Professional handyman services throughout Naples and surrounding areas. Fast, reliable, and affordable. Fully licensed and insured.",
+  "footerTagline": null,
+  "aboutText": "Naples Handyman LLC is your trusted local handyman in Naples and the surrounding area. We take pride in doing the job right the first time — on time, on budget, and with the craftsmanship your home deserves. Whether it's a small repair or a bigger project, our team is here to help. Fully licensed and insured, we bring professionalism and care to every job we take on.",
   "phone": "(239) 450-0650",
   "email": null,
   "address": "1381 5th Ave N, Naples, FL 34102, USA",
@@ -1229,6 +1231,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "isGeneratedLogo": true,
   "logoShowName": false,
   "logoNameColor": "#002080",
+  "logoWhiteHeader": false,
+  "logoWhiteFooter": false,
   "stats": [
     {
       "num": "5★",
@@ -1495,13 +1499,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "Naples",
     "Estero",
     "Fort Myers",
-    "Bonita Springs"
+    "Bonita Springs",
+    "East Naples",
+    "Lely",
+    "Pelican Bay",
+    "Naples Manor",
+    "Lely Resort",
+    "Verona Walk",
+    "Winding Cypress",
+    "Marco Shores–Hammock Bay"
   ],
   "mapEmbedUrl": "https://maps.google.com/maps?q=26.154007,-81.78815&t=&z=13&ie=UTF8&iwloc=&output=embed",
+  "allLocations": [
+    {
+      "address": "1381 5th Ave N, Naples, FL 34102, USA",
+      "city": "Naples",
+      "provinceState": "FL",
+      "country": "US",
+      "geoLat": 26.154007,
+      "geoLng": -81.78815,
+      "mapEmbedUrl": "https://maps.google.com/maps?q=26.154007,-81.78815&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    }
+  ],
   "social": {
     "google": "https://www.google.com/maps/place/Naples+Handyman+LLC/@26.1540071,-81.7881449,15z/data=!4m2!3m1!1s0x88dae18e402d8659:0xf0e74e601642b3d7"
   },
-  "serviceLabel": "Professional Handyman Services"
+  "serviceLabel": "Professional Handyman Services",
+  "clientToken": "1ee988eb-dce7-4300-b1b3-09b6f6cbd7aa",
+  "isClaimed": false,
+  "bbbEnabled": false,
+  "bbbUrl": null,
+  "templateVersion": "v1"
 };
 
   /* ── RENDER ────────────────────────────────────────────────────────── */
@@ -1803,6 +1831,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  *   footer-address      – Footer address text
  *   footer-hours        – Footer hours text
  *   footer-copy         – Footer copyright text
+ *   about-text          – About Us body paragraph
  * ============================================================
  */
 (function () {
@@ -1845,7 +1874,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     document.documentElement.style.setProperty('--btn-text-on-primary', btnOnPrimary);
     document.documentElement.style.setProperty('--btn-text-on-accent',  btnOnAccent);
     var s = document.createElement('style');
-    s.textContent = [
+    var cssRules = [
       '.btn-primary { color: ' + btnOnAccent + ' !important; }',
       // V2 template: .btn-primary:hover has background:#fff — always use dark text on white hover
       '.btn-primary:hover { color: var(--dark) !important; }',
@@ -1858,17 +1887,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       '.form-submit:hover { color: #ffffff !important; }',
       '.gallery-load-more { color: #fff !important; }',
       '.wetake-tab.active { color: #fff !important; }',
-      // Value Props strip — section background uses brand primary color
-      '.value-props { color: ' + btnOnPrimary + ' !important; }',
-      '.value-item h3 { color: ' + btnOnPrimary + ' !important; }',
-      '.value-item p { color: ' + btnOnPrimary + ' !important; }',
       // How It Works step circles — background uses accent color (WCAG-threshold: luminance < 0.179 → white)
       '.step-number { color: ' + btnOnAccent + ' !important; }',
       // Pricing featured card badge — background uses accent color
       '.featured-badge { color: ' + btnOnAccent + ' !important; }',
       // What We Haul CTA — background uses brand ACCENT color, so contrast against accent
       '.wetake-cta { color: ' + btnOnAccent + ' !important; }',
-    ].join(' ');
+    ];
+    // Value Props strip — only applies to templates where .value-props has a primary-colored background.
+    // V1 junk-removal has background:white, so injecting white text would make it invisible.
+    // V2 junk-removal and handyman templates have a primary-colored strip.
+    if (data.templateVersion !== 'v1') {
+      cssRules.push('.value-props { color: ' + btnOnPrimary + ' !important; }');
+      cssRules.push('.value-item h3 { color: ' + btnOnPrimary + ' !important; }');
+      cssRules.push('.value-item p { color: ' + btnOnPrimary + ' !important; }');
+    }
+    s.textContent = cssRules.join(' ');
     document.head.appendChild(s);
   })();
 
@@ -1883,6 +1917,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:48px;object-fit:contain;">';
     } else {
       navLogo.innerHTML = '<span class="logo-name" style="color:' + (data.logoNameColor || '#0f172a') + '">' + data.business + '</span>';
+    }
+    if (data.logoWhiteHeader && data.logoSrc && !data.isGeneratedLogo) {
+      var navLogoImg = navLogo.querySelector('img');
+      if (navLogoImg) {
+        navLogoImg.style.filter = (navLogoImg.style.filter ? navLogoImg.style.filter + ' ' : '') + 'brightness(0) invert(1)';
+      }
     }
   }
 
@@ -2010,6 +2050,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     heroStats.innerHTML = data.stats.map(function (s) {
       return '<div class="stat"><div class="stat-num">' + s.num + '</div><div class="stat-label">' + s.label + '</div></div>';
     }).join('');
+    if (data.bbbEnabled) {
+      var bbbBadge = document.createElement('div');
+      bbbBadge.className = 'stat stat-bbb';
+      bbbBadge.style.cssText = 'display:flex;align-items:center;justify-content:center;padding:0 6px;min-width:0;flex-shrink:1;';
+      var bbbHeroImg = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:44px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
+      bbbBadge.innerHTML = data.bbbUrl ? '<a href="' + data.bbbUrl + '" target="_blank" rel="noopener noreferrer" style="display:block;">' + bbbHeroImg + '</a>' : bbbHeroImg;
+      heroStats.appendChild(bbbBadge);
+      var computedDisplay = window.getComputedStyle(heroStats).display;
+      if (computedDisplay === 'grid') {
+        var cols = heroStats.style.gridTemplateColumns || window.getComputedStyle(heroStats).gridTemplateColumns;
+        heroStats.style.gridTemplateColumns = 'repeat(4, 1fr)';
+      } else {
+        heroStats.style.display = 'flex';
+        heroStats.style.flexWrap = 'nowrap';
+      }
+      Array.prototype.forEach.call(heroStats.querySelectorAll('.stat'), function(el) {
+        el.style.minWidth = '0';
+        el.style.flexShrink = '1';
+      });
+    }
   }
 
   // ── Services ──
@@ -2425,10 +2485,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   // ── Service Areas ──
   var areaTags = $('area-tags') || $('areas-tags');
-  if (areaTags && data.serviceAreas) {
-    areaTags.innerHTML = data.serviceAreas.map(function (a) {
-      return '<span class="area-tag">\uD83D\uDCCD ' + a + '</span>';
-    }).join('');
+  if (areaTags) {
+    var mergedAreas = (data.serviceAreas || []).slice();
+    if (data.allLocations && data.allLocations.length > 1) {
+      var existingLower = mergedAreas.map(function (a) { return a.toLowerCase(); });
+      data.allLocations.slice(1).forEach(function (loc) {
+        var locCity = loc.city || loc.address || '';
+        if (locCity && existingLower.indexOf(locCity.toLowerCase()) === -1) {
+          mergedAreas.push(locCity);
+          existingLower.push(locCity.toLowerCase());
+        }
+      });
+    }
+    if (mergedAreas.length > 0) {
+      areaTags.innerHTML = mergedAreas.map(function (a) {
+        return '<span class="area-tag">\uD83D\uDCCD ' + a + '</span>';
+      }).join('');
+    }
   }
 
   // ── Contact info ──
@@ -2446,14 +2519,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     if (data.email) {
       contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.email + '</div><div><h4>Email</h4><p>' + data.email + '</p></div></div>';
     }
-    contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Service Area</h4><p>' + data.address + '</p></div></div>';
+    if (data.allLocations && data.allLocations.length > 1) {
+      var locCities = data.allLocations.map(function (loc) { return loc.city || loc.address || ''; }).filter(function (c) { return c; });
+      var locStates = data.allLocations.map(function (loc) { return loc.provinceState || ''; }).filter(function (s) { return s; });
+      var locSameState = locStates.length > 0 && locStates.every(function (s) { return s === locStates[0]; });
+      var locCityList = locCities.length > 1
+        ? locCities.slice(0, -1).join(', ') + ' and ' + locCities[locCities.length - 1]
+        : locCities[0] || data.address;
+      var locText = locCityList + (locSameState ? ' ' + locStates[0] : '');
+      contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Our Locations</h4><p>' + locText + '</p></div></div>';
+    } else {
+      contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Service Area</h4><p>' + data.address + '</p></div></div>';
+    }
     contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.hours + '</div><div><h4>Hours of Operation</h4><p>' + data.hours + '</p></div></div>';
     contactInfo.innerHTML = contactRows;
   }
 
   // ── Map ──
   var mapEmbed = $('map-embed');
-  if (mapEmbed && data.mapEmbedUrl) mapEmbed.src = data.mapEmbedUrl;
+  if (data.allLocations && data.allLocations.length > 1) {
+    var mapContainer = mapEmbed ? mapEmbed.parentElement : null;
+    if (mapContainer) {
+      var mapsHtml = data.allLocations.map(function (loc) {
+        if (!loc.mapEmbedUrl) return '';
+        return '<iframe src="' + loc.mapEmbedUrl + '" style="border:0;width:100%;min-height:300px;flex:1 1 300px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+      }).filter(function (s) { return s; }).join('');
+      if (mapsHtml) {
+        if (mapEmbed) {
+          var wrapDiv = document.createElement('div');
+          wrapDiv.style.cssText = 'display:flex;flex-wrap:wrap;gap:12px;width:100%;';
+          wrapDiv.innerHTML = mapsHtml;
+          mapEmbed.replaceWith(wrapDiv);
+        }
+      } else if (mapEmbed && data.mapEmbedUrl) {
+        mapEmbed.src = data.mapEmbedUrl;
+      }
+    } else if (mapEmbed && data.mapEmbedUrl) {
+      mapEmbed.src = data.mapEmbedUrl;
+    }
+  } else if (mapEmbed && data.mapEmbedUrl) {
+    mapEmbed.src = data.mapEmbedUrl;
+  }
 
   // ── Social icons (rendered with correct brand icons and real links) ──
   var socialIcons = {
@@ -2475,6 +2581,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         var url = data.social[k];
         return '<a class="' + socialBtnClass + '" href="' + url + '" target="_blank" rel="noopener noreferrer" title="' + k + '">' + (socialIcons[k] || '') + '</a>';
       }).join('');
+    }
+    if (data.bbbEnabled) {
+      var bbbFooterEl;
+      var bbbFooterImg = document.createElement('img');
+      bbbFooterImg.src = 'images/bbb-accredited.png';
+      bbbFooterImg.alt = 'BBB Accredited Business';
+      bbbFooterImg.style.cssText = 'height:75px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);margin-top:12px;';
+      if (data.bbbUrl) {
+        var bbbFooterLink = document.createElement('a');
+        bbbFooterLink.href = data.bbbUrl;
+        bbbFooterLink.target = '_blank';
+        bbbFooterLink.rel = 'noopener noreferrer';
+        bbbFooterLink.style.cssText = 'display:block;margin-top:12px;';
+        bbbFooterImg.style.marginTop = '0';
+        bbbFooterLink.appendChild(bbbFooterImg);
+        bbbFooterEl = bbbFooterLink;
+      } else {
+        bbbFooterEl = bbbFooterImg;
+      }
+      footerSocial.parentNode.insertBefore(bbbFooterEl, footerSocial.nextSibling);
     }
   }
 
@@ -2500,6 +2626,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     } else {
       footerLogo.innerHTML = '<span class="logo-name">' + data.business + '</span>';
     }
+    if (data.logoWhiteFooter && data.logoSrc && !data.isGeneratedLogo) {
+      var footerLogoImg = footerLogo.querySelector('img');
+      if (footerLogoImg) {
+        footerLogoImg.style.filter = (footerLogoImg.style.filter ? footerLogoImg.style.filter + ' ' : '') + 'brightness(0) invert(1)';
+      }
+    }
+  }
+
+  var footerTaglineEl = $('footer-tagline') || document.querySelector('.footer-tagline');
+  if (footerTaglineEl) {
+    footerTaglineEl.textContent = data.footerTagline || '';
+  }
+
+  // ── About Us ──
+  var aboutText = $('about-text');
+  if (aboutText && data.aboutText) {
+    aboutText.textContent = data.aboutText;
   }
 
   var footerPhone = $('footer-phone');
@@ -2520,7 +2663,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   var footerAddress = $('footer-address');
-  if (footerAddress) footerAddress.textContent = data.address;
+  if (footerAddress) {
+    if (data.allLocations && data.allLocations.length > 1) {
+      var cities = data.allLocations.map(function (loc) { return loc.city || loc.address || ''; }).filter(function (c) { return c; });
+      var states = data.allLocations.map(function (loc) { return loc.provinceState || ''; }).filter(function (s) { return s; });
+      var allSameState = states.length > 0 && states.every(function (s) { return s === states[0]; });
+      var cityList = cities.length > 1
+        ? cities.slice(0, -1).join(', ') + ' and ' + cities[cities.length - 1]
+        : cities[0] || data.address;
+      footerAddress.textContent = cityList + (allSameState ? ' ' + states[0] : '');
+    } else {
+      footerAddress.textContent = data.address;
+    }
+  }
 
   var footerHours = $('footer-hours');
   if (footerHours) footerHours.textContent = data.hours;
@@ -2529,7 +2684,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   if (footerCopy) footerCopy.textContent = '\u00A9 ' + new Date().getFullYear() + ' ' + data.business + '. All rights reserved.';
 
   // Subtle dashboard access link for site owners
-  if (footerCopy && data.clientToken) {
+  if (data.isClaimed && data.clientToken) {
     var dashLink = document.createElement('a');
     dashLink.href = 'https://voolt.me/dashboard/?sid=' + data.clientToken;
     dashLink.target = '_blank';
@@ -2538,7 +2693,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     dashLink.style.cssText = 'display:block;margin-top:0.4rem;font-size:0.72rem;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s;';
     dashLink.addEventListener('mouseenter', function () { this.style.color = 'rgba(255,255,255,0.65)'; });
     dashLink.addEventListener('mouseleave', function () { this.style.color = 'rgba(255,255,255,0.3)'; });
-    footerCopy.insertAdjacentElement('afterend', dashLink);
+    // Try the footer-copy element first, then any <footer>, then document.body
+    if (footerCopy) {
+      footerCopy.insertAdjacentElement('afterend', dashLink);
+    } else {
+      var footerEl = document.querySelector('footer') || document.body;
+      footerEl.appendChild(dashLink);
+    }
   }
 
   document.title = data.business + ' | ' + (data.serviceLabel || 'Junk Removal');
@@ -2570,7 +2731,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-fybah5rs.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-vcbm8phh.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
