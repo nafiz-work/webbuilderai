@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rojasjunkremovalbakersfield.netlify.app/sitemap.xml
