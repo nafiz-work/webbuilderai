@@ -728,6 +728,7 @@ const data = {
   "tagline": "Portland's Most Trusted Junk Removal",
   "subheadline": "Fast, friendly junk hauling throughout Portland and surrounding areas. Same-day service available. Fully licensed, insured, and eco-minded.",
   "footerTagline": null,
+  "aboutText": "As a BBB-accredited, fully insured local business, we focus on making the process simple, fair, and efficient while donating and repurposing items whenever We provide fast, reliable junk removal throughout Portland and surrounding areas, handling everything from single items to full cleanouts.",
   "phone": "(971) 325-2491",
   "email": null,
   "address": "11825 SW Greenburg Rd Ste 205",
@@ -1738,6 +1739,7 @@ document.title = `${data.business} | Junk Removal`;
  *   footer-address      – Footer address text
  *   footer-hours        – Footer hours text
  *   footer-copy         – Footer copyright text
+ *   about-text          – About Us body paragraph
  * ============================================================
  */
 (function () {
@@ -2545,6 +2547,12 @@ document.title = `${data.business} | Junk Removal`;
     footerTaglineEl.textContent = data.footerTagline || '';
   }
 
+  // ── About Us ──
+  var aboutText = $('about-text');
+  if (aboutText && data.aboutText) {
+    aboutText.textContent = data.aboutText;
+  }
+
   var footerPhone = $('footer-phone');
   if (footerPhone) {
     footerPhone.textContent = data.phone;
@@ -2631,7 +2639,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-vcbm8phh.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
