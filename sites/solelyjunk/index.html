@@ -734,6 +734,8 @@ const data = {
   "isGeneratedLogo": false,
   "logoShowName": false,
   "logoNameColor": "#000000",
+  "logoWhiteHeader": false,
+  "logoWhiteFooter": true,
   "stats": [
     {
       "num": "4.9★",
@@ -1028,6 +1030,7 @@ const data = {
   "clientToken": "56f7fd93-5903-407d-b340-77d2438730f1",
   "isClaimed": true,
   "bbbEnabled": true,
+  "bbbUrl": null,
   "templateVersion": "v1"
 };
 </script>
@@ -1827,6 +1830,12 @@ document.title = `${data.business} | Junk Removal`;
     } else {
       navLogo.innerHTML = '<span class="logo-name" style="color:' + (data.logoNameColor || '#0f172a') + '">' + data.business + '</span>';
     }
+    if (data.logoWhiteHeader && data.logoSrc && !data.isGeneratedLogo) {
+      var navLogoImg = navLogo.querySelector('img');
+      if (navLogoImg) {
+        navLogoImg.style.filter = (navLogoImg.style.filter ? navLogoImg.style.filter + ' ' : '') + 'brightness(0) invert(1)';
+      }
+    }
   }
 
   var navPhone = $('nav-phone');
@@ -1957,7 +1966,8 @@ document.title = `${data.business} | Junk Removal`;
       var bbbBadge = document.createElement('div');
       bbbBadge.className = 'stat stat-bbb';
       bbbBadge.style.cssText = 'display:flex;align-items:center;justify-content:center;padding:0 6px;min-width:0;flex-shrink:1;';
-      bbbBadge.innerHTML = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:44px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
+      var bbbHeroImg = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:44px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
+      bbbBadge.innerHTML = data.bbbUrl ? '<a href="' + data.bbbUrl + '" target="_blank" rel="noopener noreferrer" style="display:block;">' + bbbHeroImg + '</a>' : bbbHeroImg;
       heroStats.appendChild(bbbBadge);
       var computedDisplay = window.getComputedStyle(heroStats).display;
       if (computedDisplay === 'grid') {
@@ -2484,6 +2494,26 @@ document.title = `${data.business} | Junk Removal`;
         return '<a class="' + socialBtnClass + '" href="' + url + '" target="_blank" rel="noopener noreferrer" title="' + k + '">' + (socialIcons[k] || '') + '</a>';
       }).join('');
     }
+    if (data.bbbEnabled) {
+      var bbbFooterEl;
+      var bbbFooterImg = document.createElement('img');
+      bbbFooterImg.src = 'images/bbb-accredited.png';
+      bbbFooterImg.alt = 'BBB Accredited Business';
+      bbbFooterImg.style.cssText = 'height:75px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);margin-top:12px;';
+      if (data.bbbUrl) {
+        var bbbFooterLink = document.createElement('a');
+        bbbFooterLink.href = data.bbbUrl;
+        bbbFooterLink.target = '_blank';
+        bbbFooterLink.rel = 'noopener noreferrer';
+        bbbFooterLink.style.cssText = 'display:block;margin-top:12px;';
+        bbbFooterImg.style.marginTop = '0';
+        bbbFooterLink.appendChild(bbbFooterImg);
+        bbbFooterEl = bbbFooterLink;
+      } else {
+        bbbFooterEl = bbbFooterImg;
+      }
+      footerSocial.parentNode.insertBefore(bbbFooterEl, footerSocial.nextSibling);
+    }
   }
 
   var googleReviewBtn = $('google-review-btn');
@@ -2507,6 +2537,12 @@ document.title = `${data.business} | Junk Removal`;
       footerLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:40px;object-fit:contain;">';
     } else {
       footerLogo.innerHTML = '<span class="logo-name">' + data.business + '</span>';
+    }
+    if (data.logoWhiteFooter && data.logoSrc && !data.isGeneratedLogo) {
+      var footerLogoImg = footerLogo.querySelector('img');
+      if (footerLogoImg) {
+        footerLogoImg.style.filter = (footerLogoImg.style.filter ? footerLogoImg.style.filter + ' ' : '') + 'brightness(0) invert(1)';
+      }
     }
   }
 
