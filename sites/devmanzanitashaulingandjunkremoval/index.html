@@ -721,7 +721,7 @@ const data = {
   "isHandyman": false,
   "business": "Manzanita's Hauling And Junk Removal",
   "tagline": "Oakland's Trusted Junk Removal Service",
-  "subheadline": "Fast, friendly junk hauling throughout Oakland and surrounding areas. Same-day service available. Fully licensed, insured, and eco-minded.",
+  "subheadline": "Easy peasy junk removal guru",
   "footerTagline": null,
   "phone": "(561) 632-0900",
   "email": null,
@@ -2501,10 +2501,23 @@ document.title = `${data.business} | Junk Removal`;
 
   // ── Service Areas ──
   var areaTags = $('area-tags') || $('areas-tags');
-  if (areaTags && data.serviceAreas) {
-    areaTags.innerHTML = data.serviceAreas.map(function (a) {
-      return '<span class="area-tag">\uD83D\uDCCD ' + a + '</span>';
-    }).join('');
+  if (areaTags) {
+    var mergedAreas = (data.serviceAreas || []).slice();
+    if (data.allLocations && data.allLocations.length > 1) {
+      var existingLower = mergedAreas.map(function (a) { return a.toLowerCase(); });
+      data.allLocations.slice(1).forEach(function (loc) {
+        var locCity = loc.city || loc.address || '';
+        if (locCity && existingLower.indexOf(locCity.toLowerCase()) === -1) {
+          mergedAreas.push(locCity);
+          existingLower.push(locCity.toLowerCase());
+        }
+      });
+    }
+    if (mergedAreas.length > 0) {
+      areaTags.innerHTML = mergedAreas.map(function (a) {
+        return '<span class="area-tag">\uD83D\uDCCD ' + a + '</span>';
+      }).join('');
+    }
   }
 
   // ── Contact info ──
