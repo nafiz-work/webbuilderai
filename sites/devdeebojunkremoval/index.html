@@ -853,6 +853,7 @@ const data = {
   "tagline": "Summerville's Most Trusted Junk Removal",
   "subheadline": "Fast, friendly junk hauling throughout Summerville and surrounding areas. Same-day service available. Fully licensed, insured, and eco-minded.",
   "footerTagline": null,
+  "aboutText": "Deebo Junk Removal is a locally owned and operated junk removal company serving Summerville and the surrounding communities. We're passionate about keeping our neighbourhoods clean, and we go above and beyond to recycle, donate, and responsibly dispose of whatever you need hauled away. Fast response times, fair prices, and friendly service — that's our promise to every customer.",
   "phone": "843-932-0393",
   "email": "info@deebojunkremovalllc.com",
   "address": "Summerville, South Carolina, United States",
@@ -863,6 +864,8 @@ const data = {
   "isGeneratedLogo": false,
   "logoShowName": false,
   "logoNameColor": "#111827",
+  "logoWhiteHeader": false,
+  "logoWhiteFooter": false,
   "stats": [
     {
       "num": "4.9★",
@@ -1135,20 +1138,20 @@ const data = {
     }
   ],
   "serviceAreas": [
-    "Summerville",
-    "Goose Creek",
-    "Hanahan",
-    "North Charleston",
-    "Lincolnville",
-    "Charleston",
-    "Carolina Bay",
-    "Moncks Corner",
-    "Mount Pleasant",
-    "James Island",
-    "Sullivan's Island",
-    "Ridgeville"
+    "Summerville"
   ],
   "mapEmbedUrl": "https://maps.google.com/maps?q=32.99487,-80.00692&t=&z=13&ie=UTF8&iwloc=&output=embed",
+  "allLocations": [
+    {
+      "address": "Summerville, South Carolina, United States",
+      "city": "Summerville",
+      "provinceState": "South Carolina",
+      "country": "United States",
+      "geoLat": 32.99487,
+      "geoLng": -80.00692,
+      "mapEmbedUrl": "https://maps.google.com/maps?q=32.99487,-80.00692&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    }
+  ],
   "social": {
     "google": "https://www.google.com/maps/place/Deebo+Junk+Removal/@32.9948685,-80.006923,15z/data=!4m2!3m1!1s0x88fe89d981854307:0x73a9f4993277676f"
   },
@@ -1156,6 +1159,7 @@ const data = {
   "clientToken": "02e6cca8-d192-4328-b6d7-1b8fa5730c5d",
   "isClaimed": false,
   "bbbEnabled": false,
+  "bbbUrl": null,
   "templateVersion": "v2"
 };
 </script>
@@ -1388,7 +1392,7 @@ const data = {
   <div class="about-wrap">
     <div class="section-label">About Us</div>
     <h2>Summerville's Trusted <span>Junk Removal</span> Crew</h2>
-    <p>We're a locally owned and operated junk removal service based right here in Summerville. We built this business on one simple idea: show up on time, charge a fair price, and leave the place cleaner than we found it.</p>
+    <p id="about-text">We're a locally owned and operated junk removal service based right here in Summerville. We built this business on one simple idea: show up on time, charge a fair price, and leave the place cleaner than we found it.</p>
     <p>Whether it's a single item or a full property cleanout, we treat every job with the same care and professionalism. We're your neighbours, and we take pride in keeping our community clean.</p>
     <div class="about-trust">
       <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#C9A800" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#C9A800" stroke-width="2" stroke-linecap="round"/></svg><span>Fully Licensed & Insured</span></div>
@@ -1888,6 +1892,7 @@ document.title = `${data.business} | Junk Removal`;
  *   footer-address      – Footer address text
  *   footer-hours        – Footer hours text
  *   footer-copy         – Footer copyright text
+ *   about-text          – About Us body paragraph
  * ============================================================
  */
 (function () {
@@ -1973,6 +1978,12 @@ document.title = `${data.business} | Junk Removal`;
       navLogo.innerHTML = '<img src="' + data.logoSrc + '" alt="' + data.business + '" style="max-height:48px;object-fit:contain;">';
     } else {
       navLogo.innerHTML = '<span class="logo-name" style="color:' + (data.logoNameColor || '#0f172a') + '">' + data.business + '</span>';
+    }
+    if (data.logoWhiteHeader && data.logoSrc && !data.isGeneratedLogo) {
+      var navLogoImg = navLogo.querySelector('img');
+      if (navLogoImg) {
+        navLogoImg.style.filter = (navLogoImg.style.filter ? navLogoImg.style.filter + ' ' : '') + 'brightness(0) invert(1)';
+      }
     }
   }
 
@@ -2104,7 +2115,8 @@ document.title = `${data.business} | Junk Removal`;
       var bbbBadge = document.createElement('div');
       bbbBadge.className = 'stat stat-bbb';
       bbbBadge.style.cssText = 'display:flex;align-items:center;justify-content:center;padding:0 6px;min-width:0;flex-shrink:1;';
-      bbbBadge.innerHTML = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:44px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
+      var bbbHeroImg = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:44px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
+      bbbBadge.innerHTML = data.bbbUrl ? '<a href="' + data.bbbUrl + '" target="_blank" rel="noopener noreferrer" style="display:block;">' + bbbHeroImg + '</a>' : bbbHeroImg;
       heroStats.appendChild(bbbBadge);
       var computedDisplay = window.getComputedStyle(heroStats).display;
       if (computedDisplay === 'grid') {
@@ -2534,10 +2546,23 @@ document.title = `${data.business} | Junk Removal`;
 
   // ── Service Areas ──
   var areaTags = $('area-tags') || $('areas-tags');
-  if (areaTags && data.serviceAreas) {
-    areaTags.innerHTML = data.serviceAreas.map(function (a) {
-      return '<span class="area-tag">\uD83D\uDCCD ' + a + '</span>';
-    }).join('');
+  if (areaTags) {
+    var mergedAreas = (data.serviceAreas || []).slice();
+    if (data.allLocations && data.allLocations.length > 1) {
+      var existingLower = mergedAreas.map(function (a) { return a.toLowerCase(); });
+      data.allLocations.slice(1).forEach(function (loc) {
+        var locCity = loc.city || loc.address || '';
+        if (locCity && existingLower.indexOf(locCity.toLowerCase()) === -1) {
+          mergedAreas.push(locCity);
+          existingLower.push(locCity.toLowerCase());
+        }
+      });
+    }
+    if (mergedAreas.length > 0) {
+      areaTags.innerHTML = mergedAreas.map(function (a) {
+        return '<span class="area-tag">\uD83D\uDCCD ' + a + '</span>';
+      }).join('');
+    }
   }
 
   // ── Contact info ──
@@ -2555,14 +2580,47 @@ document.title = `${data.business} | Junk Removal`;
     if (data.email) {
       contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.email + '</div><div><h4>Email</h4><p>' + data.email + '</p></div></div>';
     }
-    contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Service Area</h4><p>' + data.address + '</p></div></div>';
+    if (data.allLocations && data.allLocations.length > 1) {
+      var locCities = data.allLocations.map(function (loc) { return loc.city || loc.address || ''; }).filter(function (c) { return c; });
+      var locStates = data.allLocations.map(function (loc) { return loc.provinceState || ''; }).filter(function (s) { return s; });
+      var locSameState = locStates.length > 0 && locStates.every(function (s) { return s === locStates[0]; });
+      var locCityList = locCities.length > 1
+        ? locCities.slice(0, -1).join(', ') + ' and ' + locCities[locCities.length - 1]
+        : locCities[0] || data.address;
+      var locText = locCityList + (locSameState ? ' ' + locStates[0] : '');
+      contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Our Locations</h4><p>' + locText + '</p></div></div>';
+    } else {
+      contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Service Area</h4><p>' + data.address + '</p></div></div>';
+    }
     contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.hours + '</div><div><h4>Hours of Operation</h4><p>' + data.hours + '</p></div></div>';
     contactInfo.innerHTML = contactRows;
   }
 
   // ── Map ──
   var mapEmbed = $('map-embed');
-  if (mapEmbed && data.mapEmbedUrl) mapEmbed.src = data.mapEmbedUrl;
+  if (data.allLocations && data.allLocations.length > 1) {
+    var mapContainer = mapEmbed ? mapEmbed.parentElement : null;
+    if (mapContainer) {
+      var mapsHtml = data.allLocations.map(function (loc) {
+        if (!loc.mapEmbedUrl) return '';
+        return '<iframe src="' + loc.mapEmbedUrl + '" style="border:0;width:100%;min-height:300px;flex:1 1 300px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+      }).filter(function (s) { return s; }).join('');
+      if (mapsHtml) {
+        if (mapEmbed) {
+          var wrapDiv = document.createElement('div');
+          wrapDiv.style.cssText = 'display:flex;flex-wrap:wrap;gap:12px;width:100%;';
+          wrapDiv.innerHTML = mapsHtml;
+          mapEmbed.replaceWith(wrapDiv);
+        }
+      } else if (mapEmbed && data.mapEmbedUrl) {
+        mapEmbed.src = data.mapEmbedUrl;
+      }
+    } else if (mapEmbed && data.mapEmbedUrl) {
+      mapEmbed.src = data.mapEmbedUrl;
+    }
+  } else if (mapEmbed && data.mapEmbedUrl) {
+    mapEmbed.src = data.mapEmbedUrl;
+  }
 
   // ── Social icons (rendered with correct brand icons and real links) ──
   var socialIcons = {
@@ -2584,6 +2642,26 @@ document.title = `${data.business} | Junk Removal`;
         var url = data.social[k];
         return '<a class="' + socialBtnClass + '" href="' + url + '" target="_blank" rel="noopener noreferrer" title="' + k + '">' + (socialIcons[k] || '') + '</a>';
       }).join('');
+    }
+    if (data.bbbEnabled) {
+      var bbbFooterEl;
+      var bbbFooterImg = document.createElement('img');
+      bbbFooterImg.src = 'images/bbb-accredited.png';
+      bbbFooterImg.alt = 'BBB Accredited Business';
+      bbbFooterImg.style.cssText = 'height:75px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);margin-top:12px;';
+      if (data.bbbUrl) {
+        var bbbFooterLink = document.createElement('a');
+        bbbFooterLink.href = data.bbbUrl;
+        bbbFooterLink.target = '_blank';
+        bbbFooterLink.rel = 'noopener noreferrer';
+        bbbFooterLink.style.cssText = 'display:block;margin-top:12px;';
+        bbbFooterImg.style.marginTop = '0';
+        bbbFooterLink.appendChild(bbbFooterImg);
+        bbbFooterEl = bbbFooterLink;
+      } else {
+        bbbFooterEl = bbbFooterImg;
+      }
+      footerSocial.parentNode.insertBefore(bbbFooterEl, footerSocial.nextSibling);
     }
   }
 
@@ -2609,11 +2687,23 @@ document.title = `${data.business} | Junk Removal`;
     } else {
       footerLogo.innerHTML = '<span class="logo-name">' + data.business + '</span>';
     }
+    if (data.logoWhiteFooter && data.logoSrc && !data.isGeneratedLogo) {
+      var footerLogoImg = footerLogo.querySelector('img');
+      if (footerLogoImg) {
+        footerLogoImg.style.filter = (footerLogoImg.style.filter ? footerLogoImg.style.filter + ' ' : '') + 'brightness(0) invert(1)';
+      }
+    }
   }
 
   var footerTaglineEl = $('footer-tagline') || document.querySelector('.footer-tagline');
   if (footerTaglineEl) {
     footerTaglineEl.textContent = data.footerTagline || '';
+  }
+
+  // ── About Us ──
+  var aboutText = $('about-text');
+  if (aboutText && data.aboutText) {
+    aboutText.textContent = data.aboutText;
   }
 
   var footerPhone = $('footer-phone');
@@ -2634,7 +2724,19 @@ document.title = `${data.business} | Junk Removal`;
   }
 
   var footerAddress = $('footer-address');
-  if (footerAddress) footerAddress.textContent = data.address;
+  if (footerAddress) {
+    if (data.allLocations && data.allLocations.length > 1) {
+      var cities = data.allLocations.map(function (loc) { return loc.city || loc.address || ''; }).filter(function (c) { return c; });
+      var states = data.allLocations.map(function (loc) { return loc.provinceState || ''; }).filter(function (s) { return s; });
+      var allSameState = states.length > 0 && states.every(function (s) { return s === states[0]; });
+      var cityList = cities.length > 1
+        ? cities.slice(0, -1).join(', ') + ' and ' + cities[cities.length - 1]
+        : cities[0] || data.address;
+      footerAddress.textContent = cityList + (allSameState ? ' ' + states[0] : '');
+    } else {
+      footerAddress.textContent = data.address;
+    }
+  }
 
   var footerHours = $('footer-hours');
   if (footerHours) footerHours.textContent = data.hours;
@@ -2690,7 +2792,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-sgmyprnq.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
