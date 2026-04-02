@@ -1023,7 +1023,8 @@ const data = {
   "serviceLabel": "Junk Removal",
   "clientToken": "76b9a2f7-4473-443c-943e-c2f5f04d4f8d",
   "isClaimed": false,
-  "bbbEnabled": true,
+  "bbbEnabled": false,
+  "bbbUrl": "https://www.bbb.org/us/or/portland/profile/junk-removal/solely-junk-llc-1296-1000188391",
   "templateVersion": "v1"
 };
 </script>
@@ -1959,7 +1960,8 @@ document.title = `${data.business} | Junk Removal`;
       var bbbBadge = document.createElement('div');
       bbbBadge.className = 'stat stat-bbb';
       bbbBadge.style.cssText = 'display:flex;align-items:center;justify-content:center;padding:0 6px;min-width:0;flex-shrink:1;';
-      bbbBadge.innerHTML = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:44px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
+      var bbbHeroImg = '<img src="images/bbb-accredited.png" alt="BBB Accredited Business" style="height:44px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);">';
+      bbbBadge.innerHTML = data.bbbUrl ? '<a href="' + data.bbbUrl + '" target="_blank" rel="noopener noreferrer" style="display:block;">' + bbbHeroImg + '</a>' : bbbHeroImg;
       heroStats.appendChild(bbbBadge);
       var computedDisplay = window.getComputedStyle(heroStats).display;
       if (computedDisplay === 'grid') {
@@ -2487,11 +2489,24 @@ document.title = `${data.business} | Junk Removal`;
       }).join('');
     }
     if (data.bbbEnabled) {
+      var bbbFooterEl;
       var bbbFooterImg = document.createElement('img');
       bbbFooterImg.src = 'images/bbb-accredited.png';
       bbbFooterImg.alt = 'BBB Accredited Business';
       bbbFooterImg.style.cssText = 'height:75px;width:auto;object-fit:contain;display:block;filter:brightness(0) invert(1);margin-top:12px;';
-      footerSocial.parentNode.insertBefore(bbbFooterImg, footerSocial.nextSibling);
+      if (data.bbbUrl) {
+        var bbbFooterLink = document.createElement('a');
+        bbbFooterLink.href = data.bbbUrl;
+        bbbFooterLink.target = '_blank';
+        bbbFooterLink.rel = 'noopener noreferrer';
+        bbbFooterLink.style.cssText = 'display:block;margin-top:12px;';
+        bbbFooterImg.style.marginTop = '0';
+        bbbFooterLink.appendChild(bbbFooterImg);
+        bbbFooterEl = bbbFooterLink;
+      } else {
+        bbbFooterEl = bbbFooterImg;
+      }
+      footerSocial.parentNode.insertBefore(bbbFooterEl, footerSocial.nextSibling);
     }
   }
 
