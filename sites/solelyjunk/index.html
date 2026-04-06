@@ -714,6 +714,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHJ4PSI1IiBmaWxsPSIjMjBhMDQwIi8+PHBhdGggZD0iTTcgNGgxMGwxIDNINmwxLTN6bS0xIDVoMTJ2OWEyIDIgMCAwMS0yIDJIOGEyIDIgMCAwMS0yLTJWOXptMyAydjVtNC01djUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==">
 <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHJ4PSI1IiBmaWxsPSIjMjBhMDQwIi8+PHBhdGggZD0iTTcgNGgxMGwxIDNINmwxLTN6bS0xIDVoMTJ2OWEyIDIgMCAwMS0yIDJIOGEyIDIgMCAwMS0yLTJWOXptMyAydjVtNC01djUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==">
+<style>
+#contact form, #contact .contact-form, #contact .form-wrap, #contact .form-container, #contact .quote-form-solo {
+  display: none !important;
+}
+</style>
 </head>
 <body>
 
@@ -1218,6 +1223,12 @@ const data = {
       <p class="quote-note">⚡ We typically respond within <strong>1 hour</strong> during business hours</p>
     </div>
   </div>
+
+<div class="voolt-custom-form-wrap" style="width:100%;margin-top:2rem;">
+<div id="ad8a1827-8659-4bba-b46e-98ee1f75cd04-2094760"></div>
+<link rel="stylesheet" href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css" media="screen" />
+<script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="ad8a1827-8659-4bba-b46e-98ee1f75cd04-2094760" form_url="https://clienthub.getjobber.com/client_hubs/ad8a1827-8659-4bba-b46e-98ee1f75cd04/public/work_request/embedded_work_request_form?form_id=2094760"></script>
+</div>
 </section>
 
 <!-- WHAT WE TAKE -->
@@ -2619,47 +2630,7 @@ document.title = `${data.business} | Junk Removal`;
   document.title = data.business + ' | ' + (data.serviceLabel || 'Junk Removal');
 })();
 </script>
-<script>
-(function() {
-  var form = document.querySelector('#contact .contact-form');
-  if (!form) return;
-  var btn = form.querySelector('.form-submit');
-  if (!btn) return;
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    var groups = form.querySelectorAll('.form-group');
-    var payload = { businessId: 57 };
-    var firstName = '';
-    var lastName = '';
-    groups.forEach(function(group) {
-      var label = group.querySelector('label');
-      var input = group.querySelector('input, textarea, select');
-      if (!label || !input) return;
-      var labelText = label.textContent.toLowerCase();
-      if (labelText.indexOf('first') >= 0) firstName = input.value;
-      else if (labelText.indexOf('last') >= 0) lastName = input.value;
-      else if (labelText.indexOf('phone') >= 0) payload.phone = input.value;
-      else if (labelText.indexOf('email') >= 0) payload.email = input.value;
-      else if (labelText.indexOf('service') >= 0) payload.service = input.value;
-      else if (labelText.indexOf('message') >= 0) payload.message = input.value;
-    });
-    payload.name = (firstName + ' ' + lastName).trim();
-    if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://websitegen26.replit.app/api/leads', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).then(function(res) {
-      if (res.ok) {
-        form.innerHTML = '<div style="text-align:center;padding:3rem;"><h3 style="color:white;margin-bottom:1rem;">Thank you!</h3><p style="color:#94a3b8;">We\'ll get back to you within the hour.</p></div>';
-      } else {
-        alert('Something went wrong. Please try calling us instead.');
-      }
-    }).catch(function() {
-      alert('Something went wrong. Please try calling us instead.');
-    });
-  });
-})();</script>
+
 <script>var vooltIsClaimed = true;</script>
 </body>
 </html>
