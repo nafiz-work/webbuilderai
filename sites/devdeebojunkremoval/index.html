@@ -1138,18 +1138,7 @@ const data = {
     }
   ],
   "serviceAreas": [
-    "Summerville",
-    "Goose Creek",
-    "Hanahan",
-    "North Charleston",
-    "Lincolnville",
-    "Charleston",
-    "Carolina Bay",
-    "Moncks Corner",
-    "Mount Pleasant",
-    "James Island",
-    "Sullivan's Island",
-    "Ridgeville"
+    "Summerville"
   ],
   "mapEmbedUrl": "https://maps.google.com/maps?q=32.99487,-80.00692&t=&z=13&ie=UTF8&iwloc=&output=embed",
   "allLocations": [
@@ -2803,7 +2792,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-enq0nh4d.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-xdehcfg1.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
