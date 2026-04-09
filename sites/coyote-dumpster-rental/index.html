@@ -1025,6 +1025,7 @@
         
         .quote-form {
             background: var(--light);
+            overflow: hidden; /* form */
             border-radius: 24px;
             padding: 48px;
             box-shadow: var(--shadow-xl);
@@ -1062,6 +1063,8 @@
             font-family: inherit;
             transition: var(--transition);
             background: var(--gray-50);
+            box-sizing: border-box;
+            width: 100%;
         }
         
         .form-group input:focus,
@@ -1115,6 +1118,24 @@
             
             .quote-form {
                 padding: 32px 24px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .quote-form {
+                padding: 24px 16px;
+                border-radius: 16px;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px;
+            }
+            
+            .form-submit .btn {
+                padding: 16px 24px;
+                font-size: 1rem;
             }
         }
         
