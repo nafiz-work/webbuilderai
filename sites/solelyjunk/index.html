@@ -1037,6 +1037,15 @@ const data = {
   "isClaimed": true,
   "bbbEnabled": true,
   "bbbUrl": "https://www.bbb.org/us/or/portland/profile/junk-removal/solely-junk-llc-1296-1000188391",
+  "hoursSchedule": {
+    "Mon": "9:00 AM – 5:00 PM",
+    "Tue": "9:00 AM – 5:00 PM",
+    "Wed": "9:00 AM – 5:00 PM",
+    "Thu": "9:00 AM – 5:00 PM",
+    "Fri": "9:00 AM – 5:00 PM",
+    "Sat": "9:00 AM – 5:00 PM",
+    "Sun": "Closed"
+  },
   "templateVersion": "v1"
 };
 </script>
@@ -2456,7 +2465,20 @@ document.title = `${data.business} | Junk Removal`;
     } else {
       contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Service Area</h4><p>' + data.address + '</p></div></div>';
     }
-    contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.hours + '</div><div><h4>Hours of Operation</h4><p>' + data.hours + '</p></div></div>';
+    var hoursContent;
+    var canonicalDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    if (data.hoursSchedule && typeof data.hoursSchedule === 'object') {
+      var hoursRows = '';
+      for (var di = 0; di < canonicalDays.length; di++) {
+        var day = canonicalDays[di];
+        var dayHours = data.hoursSchedule[day] || 'Closed';
+        hoursRows += '<div style="display:flex;gap:0.75rem;line-height:1.6;"><span style="font-weight:600;min-width:2.5rem;">' + day + '</span><span>' + dayHours + '</span></div>';
+      }
+      hoursContent = '<div style="display:flex;flex-direction:column;gap:0;">' + hoursRows + '</div>';
+    } else {
+      hoursContent = '<p>' + data.hours + '</p>';
+    }
+    contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.hours + '</div><div><h4>Hours of Operation</h4>' + hoursContent + '</div></div>';
     contactInfo.innerHTML = contactRows;
   }
 
