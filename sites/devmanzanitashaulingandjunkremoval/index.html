@@ -2571,7 +2571,7 @@ document.title = `${data.business} | Junk Removal`;
       for (var di = 0; di < canonicalDays.length; di++) {
         var day = canonicalDays[di];
         var dayHours = data.hoursSchedule[day] || 'Closed';
-        hoursRows += '<div style="display:flex;justify-content:space-between;gap:1rem;line-height:1.6;"><span style="font-weight:600;">' + day + '</span><span style="text-align:right;">' + dayHours + '</span></div>';
+        hoursRows += '<div style="display:flex;gap:0.75rem;line-height:1.6;"><span style="font-weight:600;min-width:2.5rem;">' + day + '</span><span>' + dayHours + '</span></div>';
       }
       hoursContent = '<div style="display:flex;flex-direction:column;gap:0;">' + hoursRows + '</div>';
     } else {
