@@ -1122,7 +1122,7 @@ const data = {
     "Castro Valley",
     "Emeryville"
   ],
-  "mapEmbedUrl": "https://maps.google.com/maps?q=37.755188,-122.193794&t=&z=11&ie=UTF8&iwloc=&output=embed",
+  "mapEmbedUrl": "https://maps.google.com/maps?q=37.755188,-122.193794&t=&z=13&ie=UTF8&iwloc=&output=embed",
   "allLocations": [
     {
       "address": "945 73rd Ave",
@@ -1131,7 +1131,7 @@ const data = {
       "country": "United States",
       "geoLat": 37.755188,
       "geoLng": -122.193794,
-      "mapEmbedUrl": "https://maps.google.com/maps?q=37.755188,-122.193794&t=&z=11&ie=UTF8&iwloc=&output=embed"
+      "mapEmbedUrl": "https://maps.google.com/maps?q=37.755188,-122.193794&t=&z=13&ie=UTF8&iwloc=&output=embed"
     }
   ],
   "social": {
@@ -1142,6 +1142,15 @@ const data = {
   "isClaimed": false,
   "bbbEnabled": true,
   "bbbUrl": null,
+  "hoursSchedule": {
+    "Fri": "7:00 AM - 10:00 AM",
+    "Mon": "10:00 AM - 10:00 PM",
+    "Sun": "10:00 AM - 5:00 PM",
+    "Tue": "10:00 AM - 10:00 PM",
+    "Sat": "Closed",
+    "Thu": "7:00 AM - 10:00 AM",
+    "Wed": "7:00 AM - 10:00 AM"
+  },
   "templateVersion": "v1"
 };
 </script>
@@ -2555,7 +2564,20 @@ document.title = `${data.business} | Junk Removal`;
     } else {
       contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.address + '</div><div><h4>Service Area</h4><p>' + data.address + '</p></div></div>';
     }
-    contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.hours + '</div><div><h4>Hours of Operation</h4><p>' + data.hours + '</p></div></div>';
+    var hoursContent;
+    var canonicalDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    if (data.hoursSchedule && typeof data.hoursSchedule === 'object') {
+      var hoursRows = '';
+      for (var di = 0; di < canonicalDays.length; di++) {
+        var day = canonicalDays[di];
+        var dayHours = data.hoursSchedule[day] || 'Closed';
+        hoursRows += '<div style="display:flex;justify-content:space-between;gap:1rem;line-height:1.6;"><span style="font-weight:600;">' + day + '</span><span style="text-align:right;">' + dayHours + '</span></div>';
+      }
+      hoursContent = '<div style="display:flex;flex-direction:column;gap:0;">' + hoursRows + '</div>';
+    } else {
+      hoursContent = '<p>' + data.hours + '</p>';
+    }
+    contactRows += '<div class="contact-item"><div class="contact-icon">' + contactIcons.hours + '</div><div><h4>Hours of Operation</h4>' + hoursContent + '</div></div>';
     contactInfo.innerHTML = contactRows;
   }
 
@@ -2755,7 +2777,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-3sk2vzv9.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-tx0i8hhb.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
