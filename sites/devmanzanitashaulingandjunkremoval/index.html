@@ -2860,7 +2860,7 @@ document.title = `${data.business} | Junk Removal`;
     var mobile = isMobile();
     panel.style.cssText = mobile ? mobileStyle() : desktopStyle();
     panel.innerHTML = mobile ? mobileInner() : desktopInner();
-    var rcb = document.getElementById('voolt-request-change-btn');
+    var rcb = panel.querySelector('#voolt-request-change-btn');
     if (rcb) rcb.addEventListener('click', openChangeModal);
   }
 
