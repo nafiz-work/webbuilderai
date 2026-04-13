@@ -2777,7 +2777,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-hbe4r3hm.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-jxksyi11.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -2793,18 +2793,23 @@ document.title = `${data.business} | Junk Removal`;
   });
 })();</script>
 <script>var vooltIsClaimed = false;</script>
-<script>var claimPortalUrl = "https://client.voolt.me/dashboard?sid=9a8348bf-063d-41b9-bef7-5d51c47a8c45";var widgetPortalToken = "9a8348bf-063d-41b9-bef7-5d51c47a8c45";var widgetFreeChangesUsed = 2;var apiBaseUrl = "https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-hbe4r3hm.kirk.replit.dev";</script>
+<script>var claimPortalUrl = "https://client.voolt.me/dashboard?sid=9a8348bf-063d-41b9-bef7-5d51c47a8c45";var widgetPortalToken = "9a8348bf-063d-41b9-bef7-5d51c47a8c45";var widgetFreeChangesUsed = 2;var apiBaseUrl = "https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-jxksyi11.kirk.replit.dev";</script>
 <script>(function () {
   if (new URLSearchParams(window.location.search).get('vp') === '1') return;
   if (document.getElementById('voolt-claim-widget')) return;
 
   var portalUrl = (typeof claimPortalUrl !== 'undefined' && claimPortalUrl) ? claimPortalUrl : '#';
   var primaryColor = (typeof data !== 'undefined' && data.primaryColor) ? data.primaryColor : '#C9A800';
-  var portalToken = (typeof widgetPortalToken !== 'undefined' && widgetPortalToken) ? widgetPortalToken : '';
+
+  // Extract token: prefer explicit bootstrap var; fall back to sid param in claimPortalUrl (older deploys)
+  var portalToken = (typeof widgetPortalToken !== 'undefined' && widgetPortalToken) ? widgetPortalToken : (function () {
+    try { return new URL(portalUrl).searchParams.get('sid') || ''; } catch (e) { return ''; }
+  })();
   var freeChangesUsed = (typeof widgetFreeChangesUsed !== 'undefined') ? Number(widgetFreeChangesUsed) : 0;
   var CHANGES_TOTAL = 3;
 
-  var apiBase = (typeof apiBaseUrl !== 'undefined' && apiBaseUrl) ? apiBaseUrl : '';
+  // API base: prefer explicit bootstrap var; fall back to current window origin (works in dev preview)
+  var apiBase = (typeof apiBaseUrl !== 'undefined' && apiBaseUrl) ? apiBaseUrl : window.location.origin;
 
   function getLum(hex) {
     var h = (hex || '#000000').replace('#', '');
