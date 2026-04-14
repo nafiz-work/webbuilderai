@@ -1151,6 +1151,20 @@ const data = {
     "Sat": "Closed",
     "Sun": "10:00 AM - 5:00 PM"
   },
+  "processSteps": [
+    {
+      "title": "Book Online or Call1",
+      "description": "Tell us what you need removed and we'll give you a free, no-obligation quote in minutes.1"
+    },
+    {
+      "title": "We Show Up On Time2",
+      "description": "Our friendly crew arrives on schedule with the right truck and equipment for the job.1"
+    },
+    {
+      "title": "We Haul It All Away3",
+      "description": "We do all the heavy lifting, load everything up, and leave your space clean. Done.1"
+    }
+  ],
   "templateVersion": "v1"
 };
 </script>
@@ -2691,6 +2705,35 @@ document.title = `${data.business} | Junk Removal`;
     aboutText.textContent = data.aboutText;
   }
 
+  // ── How It Works steps ──
+  if (data.processSteps && Array.isArray(data.processSteps) && data.processSteps.length > 0) {
+    // Ordered selectors: most specific to broadest, all scoped to how-it-works containers
+    var hwSelectors = [
+      '.howitworks .step',
+      '.how-it-works .step',
+      'section.howitworks .step',
+      '[id="howitworks"] .step',
+      '[id="how-it-works"] .step',
+      '.howitworks .process-step',
+      '.how-it-works .process-step',
+    ];
+    var stepContainers = document.querySelectorAll(''); // empty NodeList placeholder
+    for (var si = 0; si < hwSelectors.length; si++) {
+      var found = document.querySelectorAll(hwSelectors[si]);
+      if (found.length > 0) { stepContainers = found; break; }
+    }
+    stepContainers.forEach(function (stepEl, idx) {
+      var step = data.processSteps[idx];
+      if (!step) return;
+      // Update title: look for h3, h4, or .step-title
+      var titleEl = stepEl.querySelector('h3, h4, .step-title');
+      if (titleEl && step.title) titleEl.textContent = step.title;
+      // Update description: look for p or .step-desc (but not .step-number)
+      var descEl = stepEl.querySelector('.step-desc, .step-text, p:not(.step-number)');
+      if (descEl && step.description) descEl.textContent = step.description;
+    });
+  }
+
   var footerPhone = $('footer-phone');
   if (footerPhone) {
     footerPhone.textContent = data.phone;
@@ -2777,7 +2820,7 @@ document.title = `${data.business} | Junk Removal`;
     });
     payload.name = (firstName + ' ' + lastName).trim();
     if (!payload.name) payload.name = 'Website Visitor';
-    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-jxksyi11.kirk.replit.dev/api/leads', {
+    fetch('https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9.kirk.replit.dev/api/leads', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -2793,7 +2836,7 @@ document.title = `${data.business} | Junk Removal`;
   });
 })();</script>
 <script>var vooltIsClaimed = false;</script>
-<script>var claimPortalUrl = "https://client.voolt.me/dashboard?sid=9a8348bf-063d-41b9-bef7-5d51c47a8c45";var widgetPortalToken = "9a8348bf-063d-41b9-bef7-5d51c47a8c45";var widgetFreeChangesUsed = 2;var apiBaseUrl = "https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9-jxksyi11.kirk.replit.dev";</script>
+<script>var claimPortalUrl = "https://client.voolt.me/dashboard?sid=9a8348bf-063d-41b9-bef7-5d51c47a8c45";var widgetPortalToken = "9a8348bf-063d-41b9-bef7-5d51c47a8c45";var widgetFreeChangesUsed = 1;var apiBaseUrl = "https://bb3db20c-a7fd-4824-a9b8-8f0172e7eeba-00-1r4oksjw0cey9.kirk.replit.dev";</script>
 <script>(function () {
   if (new URLSearchParams(window.location.search).get('vp') === '1') return;
   if (document.getElementById('voolt-claim-widget')) return;
