@@ -2397,6 +2397,9 @@ document.title = `${data.business} | Junk Removal`;
         galleryGrid.style.gridTemplateColumns = 'repeat(' + Math.min(validGalleryCount, 4) + ', minmax(180px, 360px))';
       }
     }
+    if (!data.isHandyman && validGalleryCount >= 5) {
+      galleryGrid.classList.add('voolt-desktop-4');
+    }
   }
 
   // ── Lightbox ──
