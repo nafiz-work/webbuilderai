@@ -2734,6 +2734,8 @@ document.title = `${data.business} | Junk Removal`;
   if (data.processSteps && Array.isArray(data.processSteps) && data.processSteps.length > 0) {
     // Ordered selectors: most specific to broadest, all scoped to how-it-works containers
     var hwSelectors = [
+      '.howitworks .step-card',
+      '.how-it-works .step-card',
       '.howitworks .step',
       '.how-it-works .step',
       'section.howitworks .step',
