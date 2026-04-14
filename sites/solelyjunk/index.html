@@ -786,7 +786,7 @@ const data = {
   "pricing": [
     {
       "tier": "Small Load",
-      "amount": "From $120",
+      "amount": "Starting from $120",
       "desc": "Perfect for a few items",
       "includes": [
         "Single item pickup",
@@ -798,7 +798,7 @@ const data = {
     },
     {
       "tier": "Half Load",
-      "amount": "From $349",
+      "amount": "Starting from $349",
       "desc": "Most popular choice",
       "includes": [
         "Up to half truck",
@@ -811,7 +811,7 @@ const data = {
     },
     {
       "tier": "Full Truck",
-      "amount": "From $799",
+      "amount": "Starting from $799",
       "desc": "Complete cleanout service",
       "includes": [
         "Full truck capacity",
@@ -1046,6 +1046,22 @@ const data = {
     "Sat": "9:00 AM – 5:00 PM",
     "Sun": "Closed"
   },
+  "processSteps": [
+    {
+      "title": "Book Online or Call",
+      "description": "Tell us what you need removed and we'll give you a free, no-obligation quote in minutes."
+    },
+    {
+      "title": "We Show Up On Time",
+      "description": "Our friendly crew arrives on schedule with the right truck and equipment for the job."
+    },
+    {
+      "title": "We Haul It All Away",
+      "description": "We do all the heavy lifting, load everything up, and leave your space clean. Done."
+    }
+  ],
+  "pricingDisclaimer": null,
+  "pricingDisclaimerEnabled": false,
   "templateVersion": "v1"
 };
 </script>
@@ -1773,6 +1789,15 @@ document.title = `${data.business} | Junk Removal`;
 
   var $ = function (id) { return document.getElementById(id); };
 
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   // ── Colours ──
   document.documentElement.style.setProperty('--primary', data.primaryColor);
   document.documentElement.style.setProperty('--accent', data.accentColor);
@@ -2190,12 +2215,35 @@ document.title = `${data.business} | Junk Removal`;
     pricingGrid.innerHTML = data.pricing.map(function (p) {
       return '<div class="price-card' + (p.featured ? ' featured' : '') + '">' +
         (p.featured ? '<div class="featured-badge">Most Popular</div>' : '') +
-        '<div class="price-tier">' + p.tier + '</div>' +
-        '<div class="price-amount">' + p.amount + '</div>' +
-        '<div class="price-desc">' + p.desc + '</div>' +
-        '<ul class="price-includes">' + p.includes.map(function (i) { return '<li>' + i + '</li>'; }).join('') + '</ul>' +
+        '<div class="price-tier">' + esc(p.tier) + '</div>' +
+        '<div class="price-amount">' + esc(p.amount) + '</div>' +
+        '<div class="price-desc">' + esc(p.desc) + '</div>' +
+        '<ul class="price-includes">' + p.includes.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>' +
         '<a href="#contact" class="price-cta">Get a Quote</a></div>';
     }).join('');
+  }
+
+  // ── Pricing Disclaimer ──
+  if (pricingGrid && data.pricingDisclaimerEnabled && data.pricingDisclaimer) {
+    var existingDisclaimer = document.getElementById('pricing-disclaimer-injected');
+    if (!existingDisclaimer) {
+      if (!document.getElementById('pricing-disclaimer-style')) {
+        var styleEl = document.createElement('style');
+        styleEl.id = 'pricing-disclaimer-style';
+        styleEl.textContent = '.pricing-disclaimer{display:block;text-align:center;font-size:0.75rem;color:#6b7280;margin-top:1rem;padding:0 1.5rem;max-width:640px;margin-left:auto;margin-right:auto;word-wrap:break-word;overflow-wrap:break-word;}';
+        document.head.appendChild(styleEl);
+      }
+      var disclaimerEl = document.createElement('p');
+      disclaimerEl.id = 'pricing-disclaimer-injected';
+      disclaimerEl.className = 'pricing-disclaimer';
+      disclaimerEl.textContent = data.pricingDisclaimer;
+      pricingGrid.parentNode && pricingGrid.parentNode.insertBefore(disclaimerEl, pricingGrid.nextSibling);
+    } else {
+      existingDisclaimer.textContent = data.pricingDisclaimer;
+    }
+  } else if (!data.pricingDisclaimerEnabled || !data.pricingDisclaimer) {
+    var staleDisclaimer = document.getElementById('pricing-disclaimer-injected');
+    if (staleDisclaimer) staleDisclaimer.remove();
   }
 
   // ── Why Us ──
@@ -2590,6 +2638,37 @@ document.title = `${data.business} | Junk Removal`;
   var aboutText = $('about-text');
   if (aboutText && data.aboutText) {
     aboutText.textContent = data.aboutText;
+  }
+
+  // ── How It Works steps ──
+  if (data.processSteps && Array.isArray(data.processSteps) && data.processSteps.length > 0) {
+    // Ordered selectors: most specific to broadest, all scoped to how-it-works containers
+    var hwSelectors = [
+      '.howitworks .step-card',
+      '.how-it-works .step-card',
+      '.howitworks .step',
+      '.how-it-works .step',
+      'section.howitworks .step',
+      '[id="howitworks"] .step',
+      '[id="how-it-works"] .step',
+      '.howitworks .process-step',
+      '.how-it-works .process-step',
+    ];
+    var stepContainers = document.querySelectorAll(''); // empty NodeList placeholder
+    for (var si = 0; si < hwSelectors.length; si++) {
+      var found = document.querySelectorAll(hwSelectors[si]);
+      if (found.length > 0) { stepContainers = found; break; }
+    }
+    stepContainers.forEach(function (stepEl, idx) {
+      var step = data.processSteps[idx];
+      if (!step) return;
+      // Update title: look for h3, h4, or .step-title
+      var titleEl = stepEl.querySelector('h3, h4, .step-title');
+      if (titleEl && step.title) titleEl.textContent = step.title;
+      // Update description: look for p or .step-desc (but not .step-number)
+      var descEl = stepEl.querySelector('.step-desc, .step-text, p:not(.step-number)');
+      if (descEl && step.description) descEl.textContent = step.description;
+    });
   }
 
   var footerPhone = $('footer-phone');
