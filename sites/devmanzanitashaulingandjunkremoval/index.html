@@ -810,7 +810,7 @@ const data = {
     },
     {
       "tier": "Full Truck",
-      "amount": "From $349",
+      "amount": "From $3491",
       "desc": "Complete cleanout service",
       "includes": [
         "Full truck capacity",
@@ -1085,7 +1085,7 @@ const data = {
   "faqs": [
     {
       "q": "How much does it cost?",
-      "a": "Most loads run between $79 and $349 depending on volume. We'll give you a firm price over the phone or with a free on-site quote, no obligation."
+      "a": "Most loads run between $79 and $3491 depending on volume. We'll give you a firm price over the phone or with a free on-site quote, no obligation."
     },
     {
       "q": "Do you offer same-day pickups?",
@@ -1888,6 +1888,15 @@ document.title = `${data.business} | Junk Removal`;
 
   var $ = function (id) { return document.getElementById(id); };
 
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   // ── Colours ──
   document.documentElement.style.setProperty('--primary', data.primaryColor);
   document.documentElement.style.setProperty('--accent', data.accentColor);
@@ -2305,10 +2314,10 @@ document.title = `${data.business} | Junk Removal`;
     pricingGrid.innerHTML = data.pricing.map(function (p) {
       return '<div class="price-card' + (p.featured ? ' featured' : '') + '">' +
         (p.featured ? '<div class="featured-badge">Most Popular</div>' : '') +
-        '<div class="price-tier">' + p.tier + '</div>' +
-        '<div class="price-amount">' + p.amount + '</div>' +
-        '<div class="price-desc">' + p.desc + '</div>' +
-        '<ul class="price-includes">' + p.includes.map(function (i) { return '<li>' + i + '</li>'; }).join('') + '</ul>' +
+        '<div class="price-tier">' + esc(p.tier) + '</div>' +
+        '<div class="price-amount">' + esc(p.amount) + '</div>' +
+        '<div class="price-desc">' + esc(p.desc) + '</div>' +
+        '<ul class="price-includes">' + p.includes.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>' +
         '<a href="#contact" class="price-cta">Get a Quote</a></div>';
     }).join('');
   }
