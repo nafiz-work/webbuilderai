@@ -585,6 +585,45 @@
             gap: 32px;
         }
         
+        /* Quote Section */
+        .quote-section {
+            padding: 80px 24px;
+            background: var(--bg-darker);
+            text-align: center;
+        }
+        
+        .quote-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 3.5vw, 36px);
+            font-weight: 700;
+            color: var(--text-light);
+            line-height: 1.4;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .quote-text::before {
+            content: '"';
+            font-size: 72px;
+            color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .quote-author {
+            font-size: 16px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
         .hero-stat {
             text-align: left;
         }
