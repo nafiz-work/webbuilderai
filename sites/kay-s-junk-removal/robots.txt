@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://kay-s-junk-removal.netlify.app/sitemap.xml
