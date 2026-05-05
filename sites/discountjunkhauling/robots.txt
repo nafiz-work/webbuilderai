@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://discountjunkhauling.netlify.app/sitemap.xml
