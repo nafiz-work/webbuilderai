@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://lake-junk.netlify.app/sitemap.xml
