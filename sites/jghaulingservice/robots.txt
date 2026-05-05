@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://jghaulingservice.netlify.app/sitemap.xml
