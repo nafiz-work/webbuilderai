@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://trailer-trash-junk-removal-services.netlify.app/sitemap.xml
