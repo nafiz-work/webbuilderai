@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://marcoshaulingjunkremoval.netlify.app/sitemap.xml
