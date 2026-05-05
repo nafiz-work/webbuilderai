@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://dchaulingjunkremoval.netlify.app/sitemap.xml
