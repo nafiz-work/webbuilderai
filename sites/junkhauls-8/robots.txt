@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://junkhauls-8.netlify.app/sitemap.xml
